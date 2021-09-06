@@ -25,7 +25,7 @@ function load_score_table(sort_function) {
     table_data.forEach((data) => {
         str_data += "<tr><td>" + data[0] + "</td><td>" + data[1] + "</td><td>" + data[2] + "</td><td>" + data[3] / 1000 + "s</td></tr>";
     })
-    document.getElementById('score_table').innerHTML = "<tr><th>Player</th><th>E-mail</th><th>Score</th><th>Time</th></tr>" + str_data;
+    document.getElementById('score_table').innerHTML = document.getElementById('score_table').innerHTML.split("</tr>", 1)[0] + "</tr>" + str_data;
 }
 
 function shared_link() {
