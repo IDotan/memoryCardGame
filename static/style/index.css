@@ -1,3 +1,26 @@
 :root {
+    --fs-Headelines-h1: ;
+
     --bg-color: gray;
+
+    --fs-Profle-h2: 2rem;
+}
+
+.board{
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+
+
+
+}
+.landing{
+    height: 100vh;
+}  
+.board{
+    height: 100vh;
+}
+.scoreboard{
+    height: 100vh;
 }
