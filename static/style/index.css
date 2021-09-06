@@ -1,10 +1,14 @@
 :root {
-    --fs-Headelines-h1: ;
+    --fs-Headelines-h1: 3.2rem;
+    --fs-Profle-h2: 3rem;
+    --fs-paragraph: 1.5rem;
+
+    --clr-light:#fff;
 
     --bg-color-landing: #060ab0;
     --bg-color: gray;
-    --fs-Profle-h2: 2rem;
     --border_color: #000000;
+    
 }
 
 body {
@@ -17,18 +21,60 @@ body {
     box-sizing: border-box;
 }
 
+h1,h2,h3,p{
+    color: var(--clr-light);
+}
+
 #landing_screen{
     background-image: url(/static/img/LandingScreen.jpg);
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    height: 100vh;
+    padding-inline: 5%;
+
     background-color: var(--bg-color-landing);
 }
 
-#start_btn{
+#landing_screen h1{
+    text-align: center;
+    font-size: var(--fs-Headelines-h1);
+    margin-bottom: 5%;
+}
 
+#landing_screen p {
+    font-size: var(--fs-paragraph);
+}
+
+#landing_screen img{
+    width: 300px;
+    border-radius: 50%;
+}
+
+.developers{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.about{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding-top: 20%;
+}
+
+.about h2{
+    padding-block: 1rem;
+    font-size: var(--fs-Profle-h2);
+}
+
+.about_text{
+    max-width: 30ch;
+}
+
+#start_btn{
     position: fixed;
     bottom: 1%;
 
