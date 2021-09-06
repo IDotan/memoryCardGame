@@ -37,10 +37,10 @@ function shared_link() {
             user_data.mail = url_array[1];
             user_data.score = parseInt(url_array[2]);
             user_data.time = parseInt(url_array[3]);
+            load_score_table(sort_score_descending);
         };
     };
-    load_score_table(sort_score_descending);
-}
+};
 
 
 window.onload = () => {
