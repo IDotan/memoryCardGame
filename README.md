@@ -1,2 +1,1 @@
 # memoryCardGame
-pull test
