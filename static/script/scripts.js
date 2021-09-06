@@ -14,10 +14,12 @@ function shared_link() {
     let url = document.URL;
     if (url.includes("?")) {
         let url_array = url.split("?")[1].split("&");
-        user_data.name = url_array[0];
-        user_data.mail = url_array[1];
-        user_data.score = parseInt(url_array[2]);
-        user_data.time = parseInt(url_array[3]);
+        if (url_array.length == 4) {
+            user_data.name = url_array[0];
+            user_data.mail = url_array[1];
+            user_data.score = parseInt(url_array[2]);
+            user_data.time = parseInt(url_array[3]);
+        };
     };
     // call the function to show the end game screen
 }
