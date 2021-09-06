@@ -1,26 +1,31 @@
 :root {
     --fs-Headelines-h1: ;
-
     --bg-color: gray;
-
     --fs-Profle-h2: 2rem;
+    --border_color: #000000;
 }
 
-.board{
+body {
+    background-color: var(--bg-color);
+}
+
+#score_table {
     position: relative;
-
-    display: flex;
-    justify-content: center;
-
-
-
+    width: max-content;
+    margin: 0 auto;
+    border-collapse: collapse;
 }
-.landing{
-    height: 100vh;
-}  
-.board{
-    height: 100vh;
+
+#score_table th, #score_table td {
+    width: 5em;
+    height: 1.5em;
+    text-align: center;
 }
-.scoreboard{
-    height: 100vh;
+
+#score_table tr {
+    border-bottom: 0.1em dashed var(--border_color);
+}
+
+#score_table tr:nth-of-type(1) {
+    border-bottom: 0.2em solid var(--border_color);
 }
