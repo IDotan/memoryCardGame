@@ -8,6 +8,10 @@
     --border_color: #000000;
 }
 
+body {
+    background-color: var(--bg-color);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -143,6 +147,8 @@ h1, h2, h3, p {
     justify-content: center;
 }
 
+/* end screen */
+
 #score_table {
     position: relative;
     width: max-content;
@@ -158,6 +164,10 @@ h1, h2, h3, p {
     width: 5em;
     height: 1.5em;
     text-align: center;
+}
+
+#score_table th:nth-of-type(3), #score_table th:nth-of-type(4) {
+    cursor: pointer;
 }
 
 #score_table tr {
