@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="static/style/index.css">
     <title>Document</title>
     <link rel="stylesheet" href="/static/style/index.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -47,7 +51,30 @@
                     </div>
 
                 </section>
+
             <button id="start_btn">start</button>
+            <div class="popup">
+                <div class="close_btn">
+                    <p>X</p>
+                </div>
+                <h2>log in</h2>
+                <div class="inputs">
+                    <div class="inputs_user_data">
+                        <input type="text" class="user_input" id="user_name" placeholder="User Name">
+
+                        <input type="text" class="user_input" id="password" placeholder="Password">
+                    </div>
+
+                    <input type="checkbox" id="remember_me">
+                    <label for="remember_me">Remember me</label>
+                </div>
+
+                <p class="forgot_password">Forgot password</p>
+                <div class="btns">
+                    <button class="log_in_btn">Log-in</button>
+                    <button class="log_in_btn">Sign-Up</button>
+                </div>
+            </div>
         </section>
 
         <section id="board">
