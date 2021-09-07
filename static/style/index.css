@@ -2,15 +2,17 @@
     --fs-Headelines-h1: 3.2rem;
     --fs-Profle-h2: 3rem;
     --fs-paragraph: 1.5rem;
+    
     --clr-light: #fff;
     --bg-color-landing: #060ab0;
     --bg-color: gray;
     --border_color: #000000;
 }
 
-body {
-    background-color: var(--bg-color);
+*{
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 header {
@@ -27,13 +29,16 @@ h1, h2, h3, p {
     color: var(--clr-light);
 }
 
-#landing_screen {
-    background-image: url(../img/LandingScreen.jpg);
-    background-attachment: fixed;
-    background-size: cover;
+/*Landing screen and about every developer*/
+
+#landing_screen{
+    background-image: url(/static/img/LandingScreen.jpg);
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    position: relative;
+
     padding-inline: 5%;
     background-color: var(--bg-color-landing);
 }
@@ -51,6 +56,10 @@ h1, h2, h3, p {
 #landing_screen img {
     width: 300px;
     border-radius: 50%;
+}
+
+.about_project{
+    max-width: 150ch;
 }
 
 .developers {
@@ -82,6 +91,57 @@ h1, h2, h3, p {
     height: 8%;
 }
 
+/* The login popup */
+.popup{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    height: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--clr-popup);
+    color: var(--clr-light);
+
+    padding: 2%;
+    font-family: var(--ff-main);
+}
+
+.close_btn{
+    min-width: 2rem;
+    min-height: 2rem;
+
+    border-radius: 50%;
+    background-color: var(--clr-light);
+}
+
+.close_btn p {
+    text-align: center;
+    color: black;
+}
+
+.user_input{
+    font-size: 1.5rem;
+    width: 10rem;
+    height: 1.5rem;
+}
+
+.log_in_btn{
+    margin-top: 2%;
+    width: 8rem;
+    height: 2rem;
+}
+
+.forgot_password{
+    font-size: 20rem;
+}
+
+.board{
 .board {
     position: relative;
     display: flex;
