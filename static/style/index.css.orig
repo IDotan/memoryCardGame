@@ -1,0 +1,88 @@
+:root {
+    --fs-Headelines-h1: ;
+
+    --bg-color-landing: #060ab0;
+    --bg-color: gray;
+    --fs-Profle-h2: 2rem;
+    --border_color: #000000;
+}
+
+body {
+    background-color: var(--bg-color);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#landing_screen{
+    background-image: url(/static/img/LandingScreen.jpg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    height: 100vh;
+    background-color: var(--bg-color-landing);
+}
+
+#start_btn{
+
+    position: fixed;
+    bottom: 1%;
+
+    width: 50%;
+    height: 8%;
+}
+
+.board{
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+}
+
+#score_table {
+    position: relative;
+    width: max-content;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+#score_table th {
+    position: relative;
+}
+
+#score_table th, #score_table td {
+    width: 5em;
+    height: 1.5em;
+    text-align: center;
+}
+
+#score_table tr {
+    border-bottom: 0.1em dashed var(--border_color);
+}
+
+#score_table tr:nth-of-type(1) {
+    border-bottom: 0.2em solid var(--border_color);
+}
+
+.table_arrow {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-left: 0.325em solid transparent;
+    border-right: 0.325em solid transparent;
+    border-top: 0.65em solid #555;
+}
+
+.table_arrow.hide {
+    display: none;
+}
+
+.table_arrow.up {
+    transform: rotate(180deg);
+}

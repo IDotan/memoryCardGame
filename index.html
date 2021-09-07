@@ -8,34 +8,98 @@
     <link rel="stylesheet" href="static/style/index.css">
     <title>Document</title>
     <link rel="stylesheet" href="/static/style/index.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <header>
-
+        <span>temp controle for easy display:none </span><br>
+        <button onclick="document.getElementById('landing_screen').classList.remove('hide');
+            document.getElementById('board').classList.add('hide');
+            document.getElementById('end_screen').classList.add('hide');">
+            landing_screen</button>
+        <button onclick="document.getElementById('landing_screen').classList.add('hide');
+        document.getElementById('board').classList.remove('hide');
+        document.getElementById('end_screen').classList.add('hide');">
+            board</button>
+        <button onclick="document.getElementById('landing_screen').classList.add('hide');
+        document.getElementById('board').classList.add('hide');
+        document.getElementById('end_screen').classList.remove('hide');">
+            end_screen</button>
     </header>
 
     <main>
         <section id="landing_screen">
-            <section>
-                <div class="about_project">
-                    <h1>Memory game</h1>
-                    
-                </div>
-                <div class="artem">
+            <div class="about_project">
+                <h1>Memory game</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid impedit explicabo sequi voluptatum,
+                    pariatur dicta laboriosam minima ullam repellendus aut maiores tempora adipisci eaque natus cumque
+                    perferendis ratione voluptas voluptate consequatur! Praesentium corrupti odit distinctio officia,
+                    rerum aut aliquid, voluptates quae facilis debitis eligendi mollitia qui nihil quaerat autem quia.
+                </p>
+            </div>
 
+            <section class="developers">
+                <div class="about" id="itai">
+                    <img src="static/img/ItaiPic.jpg" alt="A picture of Itay">
+                    <div class="about_txt">
+                        <h2>Itai Dotan</h2>
+                        <p class="about_text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum odio
+                            a pariatur rerum dicta quidem facere modi perspiciatis sit dignissimos. Iste explicabo,
+                            corporis maxime placeat nulla voluptatem distinctio. Quibusdam, officia.</p>
+                    </div>
                 </div>
-                <div class="danielle">
 
+                <div class="about" id="artem">
+                    <img src="static/img/artemPic.jpg" alt="A picture of Artem">
+                    <div class="about_txt">
+                        <h2>Artem Meshkov</h2>
+                        <p class="about_text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus
+                            minima odio, error totam iste adipisci aut! Quasi optio unde placeat, maiores pariatur
+                            delectus magni necessitatibus iusto eveniet, ipsa animi vero!</p>
+                    </div>
                 </div>
-                <div class="itay">
 
-                </div>
+                <div class="about" id="danielle">
+                    <img src="static/img/DaniellePic.jpg" alt="A picture of Danielle">
+                    <div class="about_txt">
+                        <h2>Danielle </h2>
+                        <p class="about_text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos ut ratione
+                            fugit architecto tenetur quisquam harum? Ipsam, ex at incidunt, iste sequi, optio magnam
+                            corporis quidem culpa a debitis officia.</p>
+                    </div>
+
             </section>
+
             <button id="start_btn">start</button>
+            <div class="popup">
+                <div class="close_btn">
+                    <p>X</p>
+                </div>
+                <h2>log in</h2>
+                <div class="inputs">
+                    <div class="inputs_user_data">
+                        <input type="text" class="user_input" id="user_name" placeholder="User Name">
+
+                        <input type="text" class="user_input" id="password" placeholder="Password">
+                    </div>
+
+                    <input type="checkbox" id="remember_me">
+                    <label for="remember_me">Remember me</label>
+                </div>
+
+                <p class="forgot_password">Forgot password</p>
+                <div class="btns">
+                    <button class="log_in_btn">Log-in</button>
+                    <button class="log_in_btn">Sign-Up</button>
+                </div>
+            </div>
         </section>
 
-        <section id="board">
+        <section id="board" class="hide">
             <section id="user_data">
 
             </section>
@@ -99,16 +163,16 @@
             </div>
         </section>
 
-        <section id="end_screen">
+        <section id="end_screen" class="hide">
             <table id="score_table">
                 <tr>
                     <th>Player</th>
                     <th>E-mail</th>
-                    <th>
+                    <th onclick="table_sort_click(event), true">
                         Score<div class="table_arrow"></div>
                     </th>
-                    <th>
-                        Time<div class="table_arrow hide"></div>
+                    <th onclick="table_sort_click(event), true">
+                        Time<div class="table_arrow hide up"></div>
                     </th>
                 </tr>
                 <tr>
