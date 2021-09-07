@@ -16,7 +16,19 @@
 
 <body>
     <header>
-
+        <span>temp controle for easy display:none </span><br>
+        <button onclick="document.getElementById('landing_screen').classList.remove('hide');
+            document.getElementById('board').classList.add('hide');
+            document.getElementById('end_screen').classList.add('hide');">
+            landing_screen</button>
+        <button onclick="document.getElementById('landing_screen').classList.add('hide');
+        document.getElementById('board').classList.remove('hide');
+        document.getElementById('end_screen').classList.add('hide');">
+            board</button>
+        <button onclick="document.getElementById('landing_screen').classList.add('hide');
+        document.getElementById('board').classList.add('hide');
+        document.getElementById('end_screen').classList.remove('hide');">
+            end_screen</button>
     </header>
 
     <main>
@@ -87,7 +99,7 @@
             </div>
         </section>
 
-        <section id="board">
+        <section id="board" class="hide">
             <section id="user_data">
 
             </section>
@@ -151,7 +163,7 @@
             </div>
         </section>
 
-        <section id="end_screen">
+        <section id="end_screen" class="hide">
             <table id="score_table">
                 <tr>
                     <th>Player</th>
