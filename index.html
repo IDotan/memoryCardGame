@@ -17,22 +17,13 @@
 <body>
     <header>
         <span>temp controle for easy display:none </span><br>
-        <button onclick="document.getElementById('landing_screen').classList.remove('hide');
-            document.getElementById('board').classList.add('hide');
-            document.getElementById('end_screen').classList.add('hide');">
-            landing_screen</button>
-        <button onclick="document.getElementById('landing_screen').classList.add('hide');
-        document.getElementById('board').classList.remove('hide');
-        document.getElementById('end_screen').classList.add('hide');">
-            board</button>
-        <button onclick="document.getElementById('landing_screen').classList.add('hide');
-        document.getElementById('board').classList.add('hide');
-        document.getElementById('end_screen').classList.remove('hide');">
-            end_screen</button>
+        <button onclick="section_switch(0)">landing_screen</button>
+        <button onclick="section_switch(1)">board</button>
+        <button onclick="section_switch(2)">end_screen</button>
     </header>
 
     <main>
-        <section id="landing_screen">
+        <section id="landing_screen" class="page_section">
             <div class="about_project">
                 <h1>Memory game</h1>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid impedit explicabo sequi voluptatum,
@@ -99,7 +90,7 @@
             </div>
         </section>
 
-        <section id="board" class="hide">
+        <section id="board" class="page_section hide">
             <section id="user_data">
 
             </section>
@@ -163,7 +154,7 @@
             </div>
         </section>
 
-        <section id="end_screen" class="hide">
+        <section id="end_screen" class="page_section hide">
             <table id="score_table">
                 <tr>
                     <th>Player</th>
