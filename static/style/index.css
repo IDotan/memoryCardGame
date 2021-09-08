@@ -151,6 +151,13 @@ h1, h2, h3, p {
 
 /* end screen */
 
+#end_screen h2 {
+    text-align: center;
+    padding: 1em;
+}
+
+/* table style */
+
 #table_continer {
     margin: 0 auto;
     max-width: 85vw;
@@ -209,4 +216,29 @@ h1, h2, h3, p {
 
 .table_arrow.up {
     transform: rotate(180deg);
+}
+
+/* btn panel */
+
+#end_screen_btn_continer {
+    margin: 1em auto;
+    width: max-content;
+    display: flex;
+    gap: 2em;
+}
+
+#end_screen_btn_continer>button {
+    padding: 1em 1.5em;
+    font-weight: 700;
+}
+
+/* share score */
+
+#share {
+    margin: 0.5em auto;
+    width: max-content;
+}
+
+#share .share_link {
+    cursor: pointer;
 }

@@ -4,6 +4,7 @@ const user_data = {
     score: -1,
     time: 9999999
 };
+const share_msg = "Check out the score I got here:\n";
 
 /**
  * Show the relevent page section while hiding all the others.
@@ -27,7 +28,7 @@ function section_switch(show) {
  * @returns url link
  */
 function share_score() {
-    let url = document.URL + "?" + user_data.name + "&" + user_data.mail + "&" + user_data.score + "&" + user_data.time;
+    let url = document.URL.split("?")[0] + "?" + user_data.name + "$" + user_data.mail + "$" + user_data.score + "$" + user_data.time;
     return url;
 };
 
@@ -147,7 +148,7 @@ function table_sort_click(event) {
 function shared_link() {
     let url = document.URL;
     if (url.includes("?")) {
-        let url_array = url.split("?")[1].split("&");
+        let url_array = url.split("?")[1].split("$");
         if (url_array.length == 4) {
             user_data.name = url_array[0];
             user_data.mail = url_array[1];
@@ -158,6 +159,17 @@ function shared_link() {
         };
     };
 };
+
+
+function share_via_mail() {
+    let mail_link = "mailto:?body=" + encodeURIComponent(share_msg) + share_score();
+    window.open(mail_link, "_blank");
+};
+
+function share_via_whatsapp() {
+    let whatsapp_link = "https://wa.me/?text=" + encodeURIComponent(share_msg) + share_score();
+    window.open(whatsapp_link, "_blank");
+}
 
 
 window.onload = () => {

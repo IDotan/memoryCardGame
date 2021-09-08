@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="static/style/index.css">
     <title>Document</title>
     <link rel="stylesheet" href="/static/style/index.css">
-
+    <script src="https://kit.fontawesome.com/6016dddc01.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
@@ -155,6 +155,7 @@
         </section>
 
         <section id="end_screen" class="page_section hide">
+            <h2>Game ranking</h2>
             <div id="table_continer">
                 <table id="score_table">
                     <tr>
@@ -199,11 +200,19 @@
                 </table>
             </div>
 
-            <button>back to start</button>
-            <div id="share">
-                <span>whatsapp</span>
-                <span>email</span>
+            <div id="end_screen_btn_continer">
+                <button>Try again</button>
+                <button>New player</button>
             </div>
+
+            <div id="share">
+                <span>Share your result:</span>
+                <span class="share_link" title="Whatsapp" onclick="share_via_whatsapp()">
+                    <i class="fab fa-whatsapp-square"></i></span>
+                <span class="share_link" title="Email" onclick="share_via_mail()">
+                    <i class="fas fa-envelope-square"></i></span>
+            </div>
+
         </section>
     </main>
 
