@@ -6,6 +6,7 @@
     --bg-color-landing: #060ab0;
     --bg-color: gray;
     --border_color: #000000;
+    --table-side-padding: 0.5em;
 }
 
 body {
@@ -21,6 +22,7 @@ body {
 header {
     position: sticky;
     top: 0;
+    z-index: 1;
     background-color: var(--bg-color);
 }
 
@@ -149,11 +151,18 @@ h1, h2, h3, p {
 
 /* end screen */
 
+#table_continer {
+    margin: 0 auto;
+    max-width: 85vw;
+    overflow-x: auto;
+}
+
 #score_table {
     position: relative;
     width: max-content;
     margin: 0 auto;
     border-collapse: collapse;
+    margin-bottom: 1em;
 }
 
 #score_table th {
@@ -161,12 +170,21 @@ h1, h2, h3, p {
 }
 
 #score_table th, #score_table td {
-    width: 5em;
-    height: 1.5em;
+    height: 2.5em;
     text-align: center;
+    padding: 0 var(--table-side-padding);
+    max-width: 14em;
 }
 
-#score_table th:nth-of-type(3), #score_table th:nth-of-type(4) {
+#score_table th:nth-of-type(1), #score_table td:nth-of-type(1) {
+    padding: 0;
+}
+
+#score_table th:nth-of-type(4), #score_table td:nth-of-type(4), #score_table th:nth-of-type(5), #score_table td:nth-of-type(5) {
+    min-width: 5em;
+}
+
+#score_table th:nth-of-type(4), #score_table th:nth-of-type(5) {
     cursor: pointer;
 }
 
@@ -180,8 +198,8 @@ h1, h2, h3, p {
 
 .table_arrow {
     position: absolute;
-    top: 50%;
-    right: 0;
+    top: 65%;
+    right: var(--table-side-padding);
     width: 0;
     height: 0;
     border-left: 0.325em solid transparent;
