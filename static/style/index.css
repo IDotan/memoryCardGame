@@ -39,6 +39,7 @@ h1, h2, h3, p {
 #landing_screen {
     background-image: url(../img/LandingScreen.jpg);
     background-size: cover;
+    background-position: center;
     background-attachment: fixed;
     display: flex;
     flex-direction: column;

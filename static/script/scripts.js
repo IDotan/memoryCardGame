@@ -83,7 +83,7 @@ function sort_time_descending(a, b) {
  * @param {Function} sort_function the function to sort by.
  */
 function load_score_table(sort_function) {
-    let table_data = [["itai", "itai145@gmail.com", 8, 30000]];
+    let table_data = [["Itai", "itai145@gmail.com", 8, 30000]];
     table_data.push([user_data.name, user_data.mail, user_data.score, user_data.time]);
     table_data.sort((a, b) => { return sort_function(a, b) });
     let str_data = "";
