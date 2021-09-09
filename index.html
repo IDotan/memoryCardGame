@@ -9,6 +9,13 @@
     <title>Document</title>
     <link rel="stylesheet" href="/static/style/index.css">
 
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+      integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V"
+      crossorigin="anonymous"
+    />
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
@@ -66,35 +73,30 @@
                 <div class="about" id="danielle">
                     <img src="static/img/DaniellePic.jpg" alt="A picture of Danielle">
                     <div class="about_txt">
-                        <h2>Danielle </h2>
+                        <h2>Danielle Trachterman</h2>
                         <p class="about_text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos ut ratione
                             fugit architecto tenetur quisquam harum? Ipsam, ex at incidunt, iste sequi, optio magnam
                             corporis quidem culpa a debitis officia.</p>
                 </div>
-
             </section>
 
             <button id="start_btn">start</button>
-            <div class="popup">
-                <div class="close_btn">
-                    <p>X</p>
-                </div>
-                <h2>log in</h2>
-                <div class="inputs">
-                    <div class="inputs_user_data">
-                        <input type="text" class="user_input" id="user_name" placeholder="User Name">
-
-                        <input type="text" class="user_input" id="password" placeholder="Password">
+            
+            <div class="popup_container">
+                <div class="popup_content">
+                    <div class="input_form_container" id="email">
+                        <span class="fa fa-user"></span>
+                         <input type="email" class="input_form" id=""1
+                    </div>
+                    <div class="input_form_container" id="paswword">
+                        <span class="fa fa-lock"></span>
+                        <div class="input_contai"></div>
+                        <input type="password" class="input_form" id="">
+                        <p class="forgot_password">forgot password?</p>
                     </div>
 
-                    <input type="checkbox" id="remember_me">
-                    <label for="remember_me">Remember me</label>
-                </div>
-
-                <p class="forgot_password">Forgot password</p>
-                <div class="btns">
-                    <button class="log_in_btn">Log-in</button>
-                    <button class="log_in_btn">Sign-Up</button>
+                    <button class="input_btn" id="log_in_btn">Log-In</button>
+                    <button class="input_btn" id="sign_up_btn">Sign-Up</button>
                 </div>
             </div>
         </section>

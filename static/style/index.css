@@ -1,15 +1,18 @@
 :root {
-    --fs-Headelines-h1: 3.2rem;
+    --fs-Headelines-h1: clamp(3.5rem, 5vw + 1rem, 12rem);
     --fs-Profle-h2: 3rem;
-    --fs-paragraph: 1.5rem;
+    --fs-x-btn: 2.5rem;
+    --fs-paragraph: 2rem;
     
+    --clr-popup: rgba(141, 84, 233, 0.8);
+    --clr-popup-content:rgba(51, 51, 51, 0.8);
     --clr-light: #fff;
     --bg-color-landing: #060ab0;
     --bg-color: gray;
     --border_color: #000000;
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -25,7 +28,7 @@ h1, h2, h3, p {
 
 /*Landing screen and about every developer*/
 
-#landing_screen{
+#landing_screen {
     background-image: url(/static/img/LandingScreen.jpg);
     display: flex;
     flex-direction: column;
@@ -43,35 +46,41 @@ h1, h2, h3, p {
     margin-bottom: 5%;
 }
 
-#landing_screen p {
+#landing_screen P {
     font-size: var(--fs-paragraph);
 }
 
-#landing_screen img {
-    width: 300px;
-    border-radius: 50%;
-}
-
-.about_project{
+.about_project {
     max-width: 150ch;
 }
 
 .developers {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    width: 100vw;
+    gap: 5%;
+    margin-top: 5%;
+}
+
+.developers img{
+    width: 50%;
+    border-radius: 50%;
 }
 
 .about {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 20%;
+    width: 25rem;
 }
 
 .about h2 {
     padding-block: 1rem;
     font-size: var(--fs-Profle-h2);
+    text-align: center;
 }
 
 .about_text {
@@ -83,59 +92,69 @@ h1, h2, h3, p {
     bottom: 1%;
     width: 50%;
     height: 8%;
+    display: none;
 }
 
 /* The login popup */
-.popup{
+.popup_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: fixed;
     top: 50%;
-    left: 50%;
-    width: 80%;
-    height: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(0, -50%);
 
+    width: 100vw;
+    height: 100vh;
+
+    background-color: var(--clr-popup);
+}
+
+.popup_content{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 
-    background-color: var(--clr-popup);
-    color: var(--clr-light);
+    background-color: var(--clr-popup-content);
+    padding: 10%;
+    border-radius: 10%;
+}
 
+.input_form_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
     padding: 2%;
-    font-family: var(--ff-main);
 }
 
-.close_btn{
-    min-width: 2rem;
-    min-height: 2rem;
+.input_form{
+    position: relative;
 
-    border-radius: 50%;
-    background-color: var(--clr-light);
-}
-
-.close_btn p {
-    text-align: center;
-    color: black;
-}
-
-.user_input{
+    width: 20rem;
+    height: 2.5rem;
     font-size: 1.5rem;
-    width: 10rem;
-    height: 1.5rem;
 }
 
-.log_in_btn{
-    margin-top: 2%;
-    width: 8rem;
-    height: 2rem;
+.input_form_container span{
+    position: absolute;
+
+    top: 12px;
+    left: 12px;
+    z-index: 1;
+    font-size: 1.5rem;
 }
 
 .forgot_password{
-    font-size: 20rem;
 }
 
-.board{
+.input_btn{
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    width: 20rem;
+    height: 3rem;
+}
+
 .board {
     position: relative;
     display: flex;
