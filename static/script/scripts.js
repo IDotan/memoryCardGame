@@ -1,6 +1,6 @@
 const developers_data = {
     card_size: 0,
-    card_count: document.getElementsByClassName('about').length,
+    card_count: document.getElementsByClassName('about card').length,
     card_width: 0,
     card_z: null,
     card_deg: 0
@@ -28,10 +28,22 @@ function developers_data_set() {
  * Give the about cards the needed proprty for the carousel.
  */
 function developers_about_carousel() {
-    let temp = Array.from(document.getElementsByClassName('about'));
+    let temp = Array.from(document.getElementsByClassName('about card'));
     temp.forEach((div, index) => {
         div.style.transform = "rotateY(" + developers_data.card_deg * index + "deg) translateZ(" + developers_data.card_z + "px)";
     });
+};
+
+/**
+ * Rotate the developers carousel to right or left by the given direction.
+ * 
+ * @param {Number} direction 1 rotate right, -1 rotate left
+ */
+function rotate_carousel(direction) {
+    let carousel = document.getElementById('developers_carousel');
+    let deg = carousel.style.transform.slice(8, -4);
+    deg == "" ? deg = 0 : deg = parseInt(deg);
+    document.getElementById('developers_carousel').style.transform = "rotateY(" + (deg + (developers_data.card_deg * direction)) + "deg)";
 };
 
 /******************** End screen ********************/

@@ -72,10 +72,12 @@ h1, h2, h3, p {
     position: relative;
     width: 85vw;
     transform-style: preserve-3d;
+    transition: transform 1s;
 }
 
-.about_placeholder {
+.about.placeholder {
     visibility: hidden;
+    position: relative;
 }
 
 .about {
@@ -86,10 +88,10 @@ h1, h2, h3, p {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.85);
 }
 
-.about h2, .about_placeholder h2 {
+.about h2 {
     padding-block: 1rem;
     font-size: var(--fs-Profle-h2);
 }
