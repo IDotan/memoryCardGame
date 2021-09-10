@@ -60,7 +60,7 @@ h1, h2, h3, p {
 }
 
 #landing_screen img {
-    width: 50vw;
+    width: 50%;
     border-radius: 50%;
 }
 
@@ -68,9 +68,29 @@ h1, h2, h3, p {
     max-width: 150ch;
 }
 
+#developers_carousel_container {
+    position: relative;
+    width: 100%;
+}
+
+.carousel_arrow {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    padding: 10% 0;
+    color: #fff;
+}
+
+.carousel_arrow:nth-last-of-type(1) {
+    left: unset;
+    right: 0;
+}
+
 .developers {
     position: relative;
-    width: 85vw;
+    margin: 0 auto;
+    width: 90%;
     transform-style: preserve-3d;
     transition: transform 1s;
 }
@@ -258,10 +278,7 @@ h1, h2, h3, p {
 }
 
 @media only screen and (min-width: 1024px) {
-    #landing_screen img {
-        width: 25vw;
-    }
-    .developers {
-        width: 50vw;
+    #developers_carousel_container {
+        width: 50%;
     }
 }
