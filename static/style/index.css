@@ -10,6 +10,8 @@
     --bg-color: gray;
     --border_color: #000000;
     --table-side-padding: 0.5em;
+    --card_width: 10rem;
+    --card-gap: 2rem;
 }
 
 body {
@@ -185,48 +187,62 @@ h1, h2, h3, p {
 }
 
 /*game_window*/
-#cards_dis{
-margin: 0;
-display: flex;
-justify-content:center;
-flex-direction: column;
-padding: 15rem;
-background:radial-gradient(#9D5900, black);
+
+#cards_dis {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 15rem;
+    background: radial-gradient(#9D5900, black);
 }
-.page_title{
+
+.page_title {
     color: coral;
     font-size: 6rem;
     font-weight: normal;
     text-align: center;
 }
-.game_info_container{
+
+.game_info_container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
-.game_info{
+
+.game_info {
     color: coral;
     font-size: 4rem;
     font-weight: normal;
 }
-.card_container{
+
+.card_container {
+    height: calc( (var(--card_width) + var(--card-gap)) * 12 / 2);
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    gap: 1em;  
+    gap: var(--card-gap);
+    flex-direction: column;
 }
-.card{
+
+.card {
     background-color: black;
-    height: 10rem;
-    width: 10rem;
+    height: var(--card_width);
+    width: var(--card_width);
     position: relative;
 }
-.card_back{
+
+.card_back {
     height: 10rem;
     width: 10rem;
     background-image: url('../img/cardback.jpeg');
     position: absolute;
+<<<<<<< HEAD
  }
+=======
+}
+
+>>>>>>> b6b2506ad2a28fd648c28b5779a236e062b9e223
 /* end screen */
 
 #end_screen h2 {
@@ -328,5 +344,8 @@ background:radial-gradient(#9D5900, black);
     }
     .about .short_name {
         padding-bottom: 1rem;
+    }
+    .card_container {
+        height: calc( (var(--card_width) + var(--card-gap)) * 12 / 4);
     }
 }
