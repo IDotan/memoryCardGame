@@ -211,14 +211,14 @@ background:radial-gradient(#9D5900, black);
 }
 .card_container{
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     flex-wrap: wrap;
+    gap: 1em;  
 }
 .card{
     background-color: black;
     height: 10rem;
     width: 10rem;
-    margin: 5rem;
     position: relative;
 }
 .card_back{
@@ -227,6 +227,10 @@ background:radial-gradient(#9D5900, black);
     background-image: url('../img/cardback.jpeg');
     position: absolute;
  }
+ @media only screen and (min-width: 1024px){
+
+ }
+
 /* end screen */
 
 #end_screen h2 {
