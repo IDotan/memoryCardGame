@@ -63,6 +63,16 @@ function rotate_carousel(direction) {
     deg == "" ? deg = 0 : deg = parseInt(deg);
     document.getElementById('developers_carousel').style.transform = "rotateY(" + (deg + (developers_data.card_deg * direction)) + "deg)";
 };
+
+/**
+ * Change developers carousel to random place.
+ */
+function about_carousel_random() {
+    let tab = Math.floor((Math.random() * developers_data.card_count) + 1);
+    rotate_carousel(tab);
+};
+
+
 /******************** Card Game screen ********************/
 
 /******************** End screen ********************/
@@ -226,4 +236,5 @@ window.onload = () => {
     shared_link();
     developers_data_set();
     developers_about_carousel();
+    about_carousel_random()
 };
