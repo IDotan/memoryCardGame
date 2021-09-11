@@ -14,6 +14,24 @@ const user_data = {
 };
 const share_msg = "Check out the score I got here:\n";
 
+/******************** Nav bar ********************/
+
+/**
+ * Show the relevent page section while hiding all the others.
+ * 
+ * @param {Number} show section DOM "index" to show. * 
+ */
+function section_switch(show) {
+    let sections_array = Array.from(document.getElementsByClassName("page_section"))
+    sections_array.forEach((section, index) => {
+        if (index == show) {
+            section.classList.remove('hide');
+        } else {
+            section.classList.add('hide');
+        };
+    });
+};
+
 /******************** Landing screen ********************/
 
 /**
@@ -47,22 +65,6 @@ function rotate_carousel(direction) {
 };
 
 /******************** End screen ********************/
-
-/**
- * Show the relevent page section while hiding all the others.
- * 
- * @param {Number} show section DOM "index" to show. * 
- */
-function section_switch(show) {
-    let sections_array = Array.from(document.getElementsByClassName("page_section"))
-    sections_array.forEach((section, index) => {
-        if (index == show) {
-            section.classList.remove('hide');
-        } else {
-            section.classList.add('hide');
-        };
-    });
-};
 
 /**
  * Create url link to share with the user data.
@@ -141,13 +143,13 @@ function load_score_table(sort_function) {
  * @param {Number} show arrow "index" in the DOM to show.
  */
 function table_arrow_switch(show) {
-    let arrows_array = Array.from(document.getElementsByClassName("table_arrow"));
+    let arrows_array = Array.from(document.getElementsByClassName("sort_by"));
     arrows_array.forEach((arrow, index) => {
         if (index == show) {
-            arrow.classList.remove("hide");
+            arrow.classList.add("show");
         } else {
-            arrow.classList.add("hide");
             arrow.classList.add("up");
+            arrow.classList.remove("show");
         };
     });
 };
@@ -159,25 +161,25 @@ function table_arrow_switch(show) {
  */
 function table_sort_click(event) {
     let clicked_on = event.target.innerText
-    let up = event.target.children[0].classList.contains("up")
+    let up = event.target.classList.contains("up")
     switch (clicked_on) {
         case "Score":
             table_arrow_switch(0);
             if (up) {
-                event.target.children[0].classList.remove("up");
+                event.target.classList.remove("up");
                 load_score_table(sort_score_descending);
             } else {
-                event.target.children[0].classList.add("up");
+                event.target.classList.add("up");
                 load_score_table(sort_score_ascending);
             }
             break;
         case "Time":
             table_arrow_switch(1);
             if (up) {
-                event.target.children[0].classList.remove("up");
+                event.target.classList.remove("up");
                 load_score_table(sort_time_ascending);
             } else {
-                event.target.children[0].classList.add("up");
+                event.target.classList.add("up");
                 load_score_table(sort_time_descending);
             }
             break;
