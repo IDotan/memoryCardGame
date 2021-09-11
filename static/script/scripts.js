@@ -13,6 +13,10 @@ const user_data = {
     time: 9999999
 };
 const share_msg = "Check out the score I got here:\n";
+const game_data = {
+    cards_count: 0
+}
+
 
 /******************** Nav bar ********************/
 
@@ -74,6 +78,15 @@ function about_carousel_random() {
 
 
 /******************** Card Game screen ********************/
+
+function start_game(cards) {
+    game_data.cards_count = cards;
+    const card_temp = document.getElementById('card_template');
+    let board = document.getElementsByClassName('card_container')[0];
+    for (let i = 0; i < cards; i++) {
+        board.appendChild(card_temp.content.cloneNode(true));
+    };
+}
 
 /******************** End screen ********************/
 
