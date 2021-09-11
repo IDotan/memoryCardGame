@@ -1,3 +1,11 @@
+const developers_data = {
+    card_size: 0,
+    card_count: document.getElementsByClassName('about card').length,
+    card_width: 0,
+    card_z: null,
+    card_deg: 0
+};
+developers_data.card_deg = Math.round(360 / developers_data.card_count)
 const user_data = {
     name: "bob",
     mail: "e@mail.com",
@@ -5,6 +13,8 @@ const user_data = {
     time: 9999999
 };
 const share_msg = "Check out the score I got here:\n";
+
+/******************** Nav bar ********************/
 
 /**
  * Show the relevent page section while hiding all the others.
@@ -21,6 +31,40 @@ function section_switch(show) {
         };
     });
 };
+
+/******************** Landing screen ********************/
+
+/**
+ * Set developers_data that are affected by the screen size.
+ */
+function developers_data_set() {
+    developers_data.card_width = parseFloat(window.getComputedStyle(document.getElementsByClassName('about')[0]).getPropertyValue("width").slice(0, -2));
+    developers_data.card_z = Math.round((developers_data.card_width / 2) / Math.tan(Math.PI / developers_data.card_count));
+};
+
+/**
+ * Give the about cards the needed proprty for the carousel.
+ */
+function developers_about_carousel() {
+    let temp = Array.from(document.getElementsByClassName('about card'));
+    temp.forEach((div, index) => {
+        div.style.transform = "rotateY(" + developers_data.card_deg * index + "deg) translateZ(" + developers_data.card_z + "px)";
+    });
+};
+
+/**
+ * Rotate the developers carousel to right or left by the given direction.
+ * 
+ * @param {Number} direction 1 rotate right, -1 rotate left
+ */
+function rotate_carousel(direction) {
+    let carousel = document.getElementById('developers_carousel');
+    let deg = carousel.style.transform.slice(8, -4);
+    deg == "" ? deg = 0 : deg = parseInt(deg);
+    document.getElementById('developers_carousel').style.transform = "rotateY(" + (deg + (developers_data.card_deg * direction)) + "deg)";
+};
+
+/******************** End screen ********************/
 
 /**
  * Create url link to share with the user data.
@@ -83,7 +127,7 @@ function sort_time_descending(a, b) {
  * @param {Function} sort_function the function to sort by.
  */
 function load_score_table(sort_function) {
-    let table_data = [["itai", "itai145@gmail.com", 8, 30000], ["Danielle", "danielle07t@gmail.com", 10, 25000]];
+    let table_data = [["Itai", "itai145@gmail.com", 8, 30000], ["Danielle", "danielle07t@gmail.com", 10, 25000]];
     table_data.push([user_data.name, user_data.mail, user_data.score, user_data.time]);
     table_data.sort((a, b) => { return sort_function(a, b) });
     let str_data = "";
@@ -99,13 +143,13 @@ function load_score_table(sort_function) {
  * @param {Number} show arrow "index" in the DOM to show.
  */
 function table_arrow_switch(show) {
-    let arrows_array = Array.from(document.getElementsByClassName("table_arrow"));
+    let arrows_array = Array.from(document.getElementsByClassName("sort_by"));
     arrows_array.forEach((arrow, index) => {
         if (index == show) {
-            arrow.classList.remove("hide");
+            arrow.classList.add("show");
         } else {
-            arrow.classList.add("hide");
             arrow.classList.add("up");
+            arrow.classList.remove("show");
         };
     });
 };
@@ -117,25 +161,25 @@ function table_arrow_switch(show) {
  */
 function table_sort_click(event) {
     let clicked_on = event.target.innerText
-    let up = event.target.children[0].classList.contains("up")
+    let up = event.target.classList.contains("up")
     switch (clicked_on) {
         case "Score":
             table_arrow_switch(0);
             if (up) {
-                event.target.children[0].classList.remove("up");
+                event.target.classList.remove("up");
                 load_score_table(sort_score_descending);
             } else {
-                event.target.children[0].classList.add("up");
+                event.target.classList.add("up");
                 load_score_table(sort_score_ascending);
             }
             break;
         case "Time":
             table_arrow_switch(1);
             if (up) {
-                event.target.children[0].classList.remove("up");
+                event.target.classList.remove("up");
                 load_score_table(sort_time_ascending);
             } else {
-                event.target.children[0].classList.add("up");
+                event.target.classList.add("up");
                 load_score_table(sort_time_descending);
             }
             break;
@@ -160,18 +204,24 @@ function shared_link() {
     };
 };
 
-
+/**
+ * Open the user email with the preset body with the share link.
+ */
 function share_via_mail() {
     let mail_link = "mailto:?body=" + encodeURIComponent(share_msg) + share_score();
     window.open(mail_link, "_blank");
 };
 
+/**
+ * Open the user whatsapp with the preset text with the share link.
+ */
 function share_via_whatsapp() {
     let whatsapp_link = "https://wa.me/?text=" + encodeURIComponent(share_msg) + share_score();
     window.open(whatsapp_link, "_blank");
 }
 
-
 window.onload = () => {
     shared_link();
+    developers_data_set();
+    developers_about_carousel();
 };

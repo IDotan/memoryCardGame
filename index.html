@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="static/style/index.css">
     <title>Document</title>
     <link rel="stylesheet" href="/static/style/index.css">
-    <script src="https://kit.fontawesome.com/6016dddc01.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+        integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
@@ -26,66 +29,91 @@
         <section id="landing_screen" class="page_section">
             <div class="about_project">
                 <h1>Memory game</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid impedit explicabo sequi voluptatum,
-                    pariatur dicta laboriosam minima ullam repellendus aut maiores tempora adipisci eaque natus cumque
-                    perferendis ratione voluptas voluptate consequatur! Praesentium corrupti odit distinctio officia,
-                    rerum aut aliquid, voluptates quae facilis debitis eligendi mollitia qui nihil quaerat autem quia.
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum odio
+                    a pariatur rerum dicta quidem facere modi perspiciatis sit dignissimos. Iste explicabo,
+                    corporis maxime placeat nulla voluptatem distinctio.
                 </p>
             </div>
-
-            <section class="developers">
-                <div class="about" id="itai">
-                    <img src="static/img/ItaiPic.jpg" alt="A picture of Itay">
-                    <div class="about_txt">
-                        <h2>Itai Dotan</h2>
-                        <p class="about_text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum odio
-                            a pariatur rerum dicta quidem facere modi perspiciatis sit dignissimos. Iste explicabo,
-                            corporis maxime placeat nulla voluptatem distinctio. Quibusdam, officia.</p>
-                    </div>
+            <section id="developers_carousel_container">
+                <div class="carousel_arrow" onclick="rotate_carousel(-1)">
+                    &#10096;
                 </div>
 
-                <div class="about" id="artem">
-                    <img src="static/img/artemPic.jpg" alt="A picture of Artem">
-                    <div class="about_txt">
-                        <h2>Artem Meshkov</h2>
-                        <p class="about_text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus
-                            minima odio, error totam iste adipisci aut! Quasi optio unde placeat, maiores pariatur
-                            delectus magni necessitatibus iusto eveniet, ipsa animi vero!</p>
+                <div id="developers_carousel" class="developers">
+
+                    <div class="about placeholder">
+                        <img src="static/img/artemPic.jpg" alt="A picture of Artem">
+                        <div class="about_txt">
+                            <h2>placeholder long</h2>
+                            <p class="about_text">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit
+                                voluptate iure dignissimos provident soluta nobis aliquid. Dolor veniam rem non nulla
+                                vel, ratione, tempora expedita facilis fugit impedit, alias necessitatibus.
+                            </p>
+                        </div>
                     </div>
+
+                    <div class="about card" id="itai">
+                        <img src="static/img/ItaiPic.jpg" alt="A picture of Itai">
+                        <div class="about_txt">
+                            <h2 class="short_name">Itai Dotan</h2>
+                            <p class="about_text">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit
+                                voluptate iure dignissimos provident soluta nobis aliquid. Dolor veniam rem non nulla
+                                vel, ratione, tempora expedita facilis fugit impedit, alias necessitatibus.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="about card" id="artem">
+                        <img src="static/img/artemPic.jpg" alt="A picture of Artem">
+                        <div class="about_txt">
+                            <h2>Artem Meshkov</h2>
+                            <p class="about_text">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit
+                                voluptate iure dignissimos provident soluta nobis aliquid. Dolor veniam rem non nulla
+                                vel, ratione, tempora expedita facilis fugit impedit, alias necessitatibus.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="about card" id="danielle">
+                        <img src="static/img/DaniellePic.jpg" alt="A picture of Danielle">
+                        <div class="about_txt">
+                            <h2>Danielle Trachterman</h2>
+                            <p class="about_text">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit
+                                voluptate iure dignissimos provident soluta nobis aliquid. Dolor veniam rem non nulla
+                                vel, ratione, tempora expedita facilis fugit impedit, alias necessitatibus.
+                            </p>
+                        </div>
+                    </div>
+
                 </div>
 
-                <div class="about" id="danielle">
-                    <img src="static/img/DaniellePic.jpg" alt="A picture of Danielle">
-                    <div class="about_txt">
-                        <h2>Danielle </h2>
-                        <p class="about_text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos ut ratione
-                            fugit architecto tenetur quisquam harum? Ipsam, ex at incidunt, iste sequi, optio magnam
-                            corporis quidem culpa a debitis officia.</p>
-                    </div>
+                <div class="carousel_arrow" onclick="rotate_carousel(1)">
+                    &#10097;
+                </div>
 
             </section>
 
             <button id="start_btn">start</button>
-            <div class="popup">
-                <div class="close_btn">
-                    <p>X</p>
-                </div>
-                <h2>log in</h2>
-                <div class="inputs">
-                    <div class="inputs_user_data">
-                        <input type="text" class="user_input" id="user_name" placeholder="User Name">
 
-                        <input type="text" class="user_input" id="password" placeholder="Password">
+            <div class="popup_container">
+                <div class="popup_content">
+                    <div class="input_form_container" id="email">
+                        <span class="fa fa-user"></span>
+                        <input type="email" class="input_form" id="" 1>
+                    </div>
+                    <div class="input_form_container" id="paswword">
+                        <span class="fa fa-lock"></span>
+                        <div class="input_contai"></div>
+                        <input type="password" class="input_form" id="">
+                        <p class="forgot_password">forgot password?</p>
                     </div>
 
-                    <input type="checkbox" id="remember_me">
-                    <label for="remember_me">Remember me</label>
-                </div>
-
-                <p class="forgot_password">Forgot password</p>
-                <div class="btns">
-                    <button class="log_in_btn">Log-in</button>
-                    <button class="log_in_btn">Sign-Up</button>
+                    <button class="input_btn" id="log_in_btn">Log-In</button>
+                    <button class="input_btn" id="sign_up_btn">Sign-Up</button>
                 </div>
             </div>
         </section>
@@ -173,11 +201,11 @@
                         <th></th>
                         <th>Player</th>
                         <th>E-mail</th>
-                        <th onclick="table_sort_click(event), true">
-                            Score<div class="table_arrow"></div>
+                        <th class="sort_by show" onclick="table_sort_click(event), true">
+                            Score
                         </th>
-                        <th onclick="table_sort_click(event), true">
-                            Time<div class="table_arrow hide up"></div>
+                        <th class="sort_by" onclick="table_sort_click(event), true">
+                            Time
                         </th>
                     </tr>
                     <tr>

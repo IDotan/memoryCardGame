@@ -1,6 +1,9 @@
 :root {
-    --fs-Headelines-h1: 3.2rem;
-    --fs-Profle-h2: 3rem;
+    --fs-Headelines-h1: clamp(3.5rem, 5vw + 1rem, 12rem);
+    --fs-Profle-h2: 2.5rem;
+    --fs-paragraph: 1.5rem;
+    --clr-popup: rgba(141, 84, 233, 0.8);
+    --clr-popup-content: rgba(51, 51, 51, 0.8);
     --fs-paragraph: 1.5rem;
     --clr-light: #fff;
     --bg-color-landing: #060ab0;
@@ -39,6 +42,7 @@ h1, h2, h3, p {
 #landing_screen {
     background-image: url(../img/LandingScreen.jpg);
     background-size: cover;
+    background-position: center;
     background-attachment: fixed;
     display: flex;
     flex-direction: column;
@@ -54,39 +58,79 @@ h1, h2, h3, p {
     margin-bottom: 5%;
 }
 
-#landing_screen p {
+#landing_screen P {
     font-size: var(--fs-paragraph);
-}
-
-#landing_screen img {
-    width: 300px;
-    border-radius: 50%;
 }
 
 .about_project {
     max-width: 150ch;
 }
 
+/* developers carousel */
+
+#developers_carousel_container {
+    position: relative;
+    width: 100%;
+}
+
+.carousel_arrow {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    padding: 10% 0;
+    color: var(--clr-light);
+    font-size: 3em;
+    cursor: pointer;
+}
+
+.carousel_arrow::selection {
+    background-color: transparent;
+}
+
+.carousel_arrow:nth-last-of-type(1) {
+    left: unset;
+    right: 0;
+}
+
 .developers {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    position: relative;
+    margin: 0 auto;
+    width: 90%;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+}
+
+.about.placeholder {
+    visibility: hidden;
+    position: relative;
+}
+
+.developers img {
+    width: 50%;
+    border-radius: 50%;
 }
 
 .about {
+    position: absolute;
+    width: 85%;
+    top: 0;
+    left: 7.5%;
+    padding: 1em;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 20%;
+    background-color: rgba(0, 0, 0, 0.85);
 }
 
 .about h2 {
     padding-block: 1rem;
     font-size: var(--fs-Profle-h2);
+    text-align: center;
 }
 
-.about_text {
-    max-width: 30ch;
+.about .short_name {
+    padding-bottom: 1.5em;
 }
 
 #start_btn {
@@ -94,6 +138,7 @@ h1, h2, h3, p {
     bottom: 1%;
     width: 50%;
     height: 8%;
+    display: none;
 }
 
 /* The login popup */
@@ -112,7 +157,6 @@ h1, h2, h3, p {
     background-color: var(--clr-popup);
     color: var(--clr-light);
     padding: 2%;
-    font-family: var(--ff-main);
 }
 
 .close_btn {
@@ -122,15 +166,12 @@ h1, h2, h3, p {
     background-color: var(--clr-light);
 }
 
-.close_btn p {
-    text-align: center;
-    color: black;
+.input_form_container span {
+    position: absolute;
 }
 
 .user_input {
     font-size: 1.5rem;
-    width: 10rem;
-    height: 1.5rem;
 }
 
 .log_in_btn {
@@ -240,7 +281,8 @@ background:radial-gradient(#9D5900, black);
     border-bottom: 0.2em solid var(--border_color);
 }
 
-.table_arrow {
+.sort_by.show::after {
+    content: "";
     position: absolute;
     top: 65%;
     right: var(--table-side-padding);
@@ -251,7 +293,7 @@ background:radial-gradient(#9D5900, black);
     border-top: 0.65em solid #555;
 }
 
-.table_arrow.up {
+.sort_by.up::after {
     transform: rotate(180deg);
 }
 
@@ -278,4 +320,13 @@ background:radial-gradient(#9D5900, black);
 
 #share .share_link {
     cursor: pointer;
+}
+
+@media only screen and (min-width: 1024px) {
+    #developers_carousel_container {
+        width: 50%;
+    }
+    .about .short_name {
+        padding-bottom: 1rem;
+    }
 }
