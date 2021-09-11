@@ -227,10 +227,6 @@ background:radial-gradient(#9D5900, black);
     background-image: url('../img/cardback.jpeg');
     position: absolute;
  }
- @media only screen and (min-width: 1024px){
-
- }
-
 /* end screen */
 
 #end_screen h2 {
