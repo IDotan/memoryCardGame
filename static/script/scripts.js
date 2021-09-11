@@ -14,7 +14,9 @@ const user_data = {
 };
 const share_msg = "Check out the score I got here:\n";
 const game_data = {
-    cards_count: 0
+    cards_count: 0,
+    start_time: 0,
+    score: 0,
 }
 
 
@@ -79,6 +81,11 @@ function about_carousel_random() {
 
 /******************** Card Game screen ********************/
 
+/**
+ * Start the memory came with the amount of cards given.
+ * 
+ * @param {Number} cards numbers of card for the game
+ */
 function start_game(cards) {
     game_data.cards_count = cards;
     const card_temp = document.getElementById('card_template');
@@ -86,6 +93,8 @@ function start_game(cards) {
     for (let i = 0; i < cards; i++) {
         board.appendChild(card_temp.content.cloneNode(true));
     };
+    document.getElementById('difficulty_picking').classList.add('hide');
+    document.getElementById('game_board').classList.remove('hide');
 }
 
 /******************** End screen ********************/
