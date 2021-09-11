@@ -68,6 +68,8 @@ h1, h2, h3, p {
     max-width: 150ch;
 }
 
+/* developers carousel */
+
 #developers_carousel_container {
     position: relative;
     width: 100%;
@@ -79,7 +81,9 @@ h1, h2, h3, p {
     left: 0;
     transform: translateY(-50%);
     padding: 10% 0;
-    color: #fff;
+    color: var(--clr-light);
+    font-size: 3em;
+    cursor: pointer;
 }
 
 .carousel_arrow:nth-last-of-type(1) {
