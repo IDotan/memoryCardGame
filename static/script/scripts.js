@@ -1,6 +1,6 @@
 const developers_data = {
     card_size: 0,
-    card_count: document.getElementsByClassName('about card').length,
+    card_count: document.getElementsByClassName('about tab').length,
     card_width: 0,
     card_z: null,
     card_deg: 0
@@ -46,7 +46,7 @@ function developers_data_set() {
  * Give the about cards the needed proprty for the carousel.
  */
 function developers_about_carousel() {
-    let temp = Array.from(document.getElementsByClassName('about card'));
+    let temp = Array.from(document.getElementsByClassName('about tab'));
     temp.forEach((div, index) => {
         div.style.transform = "rotateY(" + developers_data.card_deg * index + "deg) translateZ(" + developers_data.card_z + "px)";
     });
@@ -127,7 +127,8 @@ function sort_time_descending(a, b) {
  * @param {Function} sort_function the function to sort by.
  */
 function load_score_table(sort_function) {
-    let table_data = [["Itai", "itai145@gmail.com", 8, 30000], ["Danielle", "danielle07t@gmail.com", 10, 25000]];
+    let table_data = [["Itai", "itai145@gmail.com", 8, 30000], ["Danielle", "danielle07t@gmail.com", 10, 25000],
+    ["Artem", "sartem.meshkov@gmail.com", 5, 70000]];
     table_data.push([user_data.name, user_data.mail, user_data.score, user_data.time]);
     table_data.sort((a, b) => { return sort_function(a, b) });
     let str_data = "";
