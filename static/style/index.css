@@ -231,18 +231,16 @@ h1, h2, h3, p {
     width: var(--card_width);
     position: relative;
 }
+.card:hover{
+    transform: scale(1.1);
+}
 
 .card_back {
     height: 10rem;
     width: 10rem;
     background-image: url('../img/cardback.jpeg');
     position: absolute;
-<<<<<<< HEAD
  }
-=======
-}
-
->>>>>>> b6b2506ad2a28fd648c28b5779a236e062b9e223
 /* end screen */
 
 #end_screen h2 {
