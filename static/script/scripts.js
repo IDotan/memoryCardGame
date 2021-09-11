@@ -63,6 +63,7 @@ function rotate_carousel(direction) {
     deg == "" ? deg = 0 : deg = parseInt(deg);
     document.getElementById('developers_carousel').style.transform = "rotateY(" + (deg + (developers_data.card_deg * direction)) + "deg)";
 };
+/******************** Card Game screen ********************/
 
 /******************** End screen ********************/
 

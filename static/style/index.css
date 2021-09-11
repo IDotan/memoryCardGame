@@ -219,16 +219,25 @@ h1, h2, h3, p {
 .card_container {
     height: calc( (var(--card_width) + var(--card-gap)) * 12 / 2);
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     flex-wrap: wrap;
+<<<<<<< HEAD
     gap: var(--card-gap);
     flex-direction: column;
+=======
+    gap: 1em;  
+>>>>>>> 9edc1c07ae27386bcf63cc48bcf3d50def83c323
 }
 
 .card {
     background-color: black;
+<<<<<<< HEAD
     height: var(--card_width);
     width: var(--card_width);
+=======
+    height: 10rem;
+    width: 10rem;
+>>>>>>> 9edc1c07ae27386bcf63cc48bcf3d50def83c323
     position: relative;
 }
 
@@ -237,7 +246,14 @@ h1, h2, h3, p {
     width: 10rem;
     background-image: url('../img/cardback.jpeg');
     position: absolute;
+<<<<<<< HEAD
 }
+=======
+ }
+ @media only screen and (min-width: 1024px){
+
+ }
+>>>>>>> 9edc1c07ae27386bcf63cc48bcf3d50def83c323
 
 /* end screen */
 
