@@ -19,6 +19,10 @@
     --card-gap: 2rem;
 }
 
+body {
+    background-color: gray;
+}
+
 .hide {
     display: none !important;
 }
@@ -44,20 +48,14 @@ header {
 
 #landing_screen {
     position: relative;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-<<<<<<< HEAD
-    height: 100%;
-    padding-bottom: 2.9rem;
-
-    background-image: url(/static/img/LandingScreen.jpg);
-=======
     background-image: url(../img/LandingScreen.jpg);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
->>>>>>> a80edb8d493d159726d3d0e1610a0d3fe7de0703
 }
 
 #landing_screen h1 {
@@ -79,8 +77,8 @@ header {
 #developers_carousel_container {
     position: relative;
     width: 100%;
-    padding-bottom: 50px;
-    margin-top: 4%;
+    padding-bottom: 6rem;
+    margin-top: 3rem;
 }
 
 .carousel_arrow {
@@ -132,7 +130,6 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-
     background-color: rgba(0, 0, 0, 0.85);
     border: 0.15em solid #808080;
     border-radius: 2.5rem;
@@ -141,7 +138,6 @@ header {
 .about h2 {
     padding-block: 1rem;
     text-align: center;
-
     font-size: var(--fs-Profle-h2);
 }
 
@@ -150,12 +146,12 @@ header {
 }
 
 /* log in and start game */
+
 #start_btn {
     position: fixed;
-    bottom: 0%;
-    width: 5em;
-    height: 1.8em;
-
+    bottom: 1rem;
+    height: 4rem;
+    padding: 0 1em;
     cursor: pointer;
     font-size: 2.5rem;
     font-family: var(--ff-start_btn);
@@ -164,10 +160,11 @@ header {
     border: 2px solid white;
     border-radius: 5%;
     text-shadow: 0 0 1.5em currentColor;
-    transition: text-shadow 500ms, font-size 500ms;
+    transition: text-shadow 500ms, font-size 500ms, height 500ms;
 }
 
 #start_btn:hover {
+    height: 4.5rem;
     text-shadow: 0 0 0.125em currentColor;
     font-size: 2.8rem;
     border: 4px solid white;
