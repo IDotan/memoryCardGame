@@ -47,17 +47,14 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-<<<<<<< HEAD
-    height: 100%;
-    padding-bottom: 2.9rem;
+    max-height: 100%;
+    min-height: 100vh;
 
+    font-family: var(--ff-main);
     background-image: url(/static/img/LandingScreen.jpg);
-=======
-    background-image: url(../img/LandingScreen.jpg);
-    background-size: cover;
     background-position: center;
-    background-attachment: fixed;
->>>>>>> a80edb8d493d159726d3d0e1610a0d3fe7de0703
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #landing_screen h1 {
@@ -80,7 +77,8 @@ header {
     position: relative;
     width: 100%;
     padding-bottom: 50px;
-    margin-top: 4%;
+    margin-top: 2%;
+    padding-bottom: 6.5rem;
 }
 
 .carousel_arrow {
@@ -150,17 +148,19 @@ header {
 }
 
 /* log in and start game */
+
 #start_btn {
     position: fixed;
-    bottom: 0%;
+    bottom: 2%;
     width: 5em;
-    height: 1.8em;
-
+    height: 1.9em;
     cursor: pointer;
     font-size: 2.5rem;
+
     font-family: var(--ff-start_btn);
     background-color: var(--clr-start-btn);
     color: var(--clr-light);
+
     border: 2px solid white;
     border-radius: 5%;
     text-shadow: 0 0 1.5em currentColor;
@@ -191,6 +191,8 @@ header {
     position: fixed;
     top: 20%;
     border-radius: 5%;
+    max-width: 95%;
+
     font-family: var(--ff-main);
     color: var(--clr-dark);
     z-index: 1;
@@ -201,6 +203,7 @@ header {
     flex-direction: column;
     border-radius: 5%;
     padding: 2rem;
+
     background-color: var(--clr-light);
 }
 
@@ -228,7 +231,7 @@ header {
 }
 
 .input_form_container input {
-    width: 20rem;
+    width: 100%;
     height: 2rem;
     margin-bottom: 5%;
     font-size: 1.5rem;
