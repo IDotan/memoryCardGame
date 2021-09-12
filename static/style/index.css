@@ -125,6 +125,7 @@ h1, h2, h3, p {
 .about {
     position: absolute;
     width: 85%;
+    height: 100%;
     top: 0;
     left: 7.5%;
     padding: 1em;
@@ -132,6 +133,7 @@ h1, h2, h3, p {
     flex-direction: column;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.85);
+    border: 0.15em solid #808080;
     border-radius: 2.5rem;
 }
 

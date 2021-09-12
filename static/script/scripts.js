@@ -1,9 +1,10 @@
 const developers_data = {
-    card_size: 0,
     card_count: document.getElementsByClassName('about tab').length,
     card_width: 0,
     card_z: null,
-    card_deg: 0
+    card_deg: 0,
+    easter_egg: false,
+    clicks: -1
 };
 developers_data.card_deg = Math.round(360 / developers_data.card_count)
 const user_data = {
@@ -14,7 +15,9 @@ const user_data = {
 };
 const share_msg = "Check out the score I got here:\n";
 const game_data = {
-    cards_count: 0
+    cards_count: 0,
+    start_time: 0,
+    score: 0,
 }
 
 
@@ -42,7 +45,10 @@ function section_switch(show) {
  * Set developers_data that are affected by the screen size.
  */
 function developers_data_set() {
-    developers_data.card_width = parseFloat(window.getComputedStyle(document.getElementsByClassName('about')[0]).getPropertyValue("width").slice(0, -2));
+    let card_style = window.getComputedStyle(document.getElementsByClassName('about')[0]);
+    let width = parseFloat(card_style.getPropertyValue("width").slice(0, -2));
+    let gap = parseFloat(card_style.getPropertyValue("left").slice(0, -2)) * 2;
+    developers_data.card_width = width + gap;
     developers_data.card_z = Math.round((developers_data.card_width / 2) / Math.tan(Math.PI / developers_data.card_count));
 };
 
@@ -57,11 +63,59 @@ function developers_about_carousel() {
 };
 
 /**
+ * When the right sequence clicks where made and then add the easter egg.
+ * 
+ * @param {Number} n direction from the clicked carousel arrow
+ */
+function carousel_easter_egg(n) {
+    /**
+     * Create the easter egg div.
+     * 
+     * @returns {HTMLElement} easter egg div element.
+     */
+    function create_easter_div() {
+        let div = document.createElement("div");
+        div.setAttribute("class", "about tab");
+        let img = document.createElement("img");
+        img.setAttribute("src", "static/img/mug.jpg");
+        let h2 = document.createElement("h2");
+        h2.innerText = "Coffee";
+        div.append(img);
+        div.append(h2);
+        return div;
+    };
+
+    /**
+     * Update the carousel needed data.
+     */
+    function carousel_data_update() {
+        developers_data.card_count += 1;
+        developers_data.card_deg = Math.round(360 / developers_data.card_count);
+        developers_data_set();
+        developers_about_carousel();
+        document.getElementById('developers_carousel').style.transform = "rotateY(0deg)";
+    };
+
+    let code = [1, 1, -1, 1];
+    developers_data.clicks == code.length - 1 ? developers_data.clicks = -1 : developers_data.clicks += 1;
+    if (code[developers_data.clicks] != n) {
+        developers_data.clicks = -1;
+    } else if (developers_data.clicks == code.length - 1) {
+        developers_data.easter_egg = true;
+        document.getElementById('developers_carousel').append(create_easter_div());
+        carousel_data_update();
+    };
+};
+
+/**
  * Rotate the developers carousel to right or left by the given direction.
  * 
  * @param {Number} direction 1 rotate right, -1 rotate left
  */
 function rotate_carousel(direction) {
+    if (developers_data.easter_egg == false) {
+        carousel_easter_egg(direction);
+    };
     let carousel = document.getElementById('developers_carousel');
     let deg = carousel.style.transform.slice(8, -4);
     deg == "" ? deg = 0 : deg = parseInt(deg);
@@ -123,6 +177,11 @@ function dataBase () {
 
 /******************** Card Game screen ********************/
 
+/**
+ * Start the memory came with the amount of cards given.
+ * 
+ * @param {Number} cards numbers of card for the game
+ */
 function start_game(cards) {
     game_data.cards_count = cards;
     const card_temp = document.getElementById('card_template');
@@ -130,6 +189,8 @@ function start_game(cards) {
     for (let i = 0; i < cards; i++) {
         board.appendChild(card_temp.content.cloneNode(true));
     };
+    document.getElementById('difficulty_picking').classList.add('hide');
+    document.getElementById('game_board').classList.remove('hide');
 }
 
 /******************** End screen ********************/
