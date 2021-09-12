@@ -19,8 +19,12 @@
     --card-gap: 2rem;
 }
 
-body {
-    background-color: var(--bg-color);
+.hide {
+    display: none !important;
+}
+
+h1, h2, h3, p {
+    color: var(--clr-light);
 }
 
 * {
@@ -36,14 +40,6 @@ header {
     background-color: var(--bg-color);
 }
 
-.hide {
-    display: none !important;
-}
-
-h1, h2, h3, p {
-    color: var(--clr-light);
-}
-
 /*Landing screen and about every developer*/
 
 #landing_screen {
@@ -53,11 +49,10 @@ h1, h2, h3, p {
     display: flex;
     flex-direction: column;
     align-items: center;
-    
-    background-image: url(../img/LandingScreen.jpg);
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    height: 100%;
+    padding-bottom: 2.9rem;
+
+    background-image: url(/static/img/LandingScreen.jpg);
 }
 
 #landing_screen h1 {
@@ -132,6 +127,7 @@ h1, h2, h3, p {
     display: flex;
     flex-direction: column;
     align-items: center;
+
     background-color: rgba(0, 0, 0, 0.85);
     border: 0.15em solid #808080;
     border-radius: 2.5rem;
@@ -139,19 +135,21 @@ h1, h2, h3, p {
 
 .about h2 {
     padding-block: 1rem;
-    font-size: var(--fs-Profle-h2);
     text-align: center;
+
+    font-size: var(--fs-Profle-h2);
 }
 
 .about .short_name {
     padding-bottom: 1.5em;
 }
 
+/* log in and start game */
 #start_btn {
     position: fixed;
     bottom: 0%;
     width: 5em;
-    height: 8%;
+    height: 1.8em;
 
     cursor: pointer;
     font-size: 2.5rem;
