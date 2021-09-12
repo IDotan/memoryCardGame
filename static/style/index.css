@@ -43,16 +43,21 @@ header {
 /*Landing screen and about every developer*/
 
 #landing_screen {
-    height: 100vh;
     position: relative;
-
     display: flex;
     flex-direction: column;
     align-items: center;
+<<<<<<< HEAD
     height: 100%;
     padding-bottom: 2.9rem;
 
     background-image: url(/static/img/LandingScreen.jpg);
+=======
+    background-image: url(../img/LandingScreen.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+>>>>>>> a80edb8d493d159726d3d0e1610a0d3fe7de0703
 }
 
 #landing_screen h1 {
@@ -74,7 +79,6 @@ header {
 #developers_carousel_container {
     position: relative;
     width: 100%;
-    
     padding-bottom: 50px;
     margin-top: 4%;
 }
@@ -88,6 +92,7 @@ header {
     color: var(--clr-light);
     font-size: 3em;
     cursor: pointer;
+    z-index: 1;
 }
 
 .carousel_arrow::selection {
@@ -159,10 +164,7 @@ header {
     border: 2px solid white;
     border-radius: 5%;
     text-shadow: 0 0 1.5em currentColor;
-
-    transition:
-     text-shadow 500ms,
-     font-size 500ms;
+    transition: text-shadow 500ms, font-size 500ms;
 }
 
 #start_btn:hover {
@@ -188,17 +190,15 @@ header {
     display: none;
     position: fixed;
     top: 20%;
-
     border-radius: 5%;
     font-family: var(--ff-main);
     color: var(--clr-dark);
     z-index: 1;
 }
 
-.popup_content{
+.popup_content {
     display: flex;
     flex-direction: column;
-
     border-radius: 5%;
     padding: 2rem;
     background-color: var(--clr-light);
@@ -210,11 +210,10 @@ header {
     font-size: 3rem;
 }
 
-.close_popup{
+.close_popup {
     position: absolute;
-    right: 	0.9rem;
+    right: 0.9rem;
     top: 0.9rem;
-
     cursor: pointer;
     font-size: 2rem;
 }
@@ -231,7 +230,6 @@ header {
 .input_form_container input {
     width: 20rem;
     height: 2rem;
-
     margin-bottom: 5%;
     font-size: 1.5rem;
     outline: none;
@@ -239,28 +237,27 @@ header {
     border-bottom: 1px solid black;
 }
 
-.input_form_container input:focus{
+.input_form_container input:focus {
     border: none;
     border-bottom: 2px solid black;
     outline: none;
 }
 
-.forgot_password{
+.forgot_password {
     width: fit-content;
     cursor: pointer;
     color: var(--clr-dark);
 }
 
-.btn_wrapper{
+.btn_wrapper {
     display: flex;
     flex-direction: column;
 }
 
-.popup_btn{
+.popup_btn {
     font-size: 1.2rem;
     height: 3rem;
     margin-top: 4%;
-
     cursor: pointer;
     color: var(--clr-light);
     background-color: var(--clr-popup-log);
@@ -415,7 +412,7 @@ header {
     width: max-content;
 }
 
-#share .share_link {
+#share .share_link_btn {
     cursor: pointer;
 }
 
