@@ -29,7 +29,7 @@ const game_data = {
  * @param {Number} show section DOM "index" to show. * 
  */
 function section_switch(show) {
-    let sections_array = Array.from(document.getElementsByClassName("page_section"))
+    let sections_array = document.querySelectorAll(".page_section")
     sections_array.forEach((section, index) => {
         if (index == show) {
             section.classList.remove('hide');
@@ -58,7 +58,7 @@ function developers_data_set() {
  * Give the about cards the needed proprty for the carousel.
  */
 function developers_about_carousel() {
-    let temp = Array.from(document.getElementsByClassName('about tab'));
+    let temp = document.querySelectorAll('.about.tab');
     temp.forEach((div, index) => {
         div.style.transform = "rotateY(" + developers_data.card_deg * index + "deg) translateZ(" + developers_data.card_z + "px)";
     });
@@ -271,7 +271,7 @@ function load_score_table(sort_function) {
  * @param {Number} show arrow "index" in the DOM to show.
  */
 function table_arrow_switch(show) {
-    let arrows_array = Array.from(document.getElementsByClassName("sort_by"));
+    let arrows_array = document.querySelectorAll(".sort_by");
     arrows_array.forEach((arrow, index) => {
         if (index == show) {
             arrow.classList.add("show");
