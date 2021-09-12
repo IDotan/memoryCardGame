@@ -19,6 +19,10 @@
     --card-gap: 2rem;
 }
 
+body {
+    background-color: gray;
+}
+
 .hide {
     display: none !important;
 }
@@ -44,6 +48,7 @@ header {
 
 #landing_screen {
     position: relative;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -76,9 +81,14 @@ header {
 #developers_carousel_container {
     position: relative;
     width: 100%;
+<<<<<<< HEAD
     padding-bottom: 50px;
     margin-top: 2%;
     padding-bottom: 6.5rem;
+=======
+    padding-bottom: 6rem;
+    margin-top: 3rem;
+>>>>>>> 68a73d423d66615ba98b074d97118784db63e068
 }
 
 .carousel_arrow {
@@ -130,7 +140,6 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-
     background-color: rgba(0, 0, 0, 0.85);
     border: 0.15em solid #808080;
     border-radius: 2.5rem;
@@ -139,7 +148,6 @@ header {
 .about h2 {
     padding-block: 1rem;
     text-align: center;
-
     font-size: var(--fs-Profle-h2);
 }
 
@@ -151,9 +159,15 @@ header {
 
 #start_btn {
     position: fixed;
+<<<<<<< HEAD
     bottom: 2%;
     width: 5em;
     height: 1.9em;
+=======
+    bottom: 1rem;
+    height: 4rem;
+    padding: 0 1em;
+>>>>>>> 68a73d423d66615ba98b074d97118784db63e068
     cursor: pointer;
     font-size: 2.5rem;
 
@@ -164,10 +178,11 @@ header {
     border: 2px solid white;
     border-radius: 5%;
     text-shadow: 0 0 1.5em currentColor;
-    transition: text-shadow 500ms, font-size 500ms;
+    transition: text-shadow 500ms, font-size 500ms, height 500ms;
 }
 
 #start_btn:hover {
+    height: 4.5rem;
     text-shadow: 0 0 0.125em currentColor;
     font-size: 2.8rem;
     border: 4px solid white;
