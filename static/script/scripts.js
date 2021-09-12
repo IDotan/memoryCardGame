@@ -76,6 +76,50 @@ function about_carousel_random() {
     rotate_carousel(tab);
 };
 
+/**
+ * login popup settings
+ */
+function popup () {
+    let popup = document.querySelector(".popup_container");
+    popup.style.display = 'block';
+}
+
+function closePopup () {
+    let popup = document.querySelector(".popup_container");
+    popup.style.display = 'none';
+}
+
+function login () {
+    let username = document.getElementById('email_form').value;
+    let password = document.getElementById('password_form').value;
+    console.log('username: ' + username);
+    console.log('password: ' + password);
+    checkData(username, password);
+}
+
+function checkData (username_in, password_in){
+    data = dataBase ();
+    console.log(data)
+    for(let i = 0; i < data.username.length; i++){
+        if(data.username == username_in){
+            console.log('hi');
+        }
+    }
+}
+
+/**
+ * 
+ * set the database for 
+ */
+function dataBase () {
+    let userdata = [
+        {
+        username: 'user',
+        password: '01234'
+        }
+    ];
+    return userdata;
+}
 
 /******************** Card Game screen ********************/
 
@@ -151,8 +195,10 @@ function sort_time_descending(a, b) {
  * @param {Function} sort_function the function to sort by.
  */
 function load_score_table(sort_function) {
-    let table_data = [["Itai", "itai145@gmail.com", 8, 30000], ["Danielle", "danielle07t@gmail.com", 10, 25000],
-    ["Artem", "sartem.meshkov@gmail.com", 5, 70000]];
+    let table_data = [
+        ["Itai", "itai145@gmail.com", 8, 30000], 
+        ["Danielle", "danielle07t@gmail.com", 10, 25000],
+        ["Artem", "sartem.meshkov@gmail.com", 5, 70000]];
     table_data.push([user_data.name, user_data.mail, user_data.score, user_data.time]);
     table_data.sort((a, b) => { return sort_function(a, b) });
     let str_data = "";

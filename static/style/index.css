@@ -1,11 +1,16 @@
 :root {
+    --ff-main: sans-serif;
+    --ff-start_btn: 'balsamiq Sans', cursive;
     --fs-Headelines-h1: clamp(3.5rem, 5vw + 1rem, 12rem);
     --fs-Profle-h2: 2.5rem;
     --fs-paragraph: 1.5rem;
-    --clr-popup: rgba(141, 84, 233, 0.8);
-    --clr-popup-content: rgba(51, 51, 51, 0.8);
     --fs-paragraph: 1.5rem;
+    --clr-start-btn: rgb(116, 66, 66);
+    --clr-popup: rgba(141, 84, 233, 0.8);
+    --clr-popup-content: rgba(236, 236, 236, 0.952);
+    --clr-popup-log: rgb(114, 114, 114);
     --clr-light: #fff;
+    --clr-dark: rgb(0, 0, 0);
     --bg-color-landing: #060ab0;
     --bg-color: gray;
     --border_color: #000000;
@@ -42,16 +47,17 @@ h1, h2, h3, p {
 /*Landing screen and about every developer*/
 
 #landing_screen {
+    height: 100vh;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
     background-image: url(../img/LandingScreen.jpg);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    padding-inline: 5%;
-    background-color: var(--bg-color-landing);
 }
 
 #landing_screen h1 {
@@ -73,6 +79,9 @@ h1, h2, h3, p {
 #developers_carousel_container {
     position: relative;
     width: 100%;
+    
+    padding-bottom: 50px;
+    margin-top: 4%;
 }
 
 .carousel_arrow {
@@ -138,53 +147,123 @@ h1, h2, h3, p {
 
 #start_btn {
     position: fixed;
-    bottom: 1%;
-    width: 50%;
+    bottom: 0%;
+    width: 5em;
     height: 8%;
-    display: none;
+
+    cursor: pointer;
+    font-size: 2.5rem;
+    font-family: var(--ff-start_btn);
+    background-color: var(--clr-start-btn);
+    color: var(--clr-light);
+    border: 2px solid white;
+    border-radius: 5%;
+    text-shadow: 0 0 1.5em currentColor;
+
+    transition:
+     text-shadow 500ms,
+     font-size 500ms;
+}
+
+#start_btn:hover {
+    text-shadow: 0 0 0.125em currentColor;
+    font-size: 2.8rem;
+    border: 4px solid white;
 }
 
 /* The login popup */
 
-.popup {
+.popup_container::before {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 80%;
-    height: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-color: var(--clr-popup);
-    color: var(--clr-light);
-    padding: 2%;
+    z-index: -1;
 }
 
-.close_btn {
-    min-width: 2rem;
-    min-height: 2rem;
-    border-radius: 50%;
+.popup_container {
+    display: none;
+    position: fixed;
+    top: 20%;
+
+    border-radius: 5%;
+    font-family: var(--ff-main);
+    color: var(--clr-dark);
+    z-index: 1;
+}
+
+.popup_content{
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 5%;
+    padding: 2rem;
     background-color: var(--clr-light);
 }
 
-.input_form_container span {
-    position: absolute;
+.popup_container h2 {
+    color: var(--clr-dark);
+    text-align: center;
+    font-size: 3rem;
 }
 
-.user_input {
+.close_popup{
+    position: absolute;
+    right: 	0.9rem;
+    top: 0.9rem;
+
+    cursor: pointer;
+    font-size: 2rem;
+}
+
+.input_form_container {
+    display: flex;
+    flex-direction: column;
+}
+
+.input_form_container label {
     font-size: 1.5rem;
 }
 
-.log_in_btn {
-    margin-top: 2%;
-    width: 8rem;
+.input_form_container input {
+    width: 20rem;
     height: 2rem;
+
+    margin-bottom: 5%;
+    font-size: 1.5rem;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
 }
 
-.forgot_password {
-    font-size: 20rem;
+.input_form_container input:focus{
+    border: none;
+    border-bottom: 2px solid black;
+    outline: none;
+}
+
+.forgot_password{
+    width: fit-content;
+    cursor: pointer;
+    color: var(--clr-dark);
+}
+
+.btn_wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+.popup_btn{
+    font-size: 1.2rem;
+    height: 3rem;
+    margin-top: 4%;
+
+    cursor: pointer;
+    color: var(--clr-light);
+    background-color: var(--clr-popup-log);
 }
 
 /*game_window*/
