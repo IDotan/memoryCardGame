@@ -47,13 +47,10 @@ h1, h2, h3, p {
 /*Landing screen and about every developer*/
 
 #landing_screen {
-    height: 100vh;
     position: relative;
-
     display: flex;
     flex-direction: column;
     align-items: center;
-    
     background-image: url(../img/LandingScreen.jpg);
     background-size: cover;
     background-position: center;
@@ -79,7 +76,6 @@ h1, h2, h3, p {
 #developers_carousel_container {
     position: relative;
     width: 100%;
-    
     padding-bottom: 50px;
     margin-top: 4%;
 }
@@ -93,6 +89,7 @@ h1, h2, h3, p {
     color: var(--clr-light);
     font-size: 3em;
     cursor: pointer;
+    z-index: 1;
 }
 
 .carousel_arrow::selection {
@@ -152,7 +149,6 @@ h1, h2, h3, p {
     bottom: 0%;
     width: 5em;
     height: 8%;
-
     cursor: pointer;
     font-size: 2.5rem;
     font-family: var(--ff-start_btn);
@@ -161,10 +157,7 @@ h1, h2, h3, p {
     border: 2px solid white;
     border-radius: 5%;
     text-shadow: 0 0 1.5em currentColor;
-
-    transition:
-     text-shadow 500ms,
-     font-size 500ms;
+    transition: text-shadow 500ms, font-size 500ms;
 }
 
 #start_btn:hover {
@@ -190,17 +183,15 @@ h1, h2, h3, p {
     display: none;
     position: fixed;
     top: 20%;
-
     border-radius: 5%;
     font-family: var(--ff-main);
     color: var(--clr-dark);
     z-index: 1;
 }
 
-.popup_content{
+.popup_content {
     display: flex;
     flex-direction: column;
-
     border-radius: 5%;
     padding: 2rem;
     background-color: var(--clr-light);
@@ -212,11 +203,10 @@ h1, h2, h3, p {
     font-size: 3rem;
 }
 
-.close_popup{
+.close_popup {
     position: absolute;
-    right: 	0.9rem;
+    right: 0.9rem;
     top: 0.9rem;
-
     cursor: pointer;
     font-size: 2rem;
 }
@@ -233,7 +223,6 @@ h1, h2, h3, p {
 .input_form_container input {
     width: 20rem;
     height: 2rem;
-
     margin-bottom: 5%;
     font-size: 1.5rem;
     outline: none;
@@ -241,28 +230,27 @@ h1, h2, h3, p {
     border-bottom: 1px solid black;
 }
 
-.input_form_container input:focus{
+.input_form_container input:focus {
     border: none;
     border-bottom: 2px solid black;
     outline: none;
 }
 
-.forgot_password{
+.forgot_password {
     width: fit-content;
     cursor: pointer;
     color: var(--clr-dark);
 }
 
-.btn_wrapper{
+.btn_wrapper {
     display: flex;
     flex-direction: column;
 }
 
-.popup_btn{
+.popup_btn {
     font-size: 1.2rem;
     height: 3rem;
     margin-top: 4%;
-
     cursor: pointer;
     color: var(--clr-light);
     background-color: var(--clr-popup-log);
@@ -417,7 +405,7 @@ h1, h2, h3, p {
     width: max-content;
 }
 
-#share .share_link {
+#share .share_link_btn {
     cursor: pointer;
 }
 

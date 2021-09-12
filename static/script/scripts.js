@@ -41,6 +41,8 @@ function section_switch(show) {
 
 /******************** Landing screen ********************/
 
+/******* developers carousel *******/
+
 /**
  * Set developers_data that are affected by the screen size.
  */
@@ -130,20 +132,22 @@ function about_carousel_random() {
     rotate_carousel(tab);
 };
 
+/******* popup *******/
+
 /**
  * login popup settings
  */
-function popup () {
+function popup() {
     let popup = document.querySelector(".popup_container");
     popup.style.display = 'block';
 }
 
-function closePopup () {
+function closePopup() {
     let popup = document.querySelector(".popup_container");
     popup.style.display = 'none';
 }
 
-function login () {
+function login() {
     let username = document.getElementById('email_form').value;
     let password = document.getElementById('password_form').value;
     console.log('username: ' + username);
@@ -151,11 +155,11 @@ function login () {
     checkData(username, password);
 }
 
-function checkData (username_in, password_in){
-    data = dataBase ();
+function checkData(username_in, password_in) {
+    data = dataBase();
     console.log(data)
-    for(let i = 0; i < data.username.length; i++){
-        if(data.username == username_in){
+    for (let i = 0; i < data.username.length; i++) {
+        if (data.username == username_in) {
             console.log('hi');
         }
     }
@@ -165,11 +169,11 @@ function checkData (username_in, password_in){
  * 
  * set the database for 
  */
-function dataBase () {
+function dataBase() {
     let userdata = [
         {
-        username: 'user',
-        password: '01234'
+            username: 'user',
+            password: '01234'
         }
     ];
     return userdata;
@@ -195,15 +199,7 @@ function start_game(cards) {
 
 /******************** End screen ********************/
 
-/**
- * Create url link to share with the user data.
- * 
- * @returns url link
- */
-function share_score() {
-    let url = document.URL.split("?")[0] + "?" + user_data.name + "$" + user_data.mail + "$" + user_data.score + "$" + user_data.time;
-    return url;
-};
+/******* table *******/
 
 /**
  * Sort table data by score, from lowest to largest.
@@ -257,7 +253,7 @@ function sort_time_descending(a, b) {
  */
 function load_score_table(sort_function) {
     let table_data = [
-        ["Itai", "itai145@gmail.com", 8, 30000], 
+        ["Itai", "itai145@gmail.com", 8, 30000],
         ["Danielle", "danielle07t@gmail.com", 10, 25000],
         ["Artem", "sartem.meshkov@gmail.com", 5, 70000]];
     table_data.push([user_data.name, user_data.mail, user_data.score, user_data.time]);
@@ -319,7 +315,7 @@ function table_sort_click(event) {
 };
 
 /**
- * Run when useing shared link, load user info and show the end screen table.
+ * When useing shared link, load user info and show the end screen table.
  */
 function shared_link() {
     let url = document.URL;
@@ -334,6 +330,18 @@ function shared_link() {
             section_switch(2);
         };
     };
+};
+
+/******* share *******/
+
+/**
+ * Create url link to share with the user data.
+ * 
+ * @returns url link
+ */
+function share_score() {
+    let url = document.URL.split("?")[0] + "?" + user_data.name + "$" + user_data.mail + "$" + user_data.score + "$" + user_data.time;
+    return url;
 };
 
 /**
@@ -352,9 +360,16 @@ function share_via_whatsapp() {
     window.open(whatsapp_link, "_blank");
 }
 
+/******************** On event ********************/
+
+window.onresize = () => {
+    developers_data_set();
+    developers_about_carousel();
+};
+
 window.onload = () => {
     shared_link();
     developers_data_set();
     developers_about_carousel();
-    about_carousel_random()
+    about_carousel_random();
 };
