@@ -52,10 +52,14 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url(../img/LandingScreen.jpg);
-    background-size: cover;
+    max-height: 100%;
+    min-height: 100vh;
+
+    font-family: var(--ff-main);
+    background-image: url(/static/img/LandingScreen.jpg);
     background-position: center;
-    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #landing_screen h1 {
@@ -77,8 +81,14 @@ header {
 #developers_carousel_container {
     position: relative;
     width: 100%;
+<<<<<<< HEAD
+    padding-bottom: 50px;
+    margin-top: 2%;
+    padding-bottom: 6.5rem;
+=======
     padding-bottom: 6rem;
     margin-top: 3rem;
+>>>>>>> 68a73d423d66615ba98b074d97118784db63e068
 }
 
 .carousel_arrow {
@@ -149,14 +159,22 @@ header {
 
 #start_btn {
     position: fixed;
+<<<<<<< HEAD
+    bottom: 2%;
+    width: 5em;
+    height: 1.9em;
+=======
     bottom: 1rem;
     height: 4rem;
     padding: 0 1em;
+>>>>>>> 68a73d423d66615ba98b074d97118784db63e068
     cursor: pointer;
     font-size: 2.5rem;
+
     font-family: var(--ff-start_btn);
     background-color: var(--clr-start-btn);
     color: var(--clr-light);
+
     border: 2px solid white;
     border-radius: 5%;
     text-shadow: 0 0 1.5em currentColor;
@@ -188,6 +206,8 @@ header {
     position: fixed;
     top: 20%;
     border-radius: 5%;
+    max-width: 95%;
+
     font-family: var(--ff-main);
     color: var(--clr-dark);
     z-index: 1;
@@ -198,6 +218,7 @@ header {
     flex-direction: column;
     border-radius: 5%;
     padding: 2rem;
+
     background-color: var(--clr-light);
 }
 
@@ -225,7 +246,7 @@ header {
 }
 
 .input_form_container input {
-    width: 20rem;
+    width: 100%;
     height: 2rem;
     margin-bottom: 5%;
     font-size: 1.5rem;

@@ -157,26 +157,21 @@ function login() {
 
 function checkData(username_in, password_in) {
     data = dataBase();
-    console.log(data)
-    for (let i = 0; i < data.username.length; i++) {
-        if (data.username == username_in) {
-            console.log('hi');
-        }
-    }
+    console.log(data);
 }
 
 /**
  * 
  * set the database for 
  */
-function dataBase() {
-    let userdata = [
+function dataBase () {
+    let users = [
         {
             username: 'user',
-            password: '01234'
+            password: '1234'
         }
     ];
-    return userdata;
+    console.log(users);
 }
 
 /******************** Card Game screen ********************/
