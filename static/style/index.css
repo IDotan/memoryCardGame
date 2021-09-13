@@ -304,21 +304,34 @@ header {
 }
 
 .card {
-    background-color: black;
     height: var(--card_width);
     width: var(--card_width);
     position: relative;
+    transform-style: preserve-3d;
+    transition: transform 500ms;
 }
 
-.card:hover {
+.card.flip {
+    transform: rotateY(180deg);
+}
+
+.card:hover:not(.flip) {
     transform: scale(1.1);
 }
 
-.card_back {
-    height: 10rem;
-    width: 10rem;
-    background-image: url('../img/cardback.jpeg');
+.card_back, .card_img {
     position: absolute;
+    height: 100%;
+    width: 100%;
+    backface-visibility: hidden;
+}
+
+.card_back {
+    background-image: url('../img/cardback.jpeg');
+}
+
+.card_img {
+    transform: rotateY(180deg);
 }
 
 /* end screen */

@@ -164,7 +164,7 @@ function checkData(username_in, password_in) {
  * 
  * set the database for 
  */
-function dataBase () {
+function dataBase() {
     let users = [
         {
             username: 'user',
@@ -368,3 +368,4 @@ window.onload = () => {
     developers_about_carousel();
     about_carousel_random();
 };
+
