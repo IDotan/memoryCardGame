@@ -192,6 +192,19 @@ function start_game(cards) {
     document.getElementById('game_board').classList.remove('hide');
 }
 
+function card_flip(card) {
+    let img_div = card.children[1];
+    img_div.src == document.URL ? add_card_img(img_div) : setTimeout(() => { img_div.src = "" }, 500);
+    card.classList.toggle('flip');
+};
+
+function add_card_img(card_img) {
+    let path = document.URL.split(".index")[0];
+    path = path.slice(0, path.lastIndexOf("/"));
+    let img_path = "/static/img/mug.jpg"
+    card_img.src = path + img_path;
+};
+
 /******************** End screen ********************/
 
 /******* table *******/
