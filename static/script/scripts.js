@@ -133,45 +133,76 @@ function about_carousel_random() {
 };
 
 /******* popup *******/
+// defining the landing screen
+let landingScreen = document.getElementById('landing_screen');
+//setting up the bttn
+let startBtn = document.getElementById('start_btn');
+startBtn.addEventListener('click', popup);
 
-/**
- * login popup settings
- */
-function popup() {
+function popup () {
     let popup = document.querySelector(".popup_container");
     popup.style.display = 'block';
 }
 
-function closePopup() {
+// defining the close popup options
+let closePopupBttn = document.getElementsByClassName('close_popup')[0];
+closePopupBttn.addEventListener('click', closePopup);
+
+// hiding the popup on the close bttn
+function closePopup () {
     let popup = document.querySelector(".popup_container");
     popup.style.display = 'none';
 }
 
-function login() {
+// seggin uo log in and sign up bttns
+let loginBttn = document.getElementById('log_in_btn');
+let signupBttn = document.getElementById('sign_up_btn');
+
+loginBttn.addEventListener('click', login);
+window.addEventListener('keydown', function (key) {
+    if(key == '13')
+    login;
+});
+
+signupBttn.addEventListener('click', signup);
+
+// getting information from input forms when clicking log in or sign up
+function login () {
+    let loginError = document.getElementById('log_message');
+    let usernameIn = document.getElementById('email_form').value;
+    let passwordIn = document.getElementById('password_form').value;
+    let data = dataBase()
+    for(let i = 0; i < data.length; i++){
+        if( passwordIn == data[i].password && usernameIn == data[i].username  ){
+            console.log('logged in!');
+            landingScreen.style.display = 'none';
+        }
+        else if (loginError.innerHTML == '') {
+            loginError.append('Username or Password is incorrect');
+        }
+    }
+}
+
+function signup () {
     let username = document.getElementById('email_form').value;
     let password = document.getElementById('password_form').value;
     console.log('username: ' + username);
     console.log('password: ' + password);
-    checkData(username, password);
 }
 
-function checkData(username_in, password_in) {
-    data = dataBase();
-    console.log(data);
-}
-
-/**
- * 
- * set the database for 
- */
+// pseido users data
 function dataBase() {
     let users = [
         {
             username: 'user',
             password: '1234'
+        },
+        {
+        username: 'itay',
+        password: '1234'
         }
     ];
-    console.log(users);
+    return users;
 }
 
 /******************** Card Game screen ********************/

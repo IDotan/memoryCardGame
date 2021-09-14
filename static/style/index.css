@@ -124,12 +124,13 @@ header {
 
 .about {
     position: absolute;
+    display: flex;
     width: 85%;
     height: 100%;
     top: 0;
     left: 7.5%;
-    padding: 1em;
-    display: flex;
+    padding: 4em;
+
     flex-direction: column;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.85);
@@ -210,6 +211,11 @@ header {
     font-size: 3rem;
 }
 
+#log_message{
+    margin-top: 2%;
+    color: red;
+}
+
 .close_popup {
     position: absolute;
     right: 0.9rem;
@@ -243,10 +249,10 @@ header {
     outline: none;
 }
 
-.forgot_password {
+.Forgot_password {
     width: fit-content;
     cursor: pointer;
-    color: var(--clr-dark);
+    color: black;
 }
 
 .btn_wrapper {
@@ -261,6 +267,7 @@ header {
     cursor: pointer;
     color: var(--clr-light);
     background-color: var(--clr-popup-log);
+    border: 2px solid black;
 }
 
 /*game_window*/

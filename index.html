@@ -97,12 +97,13 @@
 
             </section>
 
-            <button onclick="popup()" id="start_btn">start</button>
+            <button id="start_btn">start</button>
 
             <div class="popup_container">
                 <div class="popup_content">
                     <h2>LogIn</h2>
-                    <span onclick="closePopup()" class="close_popup">X</span>
+                    <p id="log_message"></p>
+                    <span class="close_popup">X</span>
                     <div class="input_form_container" id="email">
                         <label for="email">User name</label>
                         <input type="text" class="input_form" id="email_form">
@@ -112,8 +113,8 @@
                         <p class="Forgot_password">forgot password?</p>
                     </div>
                     <div class="btn_wrapper">
-                        <button onclick="login()" class="popup_btn" id="log_in_btn">Log-In</button>
-                        <button onclick="signup()" class="popup_btn" id="sign_up_btn">Sign-Up</button>
+                        <button class="popup_btn" id="log_in_btn">Log-In</button>
+                        <button class="popup_btn" id="sign_up_btn">Sign-Up</button>
                     </div>
                 </div>
             </div>
