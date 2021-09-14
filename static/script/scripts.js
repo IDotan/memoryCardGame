@@ -147,11 +147,17 @@ function popup () {
 // defining the close popup options
 let closePopupBttn = document.getElementsByClassName('close_popup')[0];
 closePopupBttn.addEventListener('click', closePopup);
-
+window.addEventListener('keydown', function (key) {
+    if(key.keyCode == '27'){
+    closePopup();
+    }
+})
 // hiding the popup on the close bttn
 function closePopup () {
+    let errorMessage = document.getElementById('log_message');
     let popup = document.querySelector(".popup_container");
     popup.style.display = 'none';
+    errorMessage.innerHTML = '';
 }
 
 // seggin uo log in and sign up bttns
@@ -160,8 +166,9 @@ let signupBttn = document.getElementById('sign_up_btn');
 
 loginBttn.addEventListener('click', login);
 window.addEventListener('keydown', function (key) {
-    if(key == '13')
-    login;
+    if(key.keyCode == '13'){
+        login();
+    }
 });
 
 signupBttn.addEventListener('click', signup);
@@ -178,20 +185,22 @@ function login () {
             landingScreen.style.display = 'none';
         }
         else if (loginError.innerHTML == '') {
+            console.log(data);
             loginError.append('Username or Password is incorrect');
         }
     }
 }
 
 function signup () {
-    let username = document.getElementById('email_form').value;
-    let password = document.getElementById('password_form').value;
-    console.log('username: ' + username);
-    console.log('password: ' + password);
+    let usernameIn = document.getElementById('email_form').value;
+    let passwordIn = document.getElementById('password_form').value;
+    let newAcc = true;
+    dataBase(usernameIn,passwordIn,newAcc)
 }
 
 // pseido users data
-function dataBase() {
+function dataBase(user, pass, newAcc) {
+
     let users = [
         {
             username: 'user',
@@ -202,6 +211,10 @@ function dataBase() {
         password: '1234'
         }
     ];
+    if(newAcc == true){
+    users.push({username: user, passwprd: pass})
+    console.log(users);
+    }
     return users;
 }
 
