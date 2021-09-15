@@ -230,6 +230,9 @@ function start_game(cards) {
     for (let i = 0; i < cards; i++) {
         board.appendChild(card_temp.content.cloneNode(true));
     };
+    document.querySelectorAll('.card').forEach((div, index) => {
+        div.classList.add(index);
+    });
     document.getElementById('difficulty_picking').classList.add('hide');
     document.getElementById('game_board').classList.remove('hide');
 }
