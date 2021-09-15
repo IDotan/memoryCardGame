@@ -19,7 +19,7 @@ const game_data = {
     start_time: 0,
     score: 0,
 }
-
+const reg_user = [["user", 1234]]
 
 /******************** Nav bar ********************/
 
@@ -133,13 +133,11 @@ function about_carousel_random() {
 };
 
 /******* popup *******/
-// defining the landing screen
-let landingScreen = document.getElementById('landing_screen');
 //setting up the bttn
 let startBtn = document.getElementById('start_btn');
 startBtn.addEventListener('click', popup);
 
-function popup () {
+function popup() {
     let popup = document.querySelector(".popup_container");
     popup.style.display = 'block';
 }
@@ -148,12 +146,12 @@ function popup () {
 let closePopupBttn = document.getElementsByClassName('close_popup')[0];
 closePopupBttn.addEventListener('click', closePopup);
 window.addEventListener('keydown', function (key) {
-    if(key.keyCode == '27'){
-    closePopup();
+    if (key.keyCode == '27') {
+        closePopup();
     }
 })
 // hiding the popup on the close bttn
-function closePopup () {
+function closePopup() {
     let errorMessage = document.getElementById('log_message');
     let popup = document.querySelector(".popup_container");
     popup.style.display = 'none';
@@ -166,7 +164,7 @@ let signupBttn = document.getElementById('sign_up_btn');
 
 loginBttn.addEventListener('click', login);
 window.addEventListener('keydown', function (key) {
-    if(key.keyCode == '13'){
+    if (key.keyCode == '13') {
         login();
     }
 });
@@ -174,15 +172,15 @@ window.addEventListener('keydown', function (key) {
 signupBttn.addEventListener('click', signup);
 
 // getting information from input forms when clicking log in or sign up
-function login () {
+function login() {
     let loginError = document.getElementById('log_message');
     let usernameIn = document.getElementById('email_form').value;
     let passwordIn = document.getElementById('password_form').value;
     let data = dataBase()
-    for(let i = 0; i < data.length; i++){
-        if( passwordIn == data[i].password && usernameIn == data[i].username  ){
+    for (let i = 0; i < data.length; i++) {
+        if (passwordIn == data[i].password && usernameIn == data[i].username) {
             console.log('logged in!');
-            landingScreen.style.display = 'none';
+            section_switch(1);
         }
         else if (loginError.innerHTML == '') {
             console.log(data);
@@ -191,11 +189,11 @@ function login () {
     }
 }
 
-function signup () {
+function signup() {
     let usernameIn = document.getElementById('email_form').value;
     let passwordIn = document.getElementById('password_form').value;
     let newAcc = true;
-    dataBase(usernameIn,passwordIn,newAcc)
+    dataBase(usernameIn, passwordIn, newAcc)
 }
 
 // pseido users data
@@ -207,13 +205,13 @@ function dataBase(user, pass, newAcc) {
             password: '1234'
         },
         {
-        username: 'itay',
-        password: '1234'
+            username: 'itay',
+            password: '1234'
         }
     ];
-    if(newAcc == true){
-    users.push({username: user, passwprd: pass})
-    console.log(users);
+    if (newAcc == true) {
+        users.push({ username: user, passwprd: pass })
+        console.log(users);
     }
     return users;
 }
@@ -245,7 +243,7 @@ function card_flip(card) {
 function add_card_img(card_img) {
     let path = document.URL.split(".index")[0];
     path = path.slice(0, path.lastIndexOf("/"));
-    let img_path = "/static/img/mug.jpg"
+    let img_path = "/static/img/mug.jpg";
     card_img.src = path + img_path;
 };
 
@@ -425,4 +423,3 @@ window.onload = () => {
     developers_about_carousel();
     about_carousel_random();
 };
-
