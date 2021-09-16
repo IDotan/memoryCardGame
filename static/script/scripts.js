@@ -20,6 +20,7 @@ const game_data = {
     cards_in_column: 3,
     start_flip: 1000,
     start_time: 0,
+    stored_time: 0,
     score: 0,
 }
 const reg_user = [["user", 1234]]
@@ -225,11 +226,29 @@ function dataBase(user, pass, newAcc) {
  * Reveal cards and flip back one by one, add click event at the end.
  */
 function start_card_reveal() {
+    /**
+     * Show then hide the given card div and add event listener affter all card been shown.
+     * 
+     * @param {HTMLElement} target card div to take action on.
+     * @param {Number} loop loop count to set the dilays by.
+     */
+    function time_card(target, loop) {
+        setTimeout(() => {
+            card_flip(null, target);
+        }, (loop * game_data.start_flip));
+        setTimeout(() => {
+            card_flip(null, target);
+        }, ((loop * game_data.start_flip) + game_data.start_flip));
+        setTimeout(() => {
+            target.addEventListener('click', card_flip);
+        }, ((game_data.cards_count + 1) * game_data.start_flip));
+    };
+
     document.getElementById('start_btn_container').classList.add('hide');
     let cards = document.querySelectorAll('.card');
     if (window.innerWidth < game_data.min_width) {
-        cards.forEach((card) => {
-            card.addEventListener('click', card_flip);
+        cards.forEach((card, index) => {
+            time_card(card, index);
         });
     } else {
         let cards_in_row = game_data.cards_count / game_data.cards_in_column;
@@ -237,17 +256,7 @@ function start_card_reveal() {
         for (let i = 0; i < game_data.cards_in_column; i++) {
             for (let j = 0; j < cards_in_row; j++) {
                 let target_card = cards[(i + (j * game_data.cards_in_column))];
-                // flip the card, affter the set time flip it back.
-                setTimeout(() => {
-                    card_flip(null, target_card);
-                }, (loop_count * game_data.start_flip));
-                setTimeout(() => {
-                    card_flip(null, target_card);
-                }, ((loop_count * game_data.start_flip) + game_data.start_flip));
-                // at the end of the flips add event listener
-                setTimeout(() => {
-                    target_card.addEventListener('click', card_flip);
-                }, ((game_data.cards_count + 1) * game_data.start_flip));
+                time_card(target_card, loop_count);
                 loop_count += 1;
             };
         };

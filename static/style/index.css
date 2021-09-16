@@ -15,8 +15,8 @@
     --bg-color: gray;
     --border_color: #000000;
     --table-side-padding: 0.5em;
-    --card_width: 10rem;
-    --card-gap: 2rem;
+    --card_width: 5em;
+    --card-gap: 1em;
 }
 
 body {
@@ -306,7 +306,7 @@ header {
 }
 
 .card_container {
-    width: calc( ((var(--card_width) + var(--card-gap)) * 2));
+    width: calc( ((var(--card_width) + var(--card-gap)) * 3));
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
@@ -336,10 +336,6 @@ header {
     height: 100%;
     width: 100%;
     backface-visibility: hidden;
-}
-
-.card_back {
-    background-image: url('../img/cardback.jpeg');
 }
 
 .card_img {
@@ -463,5 +459,6 @@ header {
         flex-direction: column;
         height: calc( (var(--card_width) + var(--card-gap)) * 3);
         width: 100%;
+        font-size: 2em;
     }
 }
