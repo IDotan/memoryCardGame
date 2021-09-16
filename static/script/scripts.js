@@ -16,6 +16,9 @@ const user_data = {
 const share_msg = "Check out the score I got here:\n";
 const game_data = {
     cards_count: 0,
+    min_width: 1024,
+    cards_in_column: 3,
+    start_flip: 1000,
     start_time: 0,
     score: 0,
 }
@@ -219,6 +222,39 @@ function dataBase(user, pass, newAcc) {
 /******************** Card Game screen ********************/
 
 /**
+ * Reveal cards and flip back one by one, add click event at the end.
+ */
+function start_card_reveal() {
+    document.getElementById('start_btn_container').classList.add('hide');
+    let cards = document.querySelectorAll('.card');
+    if (window.innerWidth < game_data.min_width) {
+        cards.forEach((card) => {
+            card.addEventListener('click', card_flip);
+        });
+    } else {
+        let cards_in_row = game_data.cards_count / game_data.cards_in_column;
+        let loop_count = 0;
+        for (let i = 0; i < game_data.cards_in_column; i++) {
+            for (let j = 0; j < cards_in_row; j++) {
+                let target_card = cards[(i + (j * game_data.cards_in_column))];
+                // flip the card, affter the set time flip it back.
+                setTimeout(() => {
+                    card_flip(null, target_card);
+                }, (loop_count * game_data.start_flip));
+                setTimeout(() => {
+                    card_flip(null, target_card);
+                }, ((loop_count * game_data.start_flip) + game_data.start_flip));
+                // at the end of the flips add event listener
+                setTimeout(() => {
+                    target_card.addEventListener('click', card_flip);
+                }, ((game_data.cards_count + 1) * game_data.start_flip));
+                loop_count += 1;
+            };
+        };
+    };
+};
+
+/**
  * Start the memory came with the amount of cards given.
  * 
  * @param {Number} cards numbers of card for the game
@@ -237,12 +273,26 @@ function start_game(cards) {
     document.getElementById('game_board').classList.remove('hide');
 }
 
-function card_flip(card) {
+/**
+ * Flip card to it's other side.
+ * 
+ * @param {Object} event click event object. null when calling from other function
+ * @param {HTMLElement} card card div when not called from event listener.
+ */
+function card_flip(event, card = null) {
+    if (card == null) {
+        card = this;
+    };
     let img_div = card.children[1];
     img_div.src == document.URL ? add_card_img(img_div) : setTimeout(() => { img_div.src = "" }, 500);
     card.classList.toggle('flip');
 };
 
+/**
+ * Add image to the given <img>.
+ * 
+ * @param {HTMLElement} card_img card <img> to set.
+ */
 function add_card_img(card_img) {
     let path = document.URL.split(".index")[0];
     path = path.slice(0, path.lastIndexOf("/"));

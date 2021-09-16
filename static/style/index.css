@@ -274,13 +274,16 @@ header {
 
 /*game_window*/
 
+#game_board {
+    background: radial-gradient(#9D5900, black);
+}
+
 #cards_dis {
-    margin: 0;
+    position: relative;
     display: flex;
     justify-content: center;
     flex-direction: column;
     padding: 15rem;
-    background: radial-gradient(#9D5900, black);
 }
 
 .page_title {
@@ -341,6 +344,18 @@ header {
 
 .card_img {
     transform: rotateY(180deg);
+}
+
+#start_btn_container {
+    font-size: 2em;
+}
+
+.start_game_btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    letter-spacing: 0.1em;
 }
 
 /* end screen */
