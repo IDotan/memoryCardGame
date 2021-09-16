@@ -278,12 +278,9 @@ header {
     background: radial-gradient(#9D5900, black);
 }
 
-#cards_dis {
+#game_dis {
     position: relative;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    padding: 15rem;
+    padding: 1em;
 }
 
 .page_title {
@@ -295,23 +292,36 @@ header {
 
 .game_info_container {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
+    font-size: 2em;
+    color: coral;
+    text-align: center;
 }
 
 .game_info {
-    color: coral;
-    font-size: 4rem;
-    font-weight: normal;
+    display: flex;
+    flex-direction: column;
+}
+
+.mistakes {
+    letter-spacing: 0.2em;
+}
+
+.mistakes_x {
+    opacity: 0.3;
+}
+
+.mistakes_x.mark {
+    opacity: 1;
 }
 
 .card_container {
+    margin: 0 auto;
     width: calc( ((var(--card_width) + var(--card-gap)) * 3));
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     flex-wrap: wrap;
     gap: var(--card-gap);
-    flex-direction: row;
     align-content: center;
 }
 
@@ -343,14 +353,13 @@ header {
 }
 
 #start_btn_container {
-    font-size: 2em;
-}
-
-.start_game_btn {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.start_game_btn {
     letter-spacing: 0.1em;
 }
 
@@ -455,10 +464,19 @@ header {
     .about .short_name {
         padding-bottom: 1rem;
     }
+    #game_dis {
+        font-size: 2rem;
+    }
+    .game_info {
+        flex-direction: row;
+    }
+    .game_info_container {
+        justify-content: space-around;
+        gap: 3em;
+    }
     .card_container {
         flex-direction: column;
         height: calc( (var(--card_width) + var(--card-gap)) * 3);
         width: 100%;
-        font-size: 2em;
     }
 }
