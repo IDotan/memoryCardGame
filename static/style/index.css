@@ -344,14 +344,6 @@ header {
     position: relative;
     padding: 1em;
 }
-
-.page_title {
-    color: coral;
-    font-size: 6rem;
-    font-weight: normal;
-    text-align: center;
-}
-
 .game_info_container {
     display: flex;
     justify-content: space-between;
