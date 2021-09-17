@@ -45,6 +45,20 @@ function section_switch(show) {
 
 /******************** Landing screen ********************/
 
+/**
+ * Switch landing page sections, and update the carousel when needed.
+ */
+function taggle_landingscreed_sections() {
+    document.querySelectorAll('.landing_screen_sections').forEach((section) => {
+        section.classList.toggle('hide');
+    });
+    if (!document.getElementById('developers_carousel_container').classList.contains('hide')) {
+        developers_data_set();
+        developers_about_carousel();
+        about_carousel_random();
+    };
+};
+
 /******* developers carousel *******/
 
 /**
@@ -166,10 +180,10 @@ window.addEventListener('keydown', function (key) {
 function login() {
     let usernameInput = document.getElementById('email_form').value;
     let passwordInput = document.getElementById('password_form').value;
-    checkData (usernameInput,passwordInput);
+    checkData(usernameInput, passwordInput);
 }
 
-function checkData (usernameInput,passwordInput) {
+function checkData(usernameInput, passwordInput) {
     let data = dataBase()
     let logMessage = document.getElementById('log_message');
 
@@ -478,7 +492,4 @@ window.onresize = () => {
 
 window.onload = () => {
     shared_link();
-    developers_data_set();
-    developers_about_carousel();
-    about_carousel_random();
 };
