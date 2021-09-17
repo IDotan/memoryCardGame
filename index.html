@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="static/style/index.css">
     <title>Document</title>
     <link rel="stylesheet" href="/static/style/index.css">
-
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
         integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous" />
 
@@ -28,18 +27,24 @@
     <main>
         <section id="landing_screen" class="page_section">
             <div class="about_project">
-                <h1>Memory game</h1>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum odio
+                <img class="memory_game_logo" src="static/img/ memory_game_logo.png" alt="Memory game">
+                <p class="about_project_text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum odio
                     a pariatur rerum dicta quidem facere modi perspiciatis sit dignissimos. Iste explicabo,
                     corporis maxime placeat nulla voluptatem distinctio.
                 </p>
+                <button id="start_btn" class="btn_style">Start</button>
+                <button id="players_btn" class="btn_players_style">View players</button>
+                <!-- add the players and the carousel-->
+                <img class="character_img" src="static/img/character.png" alt="character">
             </div>
+<!--             
             <section id="developers_carousel_container">
                 <div class="carousel_arrow" onclick="rotate_carousel(-1)">
                     &#10096;
                 </div>
 
-                <div id="developers_carousel" class="developers">
+               <div id="developers_carousel" class="developers"> 
+
 
                     <div class="about placeholder">
                         <img src="static/img/artemPic.jpg" alt="A picture of Artem">
@@ -95,10 +100,9 @@
                     &#10097;
                 </div>
 
+
             </section>
-
-            <button id="start_btn" class="btn_style">start</button>
-
+-->
             <div class="popup_container">
                 <div class="popup_content">
                     <h2>LogIn</h2>
@@ -124,10 +128,19 @@
         <section id="board" class="page_section hide">
             <section id="difficulty_picking">
                 <h2>Pick difficulty:</h2>
-                <div>
-                    <button onclick="start_game(6)" class="btn_style">Easy</button>
-                    <button onclick="start_game(12)" class="btn_style">Medium</button>
-                    <button onclick="start_game(18)" class="btn_style">Hard</button>
+                <div class="difficulty_btn_container">
+                    <div>
+                    <img class="difficulty_img" src="static/img/icn-easy.svg" alt="Easy">
+                    <button onclick="start_game(6)" class="btn_style_difficulty">Easy</button>
+                    </div>
+                    <div>
+                    <img class="difficulty_img" src="static/img/icn-medium.svg" alt="Medium">
+                    <button onclick="start_game(12)" class="btn_style_difficulty">Medium</button>
+                    </div>
+                    <div>
+                    <img class="difficulty_img" src="static/img/icn-hard.svg" alt="Hard">
+                    <button onclick="start_game(18)" class="btn_style_difficulty">Hard</button>
+                    </div>
                 </div>
             </section>
 
