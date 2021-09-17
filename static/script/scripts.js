@@ -137,16 +137,12 @@ function about_carousel_random() {
 };
 
 /******* popup *******/
-//setting up the bttn
 let startBtn = document.getElementById('start_btn');
-startBtn.addEventListener('click', popup);
-
-function popup() {
+function showPopup() {
     let popup = document.querySelector(".popup_container");
     popup.style.display = 'block';
 }
 
-// defining the close popup options
 let closePopupBttn = document.getElementsByClassName('close_popup')[0];
 closePopupBttn.addEventListener('click', closePopup);
 window.addEventListener('keydown', function (key) {
@@ -154,17 +150,11 @@ window.addEventListener('keydown', function (key) {
         closePopup();
     }
 })
-// hiding the popup on the close bttn
-function closePopup() {
-    let errorMessage = document.getElementById('log_message');
-    let popup = document.querySelector(".popup_container");
-    popup.style.display = 'none';
-    errorMessage.innerHTML = '';
-}
 
-// seggin uo log in and sign up bttns
 let loginBttn = document.getElementById('log_in_btn');
 let signupBttn = document.getElementById('sign_up_btn');
+startBtn.addEventListener('click', showPopup);
+signupBttn.addEventListener('click', signup);
 
 loginBttn.addEventListener('click', login);
 window.addEventListener('keydown', function (key) {
@@ -173,22 +163,23 @@ window.addEventListener('keydown', function (key) {
     }
 });
 
-signupBttn.addEventListener('click', signup);
-
-// getting information from input forms when clicking log in or sign up
 function login() {
-    let loginError = document.getElementById('log_message');
-    let usernameIn = document.getElementById('email_form').value;
-    let passwordIn = document.getElementById('password_form').value;
+    let usernameInput = document.getElementById('email_form').value;
+    let passwordInput = document.getElementById('password_form').value;
+    checkData (usernameInput,passwordInput);
+}
+
+function checkData (usernameInput,passwordInput) {
     let data = dataBase()
+    let logMessage = document.getElementById('log_message');
+
+    console.log(user_data);
     for (let i = 0; i < data.length; i++) {
-        if (passwordIn == data[i].password && usernameIn == data[i].username) {
-            console.log('logged in!');
+        if (passwordInput == data[i].password && usernameInput == data[i].username) {
             section_switch(1);
         }
-        else if (loginError.innerHTML == '') {
-            console.log(data);
-            loginError.append('Username or Password is incorrect');
+        else if (logMessage.innerHTML == '') {
+            logMessage.append('Username or Password is incorrect');
         }
     }
 }
@@ -196,11 +187,17 @@ function login() {
 function signup() {
     let usernameIn = document.getElementById('email_form').value;
     let passwordIn = document.getElementById('password_form').value;
-    let newAcc = true;
-    dataBase(usernameIn, passwordIn, newAcc)
+    let newUser = true;
+    dataBase(usernameIn, passwordIn, newUser)
 }
 
-// pseido users data
+function closePopup() {
+    let logMessage = document.getElementById('log_message');
+    let popup = document.querySelector(".popup_container");
+    popup.style.display = 'none';
+    logMessage.innerHTML = '';
+}
+
 function dataBase(user, pass, newAcc) {
 
     let users = [
