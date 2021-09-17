@@ -91,12 +91,12 @@ h1 {
     padding: 0.2em 0;
     border-radius: 1.5em;
     border: 0.1em solid white;
-    transition: text-shadow 500ms, font-size 500ms;
+    transition: text-shadow 500ms, transform 500ms;
 }
 
 .btn_style:hover {
     text-shadow: 0 0 0.125em currentColor;
-    font-size: 2.7em;
+    transform: scale(1.2);
 }
 
 .btn_players_style {
