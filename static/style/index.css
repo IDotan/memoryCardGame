@@ -99,7 +99,7 @@ h1 {
     transform: scale(1.2);
 }
 
-.btn_players_style {
+.btn_dev_style {
     color: #FFFFFF;
     border-color: #FFC131;
     background-color: transparent;
@@ -134,7 +134,7 @@ h1 {
     background-color: transparent;
 }
 
-.carousel_arrow:nth-last-of-type(1) {
+.carousel_arrow:nth-last-of-type(2) {
     left: unset;
     right: 0;
 }
@@ -181,6 +181,12 @@ h1 {
 
 .about .short_name {
     padding-bottom: 1.5em;
+}
+
+.carousel_back_container {
+    margin: 0 auto;
+    width: max-content;
+    padding: 1em 0;
 }
 
 /* The login popup */
