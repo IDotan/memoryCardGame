@@ -37,37 +37,76 @@ h1, h2, h3, p {
 }
 
 header {
-    position: sticky;
+    position: absolute;
+    width: 100%;
     top: 0;
     z-index: 1;
     background-color: var(--bg-color);
 }
-.memory_game_logo{
-     width: 75vw;
+
+h1 {
+    display: none;
 }
-#landing_screen{
+
+#landing_screen {
+    position: relative;
     background-image: url(../img/mobile-landing_scree.svg);
     background-repeat: no-repeat;
-    min-height:100vh;
+    min-height: 100vh;
     background-size: cover;
-    background-attachment: fixed;
     background-position: center;
+    padding-top: 20%;
 }
-#landing_screen h1 {
-    text-align: center;
-    font-size: var(--fs-Headelines-h1);
-    margin-bottom: 5%;
+
+.memory_game_logo {
+    width: 60%;
 }
 
 #landing_screen P {
     font-size: var(--fs-paragraph);
+    padding: 2em 0;
 }
 
 .about_project {
     max-width: 90vw;
-    margin:0 auto;
+    margin: 0 auto;
     text-align: center;
-    padding-top: 15%;
+}
+
+.about_btn_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 1em;
+    padding-bottom: 2em;
+}
+
+.btn_style {
+    width: 8em;
+    cursor: pointer;
+    background-color: #FFC131;
+    color: #000000;
+    font-size: 2em;
+    padding: 0.2em 0;
+    border-radius: 1.5em;
+    border: 0.1em solid white;
+    transition: text-shadow 500ms, font-size 500ms;
+}
+
+.btn_style:hover {
+    text-shadow: 0 0 0.125em currentColor;
+    font-size: 2.7em;
+}
+
+.btn_players_style {
+    color: #FFFFFF;
+    border-color: #FFC131;
+    background-color: transparent;
+}
+
+.character_img {
+    display: none;
 }
 
 /* developers carousel */
@@ -75,8 +114,8 @@ header {
 #developers_carousel_container {
     position: relative;
     width: 100%;
-    padding-bottom: 6rem;
-    margin-top: 3rem;
+    padding: 2em 0;
+    margin: 0 auto;
 }
 
 .carousel_arrow {
@@ -144,59 +183,6 @@ header {
     padding-bottom: 1.5em;
 }
 
-/* log in and start game */
-
-.btn_style {
-    height: 1.6em;
-    padding: 0 1em;
-    cursor: pointer;
-    background-color: #FFC131;
-    color: #000000;
-    text-align: center;
-    border-radius: 46px;
-    border: 0.1em solid white;
-    transition: text-shadow 500ms, font-size 500ms, height 500ms;
-    text-align: center;
-}
-
-#start_btn {
-    position: fixed;
-    bottom: 1rem;
-    margin: 0 2em;
-}
-
-.btn_style:hover {
-    height: 1.7em;
-    text-shadow: 0 0 0.125em currentColor;
-    font-size: 2.7em;
-    border: 0.12em solid white;
-}
-.btn_players_style {
-    height: 1.6em;
-    padding: 0 1em;
-    cursor: pointer;
-    color: #FFFFFF;
-    text-align: center;
-    border-radius: 46px;
-    border: 0.1em solid #FFC131;
-    background-color: transparent;
-    transition: text-shadow 500ms, font-size 500ms, height 500ms;
-    text-align: center;
-}
-#player_btn{
-    bottom: 1rem;
-    margin: 0 2em; 
-}
-.btn_players_style:hover {
-    height: 1.7em;
-    text-shadow: 0 0 0.125em currentColor;
-    font-size: 2.7em;
-    border: 0.12em solid white;
-}
-.character_img{
-    height: 20em;
-    width: 15em;
-}
 /* The login popup */
 
 .popup_container::before {
@@ -295,46 +281,47 @@ header {
 }
 
 /*game_window*/
-#difficulty_picking h2{
+
+#difficulty_picking h2 {
     font-family: normal bold 53px/64px Poppins;
-    font-size: 2em ;
+    font-size: 2em;
     padding: 2em;
 }
-#difficulty_picking{
-    background-image:url(../img/mobile-bg-difficulty_picking.svg);
+
+#difficulty_picking {
+    background-image: url(../img/mobile-bg-difficulty_picking.svg);
     background-repeat: no-repeat;
-    height:100vh ;
+    height: 100vh;
     width: 100vw;
     background-size: cover;
     background-attachment: fixed;
 }
-.difficulty_btn_container{
+
+.difficulty_btn_container {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-
 }
-.difficulty_img{
+
+.difficulty_img {
     height: 7rem;
     width: 7rem;
     margin: 0 1em;
 }
-.btn_style_difficulty{
-    width: 3em;
-    height: 0em;
-    text-align: center;
-    font:normal normal bold 54px/70px Poppins;
+
+.btn_style_difficulty {
+    font: normal normal bold 54px/70px Poppins;
     letter-spacing: 0px;
     color: #FFFFFF;
-    opacity: 1;
-    background-color: transparent ;
+    background-color: transparent;
     border: none;
     margin: 0%;
 }
+
 #game_board {
     background-image: url(../img/game-bord-img.svg);
     background-repeat: no-repeat;
-    height:100vh ;
+    height: 100vh;
     width: 100vw;
     background-size: cover;
     background-attachment: fixed;
@@ -426,14 +413,16 @@ header {
 }
 
 /* end screen */
-#end_screen{
+
+#end_screen {
     background-image: url(../img/game_ranking.png);
     background-repeat: no-repeat;
-    height:100vh ;
+    height: 100vh;
     width: 100vw;
     background-size: cover;
     background-attachment: fixed;
 }
+
 #end_screen h2 {
     text-align: center;
     padding: 1em;
@@ -524,18 +513,28 @@ header {
 }
 
 @media only screen and (min-width: 1080px) {
-    #developers_carousel_container {
-        width: 50%;
-    }
     .about_project {
         max-width: max-content;
-    }  
-    .about_project_text{
-    text-align: center;
-    max-width: 50vw;
+    }
+    .about_project_text {
+        text-align: center;
+        max-width: 50vw;
+    }
+    .about_btn_container {
+        flex-direction: row;
+    }
+    .character_img {
+        position: absolute;
+        display: block;
+        height: 60vh;
+        left: 5%;
+        bottom: 0;
+    }
+    #developers_carousel_container {
+        width: 40%;
     }
     .about {
-        padding: 4em 3em;
+        padding: 3em;
     }
     .about .short_name {
         padding-bottom: 1rem;
@@ -555,17 +554,13 @@ header {
         height: calc( (var(--card_width) + var(--card-gap)) * 3);
         width: 100%;
     }
-    #difficulty_picking{
-        background-image:url(../img/difficulty_pickingimg.jpeg);
+    #difficulty_picking {
+        background-image: url(../img/difficulty_pickingimg.jpeg);
     }
-    #end_screen{
+    #end_screen {
         background-image: url(../img/game_ranking.png);
     }
-    #landing_screen{
+    #landing_screen {
         background-image: url(../img/landing_screen.svg);
     }
-    .memory_game_logo {
-        width: 33vw;
-    }
-
-} 
+}

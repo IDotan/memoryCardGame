@@ -45,6 +45,14 @@ function section_switch(show) {
 
 /******************** Landing screen ********************/
 
+function taggle_landingscreed_sections() {
+    document.querySelectorAll('.landing_screen_sections').forEach((section) => {
+        section.classList.toggle('hide');
+    });
+    developers_data_set();
+    developers_about_carousel();
+}
+
 /******* developers carousel *******/
 
 /**
@@ -166,10 +174,10 @@ window.addEventListener('keydown', function (key) {
 function login() {
     let usernameInput = document.getElementById('email_form').value;
     let passwordInput = document.getElementById('password_form').value;
-    checkData (usernameInput,passwordInput);
+    checkData(usernameInput, passwordInput);
 }
 
-function checkData (usernameInput,passwordInput) {
+function checkData(usernameInput, passwordInput) {
     let data = dataBase()
     let logMessage = document.getElementById('log_message');
 
