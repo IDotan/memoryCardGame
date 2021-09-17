@@ -413,7 +413,7 @@ h1 {
 /* end screen */
 
 #end_screen {
-    background-image: url(../img/game_ranking.png);
+    background-image: url(../img/mobile-game_ranking.png);
     background-repeat: no-repeat;
     height: 100vh;
     width: 100vw;
@@ -424,6 +424,8 @@ h1 {
 #end_screen h2 {
     text-align: center;
     padding: 1em;
+    color: #FFC131;
+    font: normal normal bold 62px/72px Poppins;
 }
 
 /* table style */
@@ -432,6 +434,7 @@ h1 {
     margin: 0 auto;
     max-width: 85vw;
     overflow-x: auto;
+    color: #FFFFFF;
 }
 
 #score_table {
@@ -504,6 +507,8 @@ h1 {
 #share {
     margin: 0.5em auto;
     width: max-content;
+    color: #FFFFFF;
+    background-color: transparent;
 }
 
 #share .share_link_btn {
@@ -560,5 +565,8 @@ h1 {
     }
     #landing_screen {
         background-image: url(../img/landing_screen.svg);
+    }
+    #end_screen {
+        background-image: url(../img/game_ranking.png);
     }
 }
