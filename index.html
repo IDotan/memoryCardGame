@@ -17,13 +17,13 @@
 </head>
 
 <body>
-    <header>
+   <!-- <header>
         <span>temp controle for easy display:none </span><br>
         <button onclick="section_switch(0)">landing_screen</button>
         <button onclick="section_switch(1)">board</button>
         <button onclick="section_switch(2)">end_screen</button>
     </header>
-
+-->
     <main>
         <h1>Memory Card Game</h1>
         <section id="landing_screen" class="page_section">
@@ -36,8 +36,8 @@
                 </p>
                 <div class="about_btn_container">
                     <button id="start_btn" class="btn_style">Start</button>
-                    <button class="btn_style btn_dev_style"
-                        onclick="taggle_landingscreed_sections()">Developers</button>
+                    <button class="btn_style btn_dev_style" onclick="taggle_landingscreed_sections()">View
+                        players</button>
                 </div>
                 <img class="character_img" src="static/img/character.png" alt="character">
                 </sevtion>
@@ -156,35 +156,43 @@
                 <div id="user_data">
 
                 </div>
+                <section>
+                    <nav class="game_navbar">
+                        <img class="nav_logo" src="static/img/small-logo-mobile.png" alt="nav_logo">
 
-                <div id="game_timer">
+                        <div id="game_timer">
 
+                        </div>
+                        <div id="game_dis">
+                            <div class="game_info_container">
+                                <div class="game_info">
+                                    <img class="icn_time" src="static/img/icn-time.svg"> 
+                                    <div><span id="time">0:00</span></div>
+                                </div>
+                                <div class="game_info">
+                                    <div class="mistakes">
+                                        <img class="icn_moves" src="static/img/icn-moves.svg">
+                                        <span class="mistakes_x">X</span><span class="mistakes_x">X</span><span
+                                            class="mistakes_x">X</span>
+                                    </div>
+                                </div>
+                            </div>
+                    </nav>
+                </section>
+                <div class="card_container">
+                    <template id="card_template">
+                        <div class="card">
+                            <img src="static/img/logo-black.png" alt="card back image" class="card_back">
+                            <img class="card_img" src="" alt="">
+                        </div>
+                    </template>
                 </div>
-                <div id="game_dis">
-                    <div class="game_info_container">
-                        <div class="game_info">
-                            <span>Time:&nbsp;</span>
-                            <div><span id="time">0:00</span></div>
-                        </div>
-                        <div class="game_info">
-                            <span>Mistakes:&nbsp;</span>
-                            <div class="mistakes">
-                                <span class="mistakes_x">X</span><span class="mistakes_x">X</span><span
-                                    class="mistakes_x">X</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card_container">
-                        <template id="card_template">
-                            <div class="card">
-                                <img src="static/img/cardback.jpeg" alt="card back image" class="card_back">
-                                <img class="card_img" src="" alt="">
-                            </div>
-                        </template>
-                    </div>
+
+                <!--
                     <div id="start_btn_container">
                         <button onclick="start_card_reveal()" class="btn_style start_game_btn">Start</button>
                     </div>
+                     -->
                 </div>
 
                 <div>
