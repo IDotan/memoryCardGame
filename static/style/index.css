@@ -171,6 +171,13 @@ h1 {
     background-color: rgba(0, 0, 0, 0.85);
     border: 0.15em solid #808080;
     border-radius: 2.5rem;
+    opacity: 0.5;
+    transition: background-color 1s, opacity 1s;
+}
+
+.about.center {
+    background-color: rgba(0, 0, 255, 0.85);
+    opacity: 1;
 }
 
 .about h2 {
@@ -363,6 +370,7 @@ h1 {
     left: 90px;
     top: -75px;
 }
+
 .game_info_container {
     display: flex;
     justify-content: space-between;

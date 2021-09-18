@@ -124,6 +124,11 @@ function carousel_easter_egg(n) {
         developers_data.easter_egg = true;
         document.getElementById('developers_carousel').append(create_easter_div());
         carousel_data_update();
+        document.querySelector('.about.center').classList.remove('center');
+        setTimeout(() => {
+            let nodlist = document.querySelectorAll('.about.tab');
+            nodlist[nodlist.length - 1].classList.add('center');
+        }, 100)
     };
 };
 
@@ -133,6 +138,30 @@ function carousel_easter_egg(n) {
  * @param {Number} direction 1 rotate right, -1 rotate left
  */
 function rotate_carousel(direction) {
+    /**
+     * Change the 'center' class to be on the new center tab.
+     * 
+     * @param {HTMLElement} old_center old tab with 'center' class
+     * @param {Number} direction rotate direction
+     */
+    function change_center(old_center, direction) {
+        old_center.classList.remove('center');
+        let new_center;
+        if (direction < 0) {
+            new_center = old_center.nextElementSibling;
+            if (new_center == null) {
+                new_center = document.querySelector('.about.tab');
+            };
+        } else {
+            new_center = old_center.previousElementSibling;
+            if (new_center.classList.contains('placeholder')) {
+                let nodlist = document.querySelectorAll('.about.tab');
+                new_center = nodlist[nodlist.length - 1];
+            };
+        };
+        new_center.classList.add('center');
+    };
+
     if (developers_data.easter_egg == false) {
         carousel_easter_egg(direction);
     };
@@ -140,14 +169,26 @@ function rotate_carousel(direction) {
     let deg = carousel.style.transform.slice(8, -4);
     deg == "" ? deg = 0 : deg = parseInt(deg);
     document.getElementById('developers_carousel').style.transform = "rotateY(" + (deg + (developers_data.card_deg * direction)) + "deg)";
+    if (Math.abs(direction) == 1) {
+        let old_center = document.querySelector('.about.center');
+        if (!old_center) {
+            return
+        }
+        change_center(old_center, direction);
+    };
 };
 
 /**
  * Change developers carousel to random place.
  */
 function about_carousel_random() {
+    document.getElementById('developers_carousel').style.transform = "rotateY(0deg)";
+    document.querySelector('.about.center').classList.remove('center');
     let tab = Math.floor((Math.random() * developers_data.card_count) + 1);
     rotate_carousel(tab);
+    // calculat the new center tab
+    tab = (developers_data.card_count - 1) - (tab - 1);
+    document.querySelectorAll('.about.tab')[tab].classList.add('center');
 };
 
 /******* popup *******/
