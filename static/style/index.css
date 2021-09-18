@@ -14,7 +14,8 @@
     --bg-color: gray;
     --border_color: #000000;
     --table-side-padding: 0.5em;
-    --card_width: 5em;
+    --card-width: 6.5em;
+    --card-height: 8.5em;
     --card-gap: 1em;
 }
 
@@ -37,7 +38,6 @@ h1, h2, h3, p {
 }
 
 header {
-    position: absolute;
     width: 100%;
     top: 0;
     z-index: 1;
@@ -295,7 +295,7 @@ h1 {
 
 /*game_window*/
 
-.game_navbar{
+.game_navbar {
     background-color: black;
     opacity: 50%;
     top: 0px;
@@ -303,19 +303,21 @@ h1 {
     width: 100%;
     height: 61px;
 }
-.nav_logo{
+
+.nav_logo {
     margin: 6px 15px;
     width: 100px;
 }
-.icn_time{
+
+.icn_time {
     top: 21px;
     height: 40px;
 }
-.icn_moves{
-    top: 21px;
-    height: 40px; 
-}
 
+.icn_moves {
+    top: 21px;
+    height: 40px;
+}
 
 #difficulty_picking h2 {
     font-family: normal bold 53px/64px Poppins;
@@ -325,12 +327,10 @@ h1 {
 
 #difficulty_picking {
     background-image: url(../img/mobile-bg-difficulty_picking.svg);
+    min-height: 100vh;
     background-repeat: no-repeat;
-    height: 100vh;
-    width: 100vw;
     background-size: cover;
     background-attachment: fixed;
-    z-index: 1;
 }
 
 .difficulty_btn_container {
@@ -353,15 +353,16 @@ h1 {
     border: none;
     margin: 0%;
 }
-.difficulty_btn_container div{
+
+.difficulty_btn_container div {
     display: flex;
     flex-direction: row;
-} 
+}
+
 #game_board {
     background-image: url(../img/game-bord-img.svg);
+    min-height: 100vh;
     background-repeat: no-repeat;
-    height: 100vh;
-    width: 100vw;
     background-size: cover;
     background-attachment: fixed;
 }
@@ -400,6 +401,10 @@ h1 {
     opacity: 1;
 }
 
+.game_panle {
+    position: relative;
+}
+
 .card_container {
     margin: 0 auto;
     width: calc( ((var(--card_width) + var(--card-gap)) * 3));
@@ -408,21 +413,17 @@ h1 {
     flex-wrap: wrap;
     gap: var(--card-gap);
     align-content: center;
-    height: 34em;
-    width: 115%;
 }
 
 .card {
-    height: var(--card_width);
-    width: var(--card_width);
+    width: var(--card-width);
+    height: var(--card-height);
     position: relative;
     transform-style: preserve-3d;
     transition: transform 500ms;
-    background-color:#009EEF ;
+    background-color: #009EEF;
     border: 0.25em solid white;
     border-radius: 5%;
-    width: 6.5rem;
-    height: 8.5rem;
 }
 
 .card.flip {
@@ -437,15 +438,15 @@ h1 {
     position: absolute;
     width: 100%;
     backface-visibility: hidden;
-    top: 39px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .card_img {
-    transform: rotateY(180deg);
+    transform: translateY(-50%) rotateY(180deg);
     display: flex;
     justify-content: center;
     align-items: center;
-    size:50% ;
 }
 
 #start_btn_container {
@@ -454,11 +455,11 @@ h1 {
     left: 50%;
     transform: translate(-50%, -50%);
 }
-/*
+
 .start_game_btn {
     letter-spacing: 0.1em;
 }
-*/
+
 /* end screen */
 
 #end_screen {
@@ -469,7 +470,8 @@ h1 {
     background-size: cover;
     background-attachment: fixed;
 }
-#end_screen{
+
+#end_screen {
     background-image: url(../img/mobilegame_ranking2.png);
     background-repeat: no-repeat;
     height: 100vh;
@@ -482,7 +484,7 @@ h1 {
     text-align: center;
     padding: 1em;
     color: #FFC131;
-    font: normal normal bold  39px/161px Poppins;
+    font: normal normal bold 39px/161px Poppins;
 }
 
 /* table style */
@@ -609,19 +611,18 @@ h1 {
         justify-content: space-around;
         gap: 3em;
     }
-    .icn_time{
+    .icn_time {
         top: 21px;
         height: 78px;
     }
-    .icn_moves{
+    .icn_moves {
         top: 21px;
-        height: 78px; 
+        height: 78px;
     }
     .card_container {
         flex-direction: column;
-        height: calc( (var(--card_width) + var(--card-gap)) * 3);
+        height: calc( (var(--card-height) + var(--card-gap)) * 3);
         width: 100%;
-        height: 60%;
     }
     #difficulty_picking {
         background-image: url(../img/difficulty_pickingimg.jpeg);

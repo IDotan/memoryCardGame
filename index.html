@@ -17,6 +17,12 @@
 </head>
 
 <body>
+    <header>
+        <span>temp controle for easy display:none </span><br>
+        <button onclick="section_switch(0)">landing_screen</button>
+        <button onclick="section_switch(1)">board</button>
+        <button onclick="section_switch(2)">end_screen</button>
+    </header>
 
     <main>
         <h1>Memory Card Game</h1>
@@ -145,7 +151,7 @@
                 </div>
             </section>
 
-            <section id="game_board" class="page_section hide">
+            <section id="game_board" class="hide">
                 <div id="user_data">
 
                 </div>
@@ -172,21 +178,22 @@
                             </div>
                     </nav>
                 </section>
-                <div class="card_container">
-                    <template id="card_template">
-                        <div class="card">
-                            <img src="static/img/logo-black.png" alt="card back image" class="card_back">
-                            <img class="card_img" src="" alt="">
-                        </div>
-                    </template>
-                </div>
 
-                <!--
+                <section class="game_panle">
+                    <div class="card_container">
+                        <template id="card_template">
+                            <div class="card">
+                                <img src="static/img/logo-black.png" alt="card back image" class="card_back">
+                                <img class="card_img" src="" alt="">
+                            </div>
+                        </template>
+                    </div>
+
                     <div id="start_btn_container">
                         <button onclick="start_card_reveal()" class="btn_style start_game_btn">Start</button>
                     </div>
-                     -->
-                </div>
+
+                </section>
 
                 <div>
                     <button onclick="section_switch(2)">score board</button>
