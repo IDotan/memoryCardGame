@@ -515,11 +515,11 @@ h1 {
     padding: 0;
 }
 
-#score_table th:nth-of-type(4), #score_table td:nth-of-type(4), #score_table th:nth-of-type(5), #score_table td:nth-of-type(5) {
+#score_table th:nth-of-type(3), #score_table td:nth-of-type(3), #score_table th:nth-of-type(4), #score_table td:nth-of-type(4) {
     min-width: 5em;
 }
 
-#score_table th:nth-of-type(4), #score_table th:nth-of-type(5) {
+#score_table th:nth-of-type(3), #score_table th:nth-of-type(4) {
     cursor: pointer;
 }
 
@@ -540,7 +540,7 @@ h1 {
     height: 0;
     border-left: 0.325em solid transparent;
     border-right: 0.325em solid transparent;
-    border-top: 0.65em solid #555;
+    border-top: 0.65em solid var(--border_color);
 }
 
 .sort_by.up::after {
@@ -564,6 +564,7 @@ h1 {
     width: max-content;
     color: #FFFFFF;
     background-color: transparent;
+    font-size: 1.2em;
 }
 
 #share .share_link_btn {
@@ -634,5 +635,6 @@ h1 {
     /* score board desktop */
     #end_screen {
         background-image: url(../img/game_ranking.png);
+        font-size: 1.5em;
     }
 }

@@ -424,7 +424,7 @@ function load_score_table(sort_function) {
     table_data.sort((a, b) => { return sort_function(a, b) });
     let str_data = "";
     table_data.forEach((data, index) => {
-        str_data += "<tr><td>" + (index + 1) + ".</td><td>" + data[0] + "</td><td>" + data[1] + "</td><td>" + data[2] + "</td><td>" + data[3] / 1000 + "s</td></tr>";
+        str_data += "<tr><td>" + (index + 1) + ".</td><td>" + data[0] + "</td><td>" + data[2] + "</td><td>" + data[3] / 1000 + "s</td><td>" + data[1] + "</td></tr>";
     });
     document.getElementById('score_table').innerHTML = document.getElementById('score_table').innerHTML.split("</tr>", 1)[0] + "</tr>" + str_data;
 };
