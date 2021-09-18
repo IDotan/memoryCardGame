@@ -319,8 +319,7 @@ h1 {
 }
 
 .difficulty_img {
-    height: 7rem;
-    width: 7rem;
+    height: 7em;
     margin: 0 1em;
 }
 
@@ -333,7 +332,6 @@ h1 {
 
 .difficulty_btn_container div {
     display: flex;
-    flex-direction: row;
 }
 
 /* game section */
@@ -601,21 +599,14 @@ h1 {
         padding-bottom: 1rem;
     }
     /* game board desktop*/
-    #board {
-        font-size: 2em;
-    }
     #difficulty_picking {
         background-image: url(../img/difficulty_pickingimg.jpeg);
-    }
-    #difficulty_picking {
         padding: 0 1em;
         padding-top: 20vh;
         text-align: start;
+        font-size: 1.5em;
     }
     /* game section */
-    .game_info {
-        flex-direction: row;
-    }
     .game_info_container {
         justify-content: space-around;
         gap: 3em;
@@ -632,9 +623,10 @@ h1 {
         flex-direction: column;
         height: calc( (var(--card-height) + var(--card-gap)) * 3);
         width: 100%;
+        font-size: 1.5em;
     }
     #start_btn_container {
-        width: 30vw;
+        width: 25vw;
     }
     /* score board desktop */
     #end_screen {
