@@ -404,6 +404,7 @@ h1 {
     flex-wrap: wrap;
     gap: var(--card-gap);
     align-content: center;
+    height: 34em;
 }
 
 .card {
@@ -431,6 +432,7 @@ h1 {
     position: absolute;
     width: 100%;
     backface-visibility: hidden;
+    top: 39px;
 }
 
 .card_img {
