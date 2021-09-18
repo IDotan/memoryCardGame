@@ -330,7 +330,7 @@ h1 {
     width: 100vw;
     background-size: cover;
     background-attachment: fixed;
-    position: fixed;
+    z-index: 1;
 }
 
 .difficulty_btn_container {
