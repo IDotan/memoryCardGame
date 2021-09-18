@@ -196,8 +196,6 @@ h1 {
     padding: 1em 0;
 }
 
-/* The login popup */
-
 .popup_container::before {
     position: fixed;
     content: '';
@@ -212,7 +210,8 @@ h1 {
 .popup_container {
     display: none;
     position: fixed;
-    top: 20%;
+    top: 2%;
+    left: calc(50% - 178px);
     border-radius: 5%;
     max-width: 95%;
     font-family: var(--ff-main);
