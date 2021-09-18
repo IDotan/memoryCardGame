@@ -37,12 +37,23 @@ h1, h2, h3, p {
     box-sizing: border-box;
 }
 
-header {
+header input {
+    position: absolute;
+    right: 0;
+    z-index: 10;
+}
+
+header input:checked+div {
+    display: block;
     position: absolute;
     width: 100%;
-    bottom: 0;
+    top: 0;
     z-index: 1;
     background-color: var(--bg-color);
+}
+
+header div {
+    display: none;
 }
 
 h1 {
