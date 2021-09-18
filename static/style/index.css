@@ -12,7 +12,7 @@
     --clr-dark: rgb(0, 0, 0);
     --bg-color-landing: #060ab0;
     --bg-color: gray;
-    --border_color: #000000;
+    --border_color: #ffc131;
     --table-side-padding: 0.5em;
     --card-width: 5em;
     --card-height: 6em;
@@ -335,7 +335,7 @@ h1 {
 }
 
 .btn_style_difficulty {
-    font: normal normal bold 3em/0em Poppins;
+    font: normal normal bold 3em/1em Poppins;
     color: #FFFFFF;
     background-color: transparent;
     border: none;
@@ -467,28 +467,20 @@ h1 {
 /* end screen */
 
 #end_screen {
-    background-image: url(../img/mobile-game_ranking.png);
-    background-repeat: no-repeat;
-    height: 100vh;
-    width: 100vw;
-    background-size: cover;
-    background-attachment: fixed;
-}
-
-#end_screen {
     background-image: url(../img/mobilegame_ranking2.png);
     background-repeat: no-repeat;
-    height: 100vh;
-    width: 100vw;
+    min-height: 100vh;
     background-size: cover;
     background-attachment: fixed;
+    background-position: center;
+    padding-top: 20vh;
 }
 
 #end_screen h2 {
     text-align: center;
-    padding: 1em;
+    padding-bottom: 1em;
     color: #FFC131;
-    font: normal normal bold 39px/161px Poppins;
+    font: normal normal bold 2em/1em Poppins;
 }
 
 /* table style */
