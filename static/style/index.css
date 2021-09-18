@@ -416,7 +416,7 @@ h1 {
     border: 0.25em solid white;
     border-radius: 5%;
     width: 6.5rem;
-    height: 6.5rem;
+    height: 8.5rem;
 }
 
 .card.flip {
@@ -429,7 +429,6 @@ h1 {
 
 .card_back, .card_img {
     position: absolute;
-    height: 100%;
     width: 100%;
     backface-visibility: hidden;
 }
