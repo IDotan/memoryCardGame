@@ -315,6 +315,9 @@ function start_card_reveal() {
     };
 };
 
+/**
+ * Switch between the 2 board section pages.
+ */
 function board_page_section_switch() {
     document.getElementById('difficulty_picking').classList.toggle('hide');
     document.getElementById('game_board').classList.toggle('hide');
@@ -366,12 +369,15 @@ function add_card_img(card_img) {
 };
 
 /**
- * Reset the game. go back to difficulty_picking, empty card_container and reshow start button.
+ * Reset the game. go back to difficulty_picking and reset the board to statr position.
  */
 function reset_game() {
     board_page_section_switch();
     document.getElementById('card_container').innerHTML = "";
     document.getElementById('start_btn_container').classList.remove('hide');
+    document.getElementById('time').innerHTML = "00:00";
+    let x_marks = document.querySelectorAll('.mistakes_x');
+    x_marks.forEach((mark) => { mark.classList.remove('mark') });
 };
 
 /******************** End screen ********************/
@@ -508,6 +514,13 @@ function shared_link() {
         };
     };
 };
+/******* button panel *******/
+
+function try_again() {
+    reset_game();
+    section_switch(1);
+};
+
 
 /******* share *******/
 

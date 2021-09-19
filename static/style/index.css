@@ -397,6 +397,10 @@ h1 {
     opacity: 0.3;
 }
 
+.mistakes_x.mark {
+    opacity: 1;
+}
+
 .game_panle {
     position: relative;
     width: max-content;
