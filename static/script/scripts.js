@@ -315,6 +315,11 @@ function start_card_reveal() {
     };
 };
 
+function board_page_section_switch() {
+    document.getElementById('difficulty_picking').classList.toggle('hide');
+    document.getElementById('game_board').classList.toggle('hide');
+};
+
 /**
  * Start the memory came with the amount of cards given.
  * 
@@ -323,16 +328,15 @@ function start_card_reveal() {
 function start_game(cards) {
     game_data.cards_count = cards;
     const card_temp = document.getElementById('card_template');
-    let board = document.getElementsByClassName('card_container')[0];
+    let board = document.getElementById('card_container');
     for (let i = 0; i < cards; i++) {
         board.appendChild(card_temp.content.cloneNode(true));
     };
     document.querySelectorAll('.card').forEach((div, index) => {
         div.classList.add(index);
     });
-    document.getElementById('difficulty_picking').classList.add('hide');
-    document.getElementById('game_board').classList.remove('hide');
-}
+    board_page_section_switch();
+};
 
 /**
  * Flip card to it's other side.
@@ -341,7 +345,7 @@ function start_game(cards) {
  * @param {HTMLElement} card card div when not called from event listener.
  */
 function card_flip(event, card = null) {
-    if (card == null) {
+    if (event) {
         card = this;
     };
     let img_div = card.children[1];
@@ -359,6 +363,15 @@ function add_card_img(card_img) {
     path = path.slice(0, path.lastIndexOf("/"));
     let img_path = "/static/img/mug.jpg";
     card_img.src = path + img_path;
+};
+
+/**
+ * Reset the game. go back to difficulty_picking, empty card_container and reshow start button.
+ */
+function reset_game() {
+    board_page_section_switch();
+    document.getElementById('card_container').innerHTML = "";
+    document.getElementById('start_btn_container').classList.remove('hide');
 };
 
 /******************** End screen ********************/
@@ -439,6 +452,8 @@ function table_arrow_switch(show) {
     arrows_array.forEach((arrow, index) => {
         if (index == show) {
             arrow.classList.add("show");
+            arrow.classList.remove("up");
+
         } else {
             arrow.classList.add("up");
             arrow.classList.remove("show");
@@ -452,28 +467,26 @@ function table_arrow_switch(show) {
  * @param {Object} event click event object.
  */
 function table_sort_click(event) {
-    let clicked_on = event.target.innerText
-    let up = event.target.classList.contains("up")
+    let clicked_on = event.target.innerText;
+    let up = event.target.classList.contains("up");
     switch (clicked_on) {
         case "Score":
             table_arrow_switch(0);
             if (up) {
-                event.target.classList.remove("up");
                 load_score_table(sort_score_descending);
             } else {
                 event.target.classList.add("up");
                 load_score_table(sort_score_ascending);
-            }
+            };
             break;
         case "Time":
             table_arrow_switch(1);
             if (up) {
-                event.target.classList.remove("up");
                 load_score_table(sort_time_ascending);
             } else {
                 event.target.classList.add("up");
                 load_score_table(sort_time_descending);
-            }
+            };
             break;
     };
 };
@@ -504,8 +517,7 @@ function shared_link() {
  * @returns url link
  */
 function share_score() {
-    let url = document.URL.split("?")[0] + "?" + user_data.name + "$" + user_data.mail + "$" + user_data.score + "$" + user_data.time;
-    return url;
+    return document.URL.split("?")[0] + "?" + user_data.name + "$" + user_data.mail + "$" + user_data.score + "$" + user_data.time;
 };
 
 /**

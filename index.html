@@ -174,13 +174,14 @@
                 </nav>
 
                 <section class="game_panle">
-                    <div class="card_container">
-                        <template id="card_template">
-                            <div class="card">
-                                <img src="static/img/logo-black.png" alt="card back image" class="card_back">
-                                <img class="card_img" src="" alt="">
-                            </div>
-                        </template>
+                    <template id="card_template">
+                        <div class="card">
+                            <img src="static/img/logo-black.png" alt="card back image" class="card_back">
+                            <img class="card_img" src="" alt="">
+                        </div>
+                    </template>
+                    <div id="card_container">
+                        <!-- javascript place the cards in this div -->
                     </div>
 
                     <div id="start_btn_container">
@@ -189,9 +190,9 @@
 
                 </section>
 
-                <div>
-                    <button onclick="section_switch(2)">score board</button>
-                    <button>restart</button>
+                <div id="board_bottom_btn_continer">
+                    <button class="btn_style">Score board</button>
+                    <button class="btn_style" onclick="reset_game()">Restart</button>
                 </div>
 
             </section>
@@ -205,10 +206,10 @@
                     <tr>
                         <th></th>
                         <th>Player</th>
-                        <th class="sort_by show" onclick="table_sort_click(event), true">
+                        <th class="sort_by show" onclick="table_sort_click(event)">
                             Score
                         </th>
-                        <th class="sort_by" onclick="table_sort_click(event), true">
+                        <th class="sort_by" onclick="table_sort_click(event)">
                             Time
                         </th>
                         <th>E-mail</th>

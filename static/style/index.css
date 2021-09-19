@@ -403,7 +403,8 @@ h1 {
     margin: 0 auto;
 }
 
-.card_container {
+#card_container {
+    margin: 1em 0;
     width: calc( ((var(--card-width) + var(--card-gap)) * 3));
     display: flex;
     justify-content: space-evenly;
@@ -462,6 +463,14 @@ h1 {
 .start_game_btn {
     width: 100%;
     letter-spacing: 0.1em;
+}
+
+#board_bottom_btn_continer {
+    margin: 0 auto;
+    padding: 2em 0;
+    font-size: 0.5em;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 /* end screen */
@@ -623,7 +632,7 @@ h1 {
         top: 21px;
         height: 78px;
     }
-    .card_container {
+    #card_container {
         flex-direction: column;
         height: calc( (var(--card-height) + var(--card-gap)) * 3);
         width: 100%;
@@ -631,6 +640,9 @@ h1 {
     }
     #start_btn_container {
         width: 25vw;
+    }
+    #board_bottom_btn_continer {
+        max-width: 50vw;
     }
     /* score board desktop */
     #end_screen {
