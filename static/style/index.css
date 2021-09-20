@@ -10,17 +10,14 @@
     --clr-popup-log: rgb(114, 114, 114);
     --clr-light: #fff;
     --clr-dark: rgb(0, 0, 0);
-    --bg-color-landing: #060ab0;
     --bg-color: gray;
     --border_color: #ffc131;
     --table-side-padding: 0.5em;
     --card-width: 5em;
     --card-height: 6em;
     --card-gap: 0.5em;
-}
-
-body {
-    background-color: gray;
+    --card-back-bg: #009EEF;
+    --card-img-bg: #28b528;
 }
 
 .hide {
@@ -244,11 +241,6 @@ h1 {
     font-size: 3rem;
 }
 
-#log_message {
-    margin-top: 2%;
-    color: red;
-}
-
 .close_popup {
     position: absolute;
     right: 0.9rem;
@@ -422,14 +414,15 @@ h1 {
     height: var(--card-height);
     position: relative;
     transform-style: preserve-3d;
-    transition: transform 500ms;
-    background-color: #009EEF;
+    transition: transform 500ms, background-color 500ms;
+    background-color: var(--card-back-bg);
     border: 0.25em solid white;
     border-radius: 5%;
 }
 
 .card.flip {
     transform: rotateY(180deg);
+    background-color: var(--card-img-bg);
 }
 
 .card:hover:not(.flip) {

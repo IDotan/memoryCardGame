@@ -22,8 +22,10 @@ const game_data = {
     start_time: 0,
     stored_time: 0,
     score: 0,
+    cards_folder: "/static/img/card_images/",
+    card_img_index: [],
+    card_imgs: ["avocado", "banana", "chili", "grapes", "onion", "pineapple", "raspberry", "tomato", "watermelon"]
 }
-const reg_user = [["user", 1234]]
 
 /******************** Nav bar ********************/
 
@@ -238,6 +240,19 @@ function logIn() {
  */
 function start_card_reveal() {
     /**
+     * Initialize and randomize card image and cards pairs.
+     */
+    function card_img_initialize() {
+        shuffle_array(game_data.card_imgs);
+        game_data.card_img_index = [];
+        let cards_pairs = game_data.cards_count / 2;
+        for (let i = 0; i < cards_pairs; i++) {
+            game_data.card_img_index.push(i, i);
+        };
+        shuffle_array(game_data.card_img_index);
+    };
+
+    /**
      * Show then the given card div and add event listener affter all card been shown.
      * 
      * @param {HTMLElement} target card div to take action on.
@@ -255,6 +270,7 @@ function start_card_reveal() {
         }, ((game_data.cards_count + 1) * game_data.start_flip));
     };
 
+    card_img_initialize();
     document.getElementById('start_btn_container').classList.add('hide');
     let cards = document.querySelectorAll('.card');
     if (window.innerWidth < game_data.min_width) {
@@ -280,6 +296,20 @@ function start_card_reveal() {
 function board_page_section_switch() {
     document.getElementById('difficulty_picking').classList.toggle('hide');
     document.getElementById('game_board').classList.toggle('hide');
+};
+
+/**
+ * Shuffle given array. 
+ * 
+ * @param {Array} arr array to shuffle.
+ */
+function shuffle_array(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        const temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    };
 };
 
 /**
@@ -311,20 +341,23 @@ function card_flip(event, card = null) {
         card = this;
     };
     let img_div = card.children[1];
-    img_div.src == document.URL ? add_card_img(img_div) : setTimeout(() => { img_div.src = "" }, 500);
+    img_div.src == document.URL ? add_card_img(img_div, parseInt(card.classList[1])) : setTimeout(() => { img_div.src = ""; img_div.alt = ""; }, 500);
     card.classList.toggle('flip');
 };
+
 
 /**
  * Add image to the given <img>.
  * 
  * @param {HTMLElement} card_img card <img> to set.
  */
-function add_card_img(card_img) {
+function add_card_img(card_img, card_index) {
+    // todo
+    let img = game_data.card_imgs[game_data.card_img_index[card_index]];
     let path = document.URL.split(".index")[0];
     path = path.slice(0, path.lastIndexOf("/"));
-    let img_path = "/static/img/mug.jpg";
-    card_img.src = path + img_path;
+    card_img.src = path + game_data.cards_folder + img + ".svg";
+    card_img.alt = img;
 };
 
 /**
