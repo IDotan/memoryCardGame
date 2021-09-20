@@ -97,7 +97,7 @@ function carousel_easter_egg(n) {
         let div = document.createElement("div");
         div.setAttribute("class", "about tab");
         let img = document.createElement("img");
-        img.setAttribute("src", "static/img/mug.jpg");
+        img.setAttribute("src", "static/img/carousel_images/mug.jpg");
         let h2 = document.createElement("h2");
         h2.innerText = "Coffee";
         div.append(img);
@@ -223,7 +223,7 @@ function logIn() {
     let usernameInput = document.getElementById('email_form').value;
     let userMailINput = document.getElementById('mail_form').value;
     let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if ( usernameInput != '' && userMailINput.match(regexEmail )) {
+    if (usernameInput != '' && userMailINput.match(regexEmail)) {
         console.log(user_data);
         user_data.name = usernameInput;
         user_data.mail = userMailINput;

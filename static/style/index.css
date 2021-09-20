@@ -62,7 +62,7 @@ h1 {
 
 #landing_screen {
     position: relative;
-    background-image: url(../img/mobile-landing_scree.svg);
+    background-image: url(../img/wallpapers/mobile-landing_screen.svg);
     background-repeat: no-repeat;
     min-height: 100vh;
     background-size: cover;
@@ -308,7 +308,7 @@ h1 {
 /* difficulty section */
 
 #difficulty_picking {
-    background-image: url(../img/mobile-bg-difficulty_picking.svg);
+    background-image: url(../img/wallpapers/mobile-bg-difficulty_picking.svg);
     min-height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
@@ -347,7 +347,7 @@ h1 {
 /* game section */
 
 #game_board {
-    background-image: url(../img/game-bord-img.svg);
+    background-image: url(../img/wallpapers/game-bord-img.svg);
     min-height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
@@ -504,7 +504,7 @@ h1 {
 /* end screen */
 
 #end_screen {
-    background-image: url(../img/mobilegame_ranking2.png);
+    background-image: url(../img/wallpapers/mobilegame_ranking.png);
     background-repeat: no-repeat;
     min-height: 100vh;
     background-size: cover;
@@ -611,7 +611,7 @@ h1 {
 @media only screen and (min-width: 1080px) {
     /* landing screen desktop */
     #landing_screen {
-        background-image: url(../img/landing_screen.svg);
+        background-image: url(../img/wallpapers/landing_screen.svg);
     }
     .about_project {
         max-width: max-content;
@@ -641,7 +641,7 @@ h1 {
     }
     /* game board desktop*/
     #difficulty_picking {
-        background-image: url(../img/difficulty_pickingimg.jpeg);
+        background-image: url(../img/wallpapers//difficulty_pickingimg.jpeg);
         padding: 0 1em;
         padding-top: 20vh;
         text-align: start;
@@ -674,7 +674,7 @@ h1 {
     }
     /* score board desktop */
     #end_screen {
-        background-image: url(../img/game_ranking.png);
+        background-image: url(../img/wallpapers/game_ranking.png);
         font-size: 1.5em;
     }
 }
