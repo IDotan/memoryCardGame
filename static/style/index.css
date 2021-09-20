@@ -463,7 +463,8 @@ h1 {
     transform: translate(-50%, -50%);
     width: 70vw;
 }
-.board_btn_container{
+
+.board_btn_container {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -471,35 +472,26 @@ h1 {
     gap: 1em;
     padding-bottom: 2em;
 }
+
 .start_game_btn {
     width: 100%;
     letter-spacing: 0.1em;
-    width: 8em;
-    cursor: pointer;
-    background-color: #FFC131;
-    color: #000000;
-    font-size: 2em;
-    padding: 0.2em 0;
-    border-radius: 1.5em;
-    border: 0.1em solid white;
-    transition: text-shadow 500ms, transform 500ms;
 }
 
-.score_btn{
+.score_btn {
     color: #FFFFFF;
     border-color: #FFC131;
     background-color: transparent;
     border-radius: 46px;
     font-size: 2em;
-
 }
-.restart_btn{
+
+.restart_btn {
     color: #FFFFFF;
     border-color: #FFC131;
     background-color: transparent;
     border-radius: 46px;
     font-size: 2em;
-
 }
 
 #board_bottom_btn_continer {
