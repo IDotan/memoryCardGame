@@ -192,12 +192,8 @@ function about_carousel_random() {
 };
 
 /******* popup *******/
-let startBtn = document.getElementById('start_btn');
-function showPopup() {
-    let popup = document.querySelector(".popup_container");
-    popup.style.display = 'block';
-}
-
+let openPopup = document.getElementById('start_btn');
+openPopup.addEventListener('click', showPopup)
 let closePopupBttn = document.getElementsByClassName('close_popup')[0];
 closePopupBttn.addEventListener('click', closePopup);
 window.addEventListener('keydown', function (key) {
@@ -205,71 +201,34 @@ window.addEventListener('keydown', function (key) {
         closePopup();
     }
 })
+function closePopup() {
+    let popup = document.querySelector(".popup_container");
+    popup.style.display = 'none';
+}
 
-let loginBttn = document.getElementById('log_in_btn');
-let signupBttn = document.getElementById('sign_up_btn');
-startBtn.addEventListener('click', showPopup);
-signupBttn.addEventListener('click', signup);
+function showPopup() {
+    let popup = document.querySelector(".popup_container");
+    popup.style.display = 'block';
+}
 
-loginBttn.addEventListener('click', login);
+let popupStart = document.getElementById('popup_start');
+popupStart.addEventListener('click', logIn)
 window.addEventListener('keydown', function (key) {
     if (key.keyCode == '13') {
-        login();
+        logIn();
     }
 });
 
-function login() {
+function logIn() {
     let usernameInput = document.getElementById('email_form').value;
-    let passwordInput = document.getElementById('password_form').value;
-    checkData(usernameInput, passwordInput);
-}
-
-function checkData(usernameInput, passwordInput) {
-    let data = dataBase()
-    let logMessage = document.getElementById('log_message');
-
-    console.log(user_data);
-    for (let i = 0; i < data.length; i++) {
-        if (passwordInput == data[i].password && usernameInput == data[i].username) {
-            section_switch(1);
-        }
-        else if (logMessage.innerHTML == '') {
-            logMessage.append('Username or Password is incorrect');
-        }
+    let userMailINput = document.getElementById('mail_form').value;
+    let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if ( usernameInput != '' && userMailINput.match(regexEmail )) {
+        console.log(user_data);
+        user_data.name = usernameInput;
+        user_data.mail = userMailINput;
+        section_switch(1);
     }
-}
-
-function signup() {
-    let usernameIn = document.getElementById('email_form').value;
-    let passwordIn = document.getElementById('password_form').value;
-    let newUser = true;
-    dataBase(usernameIn, passwordIn, newUser)
-}
-
-function closePopup() {
-    let logMessage = document.getElementById('log_message');
-    let popup = document.querySelector(".popup_container");
-    popup.style.display = 'none';
-    logMessage.innerHTML = '';
-}
-
-function dataBase(user, pass, newAcc) {
-
-    let users = [
-        {
-            username: 'user',
-            password: '1234'
-        },
-        {
-            username: 'itay',
-            password: '1234'
-        }
-    ];
-    if (newAcc == true) {
-        users.push({ username: user, passwprd: pass })
-        console.log(users);
-    }
-    return users;
 }
 
 /******************** Card Game screen ********************/
@@ -279,7 +238,7 @@ function dataBase(user, pass, newAcc) {
  */
 function start_card_reveal() {
     /**
-     * Show then hide the given card div and add event listener affter all card been shown.
+     * Show then the given card div and add event listener affter all card been shown.
      * 
      * @param {HTMLElement} target card div to take action on.
      * @param {Number} loop loop count to set the dilays by.

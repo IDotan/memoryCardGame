@@ -107,7 +107,6 @@ h1 {
 }
 
 .btn_style:hover {
-    text-shadow: 0 0 0.125em currentColor;
     transform: scale(1.2);
 }
 
