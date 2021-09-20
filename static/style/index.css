@@ -12,7 +12,7 @@
     --clr-dark: rgb(0, 0, 0);
     --bg-color-landing: #060ab0;
     --bg-color: gray;
-    --border_color: #000000;
+    --border_color: #ffc131;
     --table-side-padding: 0.5em;
     --card-width: 5em;
     --card-height: 6em;
@@ -37,12 +37,23 @@ h1, h2, h3, p {
     box-sizing: border-box;
 }
 
-header {
+header input {
+    position: absolute;
+    right: 0;
+    z-index: 10;
+}
+
+header input:checked+div {
+    display: block;
     position: absolute;
     width: 100%;
-    bottom: 0;
+    top: 0;
     z-index: 1;
     background-color: var(--bg-color);
+}
+
+header div {
+    display: none;
 }
 
 h1 {
@@ -319,13 +330,12 @@ h1 {
 }
 
 .difficulty_img {
-    height: 7rem;
-    width: 7rem;
+    height: 7em;
     margin: 0 1em;
 }
 
 .btn_style_difficulty {
-    font: normal normal bold 3em/0em Poppins;
+    font: normal normal bold 3em/1em Poppins;
     color: #FFFFFF;
     background-color: transparent;
     border: none;
@@ -333,7 +343,6 @@ h1 {
 
 .difficulty_btn_container div {
     display: flex;
-    flex-direction: row;
 }
 
 /* game section */
@@ -388,13 +397,18 @@ h1 {
     opacity: 0.3;
 }
 
+.mistakes_x.mark {
+    opacity: 1;
+}
+
 .game_panle {
     position: relative;
     width: max-content;
     margin: 0 auto;
 }
 
-.card_container {
+#card_container {
+    margin: 1em 0;
     width: calc( ((var(--card-width) + var(--card-gap)) * 3));
     display: flex;
     justify-content: space-evenly;
@@ -488,31 +502,31 @@ h1 {
 
 }
 
-/* end screen */
-
-#end_screen {
-    background-image: url(../img/mobile-game_ranking.png);
-    background-repeat: no-repeat;
-    height: 100vh;
-    width: 100vw;
-    background-size: cover;
-    background-attachment: fixed;
+#board_bottom_btn_continer {
+    margin: 0 auto;
+    padding: 2em 0;
+    font-size: 0.5em;
+    display: flex;
+    justify-content: space-evenly;
 }
+
+/* end screen */
 
 #end_screen {
     background-image: url(../img/mobilegame_ranking2.png);
     background-repeat: no-repeat;
-    height: 100vh;
-    width: 100vw;
+    min-height: 100vh;
     background-size: cover;
     background-attachment: fixed;
+    background-position: center;
+    padding-top: 20vh;
 }
 
 #end_screen h2 {
     text-align: center;
-    padding: 1em;
+    padding-bottom: 1em;
     color: #FFC131;
-    font: normal normal bold 39px/161px Poppins;
+    font: normal normal bold 2em/1em Poppins;
 }
 
 /* table style */
@@ -547,11 +561,11 @@ h1 {
     padding: 0;
 }
 
-#score_table th:nth-of-type(4), #score_table td:nth-of-type(4), #score_table th:nth-of-type(5), #score_table td:nth-of-type(5) {
+#score_table th:nth-of-type(3), #score_table td:nth-of-type(3), #score_table th:nth-of-type(4), #score_table td:nth-of-type(4) {
     min-width: 5em;
 }
 
-#score_table th:nth-of-type(4), #score_table th:nth-of-type(5) {
+#score_table th:nth-of-type(3), #score_table th:nth-of-type(4) {
     cursor: pointer;
 }
 
@@ -572,7 +586,7 @@ h1 {
     height: 0;
     border-left: 0.325em solid transparent;
     border-right: 0.325em solid transparent;
-    border-top: 0.65em solid #555;
+    border-top: 0.65em solid var(--border_color);
 }
 
 .sort_by.up::after {
@@ -596,6 +610,7 @@ h1 {
     width: max-content;
     color: #FFFFFF;
     background-color: transparent;
+    font-size: 1.2em;
 }
 
 #share .share_link_btn {
@@ -634,21 +649,14 @@ h1 {
         padding-bottom: 1rem;
     }
     /* game board desktop*/
-    #board {
-        font-size: 2em;
-    }
     #difficulty_picking {
         background-image: url(../img/difficulty_pickingimg.jpeg);
-    }
-    #difficulty_picking {
         padding: 0 1em;
         padding-top: 20vh;
         text-align: start;
+        font-size: 1.5em;
     }
     /* game section */
-    .game_info {
-        flex-direction: row;
-    }
     .game_info_container {
         justify-content: space-around;
         gap: 3em;
@@ -661,16 +669,21 @@ h1 {
         top: 21px;
         height: 78px;
     }
-    .card_container {
+    #card_container {
         flex-direction: column;
         height: calc( (var(--card-height) + var(--card-gap)) * 3);
         width: 100%;
+        font-size: 1.5em;
     }
     #start_btn_container {
-        width: 30vw;
+        width: 25vw;
+    }
+    #board_bottom_btn_continer {
+        max-width: 50vw;
     }
     /* score board desktop */
     #end_screen {
         background-image: url(../img/game_ranking.png);
+        font-size: 1.5em;
     }
 }
