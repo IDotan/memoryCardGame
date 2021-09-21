@@ -1,17 +1,17 @@
 :root {
     --ff-main: sans-serif;
     --ff-start_btn: normal bold 40px/65px Poppins;
+    --fs-popup-input: 2rem;
     --fs-Headelines-h1: clamp(3.5rem, 5vw + 1rem, 12rem);
     --fs-Profle-h2: 2.5rem;
     --fs-paragraph: 1.5rem;
-    --clr-start-btn: rgb(116, 66, 66);
-    --clr-popup: rgba(141, 84, 233, 0.8);
-    --clr-popup-content: rgba(236, 236, 236, 0.952);
-    --clr-popup-log: rgb(114, 114, 114);
+    --clr-candy-bttn: #FFC131;
     --clr-light: #fff;
     --clr-dark: rgb(0, 0, 0);
     --bg-color: gray;
     --border_color: #ffc131;
+    --popup-backround-size-x: 50rem;
+    --popup-backround-size-y: 40rem;
     --table-side-padding: 0.5em;
     --card-width: 5em;
     --card-height: 6em;
@@ -203,7 +203,7 @@ h1 {
     width: max-content;
     padding: 1em 0;
 }
-
+/*popup settings*/
 .popup_container::before {
     position: fixed;
     content: '';
@@ -211,90 +211,71 @@ h1 {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--clr-popup);
+    background-image: url(/static/img/wallpapers/game_ranking.png);
+    background-position: center;
+    background-size: var(--popup-backround-size-x) var(--popup-backround-size-y);
     z-index: -1;
 }
 
 .popup_container {
-    display: none;
+    background-color: black;
     position: fixed;
-    top: 2%;
-    left: calc(50% - 178px);
-    border-radius: 5%;
-    max-width: 95%;
-    font-family: var(--ff-main);
-    color: var(--clr-dark);
-    z-index: 1;
+    top: 20%;
+    left: calc(50% - 155.5px);
+    display: none;
+    animation: popup infinite;
+}
+
+@keyframes popup {
+    0%{height: 0;}
+
+    100%{display: block;}
 }
 
 .popup_content {
     display: flex;
     flex-direction: column;
-    border-radius: 5%;
-    padding: 2rem;
-    background-color: var(--clr-light);
-}
-
-.popup_container h2 {
-    color: var(--clr-dark);
-    text-align: center;
-    font-size: 3rem;
+    justify-content: center;
+    align-items: center;
+    
+    font-family: var(--ff-main);
+    padding: 10%;
 }
 
 .close_popup {
     position: absolute;
-    right: 0.9rem;
-    top: 0.9rem;
+    right: 1rem;
+    top: -1rem;
     cursor: pointer;
-    font-size: 2rem;
+    font-size: 3.5rem;
+    color: var(--clr-candy-bttn);
 }
 
-.input_form_container {
-    display: flex;
-    flex-direction: column;
+.popup_content label {
+    font-size: var(--fs-popup-input);
+    color: white;
 }
 
-.input_form_container label {
-    font-size: 1.5rem;
-}
-
-.input_form_container input {
-    width: 100%;
-    height: 2rem;
+.popup_content input {
     margin-bottom: 5%;
-    font-size: 1.5rem;
+    width: 100%;
+    font-size: var(--fs-popup-input);
     outline: none;
     border: none;
-    border-bottom: 1px solid black;
+    color: var(--clr-candy-bttn);
+    background-color: initial;
+    border-bottom: 2px solid var(--clr-candy-bttn);
 }
 
-.input_form_container input:focus {
+.popup_content input:focus {
     border: none;
-    border-bottom: 2px solid black;
+    border-bottom: 3px solid var(--clr-candy-bttn);
     outline: none;
 }
 
-.Forgot_password {
-    width: fit-content;
-    cursor: pointer;
-    color: black;
+#popup_start {
+    margin-top: 2rem;
 }
-
-.btn_wrapper {
-    display: flex;
-    flex-direction: column;
-}
-
-.popup_btn {
-    font-size: 1.2rem;
-    height: 3rem;
-    margin-top: 4%;
-    cursor: pointer;
-    color: var(--clr-light);
-    background-color: var(--clr-popup-log);
-    border: 2px solid black;
-}
-
 /*game_window*/
 
 /* difficulty section */
@@ -602,6 +583,11 @@ h1 {
 }
 
 @media only screen and (min-width: 1080px) {
+
+    :root {
+    --popup-backround-size-x: 100%;
+    --popup-backround-size-y: 100%;
+    }
     /* landing screen desktop */
     #landing_screen {
         background-image: url(../img/wallpapers/landing_screen.svg);
