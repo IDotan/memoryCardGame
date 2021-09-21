@@ -364,6 +364,14 @@ h1 {
     font-size: 2em;
 }
 
+#game_timer {
+    display: inline-block;
+}
+
+#timer_status {
+    cursor: pointer;
+}
+
 .mistakes {
     letter-spacing: 0.2em;
 }
