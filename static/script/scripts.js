@@ -24,7 +24,7 @@ const game_data = {
     score: 0,
     cards_folder: "/static/img/card_images/",
     card_img_index: [],
-    card_imgs: ["avocado", "banana", "chili", "grapes", "onion", "pineapple", "raspberry", "tomato", "watermelon"]
+    card_imgs: ["avocado.svg", "banana.svg", "chili.svg", "blueberry.svg", "onion.svg", "pineapple.svg", "raspberry.svg", "tomato.svg", "watermelon.svg"]
 }
 
 /******************** Nav bar ********************/
@@ -356,8 +356,8 @@ function add_card_img(card_img, card_index) {
     let img = game_data.card_imgs[game_data.card_img_index[card_index]];
     let path = document.URL.split(".index")[0];
     path = path.slice(0, path.lastIndexOf("/"));
-    card_img.src = path + game_data.cards_folder + img + ".svg";
-    card_img.alt = img;
+    card_img.src = path + game_data.cards_folder + img;
+    card_img.alt = img.split(".")[0];
 };
 
 /**

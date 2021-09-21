@@ -1,14 +1,10 @@
 :root {
     --ff-main: sans-serif;
-    --ff-start_btn: normal bold 40px/65px Poppins;
     --fs-popup-input: 2rem;
-    --fs-Headelines-h1: clamp(3.5rem, 5vw + 1rem, 12rem);
     --fs-Profle-h2: 2.5rem;
     --fs-paragraph: 1.5rem;
     --clr-candy-bttn: #FFC131;
     --clr-light: #fff;
-    --clr-dark: rgb(0, 0, 0);
-    --bg-color: gray;
     --border_color: #ffc131;
     --popup-backround-size-x: 50rem;
     --popup-backround-size-y: 40rem;
@@ -46,7 +42,7 @@ header input:checked+div {
     width: 100%;
     top: 0;
     z-index: 1;
-    background-color: var(--bg-color);
+    background-color: gray;
 }
 
 header div {
@@ -203,7 +199,9 @@ h1 {
     width: max-content;
     padding: 1em 0;
 }
+
 /*popup settings*/
+
 .popup_container::before {
     position: fixed;
     content: '';
@@ -227,9 +225,12 @@ h1 {
 }
 
 @keyframes popup {
-    0%{height: 0;}
-
-    100%{display: block;}
+    0% {
+        height: 0;
+    }
+    100% {
+        display: block;
+    }
 }
 
 .popup_content {
@@ -237,7 +238,6 @@ h1 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
     font-family: var(--ff-main);
     padding: 10%;
 }
@@ -276,6 +276,7 @@ h1 {
 #popup_start {
     margin-top: 2rem;
 }
+
 /*game_window*/
 
 /* difficulty section */
@@ -583,10 +584,9 @@ h1 {
 }
 
 @media only screen and (min-width: 1080px) {
-
     :root {
-    --popup-backround-size-x: 100%;
-    --popup-backround-size-y: 100%;
+        --popup-backround-size-x: 100%;
+        --popup-backround-size-y: 100%;
     }
     /* landing screen desktop */
     #landing_screen {
