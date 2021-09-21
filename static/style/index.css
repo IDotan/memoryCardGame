@@ -45,7 +45,11 @@ header input:checked+div {
     background-color: gray;
 }
 
-body { 
+header div {
+    display: none;
+}
+
+body {
     position: relative;
 }
 
@@ -54,11 +58,10 @@ h1 {
 }
 
 #landing_screen {
-    position: fixed;
+    position: relative;
     background-image: url(../img/wallpapers/mobile-landing_screen.svg);
     background-repeat: no-repeat;
-    width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     background-size: cover;
     background-position: center;
     padding-top: 20%;
@@ -99,9 +102,11 @@ h1 {
     border: 0.1em solid white;
     transition: text-shadow 500ms, transform 500ms;
 }
+
 .btn_style:focus {
     outline: none;
 }
+
 .btn_style:hover {
     transform: scale(1.2);
 }
