@@ -145,9 +145,6 @@
             </section>
 
             <section id="game_board" class="hide">
-                <div id="user_data">
-
-                </div>
                 <nav class="game_navbar">
                     <img class="nav_logo" src="static/img/logos/small-logo-mobile.png" alt="nav_logo">
 
@@ -167,7 +164,13 @@
                     </div>
                 </nav>
 
+                <div id="user_data">
+                    <span>Player: <span id="player_name">name</span></span>
+                    <span>Score: <span id="player_score">0</span></span>
+                </div>
+
                 <section class="game_panle">
+
                     <template id="card_template">
                         <div class="card">
                             <img src="static/img/logos/logo-black.png" alt="card back image" class="card_back">

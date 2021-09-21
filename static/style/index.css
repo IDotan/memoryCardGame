@@ -384,6 +384,13 @@ h1 {
     opacity: 1;
 }
 
+#user_data {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 0.5em;
+    color: var(--clr-white);
+}
+
 .game_panle {
     position: relative;
     width: max-content;
@@ -628,6 +635,9 @@ h1 {
     .icn_moves {
         top: 21px;
         height: 78px;
+    }
+    #user_data {
+        font-size: 1.5em;
     }
     #card_container {
         flex-direction: column;

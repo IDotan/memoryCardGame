@@ -352,6 +352,7 @@ function start_game(cards) {
     document.querySelectorAll('.card').forEach((div, index) => {
         div.classList.add(index);
     });
+    document.getElementById('player_name').innerHTML = user_data.name;
     board_page_section_switch();
 };
 
@@ -395,6 +396,7 @@ function reset_game() {
     document.getElementById('time').innerHTML = "00:00";
     let x_marks = document.querySelectorAll('.mistakes_x');
     x_marks.forEach((mark) => { mark.classList.remove('mark') });
+    document.getElementById('player_score').innerHTML = 0;
 };
 
 /******************** End screen ********************/
