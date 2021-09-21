@@ -45,8 +45,8 @@ header input:checked+div {
     background-color: gray;
 }
 
-header div {
-    display: none;
+body { 
+    position: relative;
 }
 
 h1 {
@@ -54,10 +54,11 @@ h1 {
 }
 
 #landing_screen {
-    position: relative;
+    position: fixed;
     background-image: url(../img/wallpapers/mobile-landing_screen.svg);
     background-repeat: no-repeat;
-    min-height: 100vh;
+    width: 100vw;
+    height: 100vh;
     background-size: cover;
     background-position: center;
     padding-top: 20%;
@@ -98,7 +99,9 @@ h1 {
     border: 0.1em solid white;
     transition: text-shadow 500ms, transform 500ms;
 }
-
+.btn_style:focus {
+    outline: none;
+}
 .btn_style:hover {
     transform: scale(1.2);
 }
@@ -205,47 +208,40 @@ h1 {
 .popup_container::before {
     position: fixed;
     content: '';
-    top: 0;
+    top: 0%;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     background-image: url(/static/img/wallpapers/game_ranking.png);
+    background-repeat: no-repeat;
     background-position: center;
-    background-size: var(--popup-backround-size-x) var(--popup-backround-size-y);
+    background-size: cover;
     z-index: -1;
 }
 
 .popup_container {
-    background-color: black;
     position: fixed;
-    top: 20%;
-    left: calc(50% - 155.5px);
-    display: none;
-    animation: popup infinite;
-}
-
-@keyframes popup {
-    0% {
-        height: 0;
-    }
-    100% {
-        display: block;
-    }
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
 }
 
 .popup_content {
+    position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    margin: max(200px, 20%) auto;
+    font-size: min400px, 70%;
+    width: min(400px, 70%);
     font-family: var(--ff-main);
-    padding: 10%;
 }
 
 .close_popup {
     position: absolute;
-    right: 1rem;
-    top: -1rem;
+    top: -20%;
+    right: -10%;
     cursor: pointer;
     font-size: 3.5rem;
     color: var(--clr-candy-bttn);
@@ -260,7 +256,6 @@ h1 {
     margin-bottom: 5%;
     width: 100%;
     font-size: var(--fs-popup-input);
-    outline: none;
     border: none;
     color: var(--clr-candy-bttn);
     background-color: initial;
@@ -584,10 +579,6 @@ h1 {
 }
 
 @media only screen and (min-width: 1080px) {
-    :root {
-        --popup-backround-size-x: 100%;
-        --popup-backround-size-y: 100%;
-    }
     /* landing screen desktop */
     #landing_screen {
         background-image: url(../img/wallpapers/landing_screen.svg);
