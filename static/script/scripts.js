@@ -210,7 +210,7 @@ function closePopup() {
 
 function showPopup() {
     let popup = document.querySelector(".popup_container");
-    popup.classList.add( 'popup_animation' )
+    popup.classList.add('popup_animation')
     popup.style.display = 'block';
 }
 
@@ -236,7 +236,13 @@ function logIn() {
 
 /******************** Card Game screen ********************/
 
-function timer_action() {
+/**
+ * Start and pause the game timer.
+ * 
+ * @param {Event} event event object, null when called from other function.
+ * @param {HTMLElement} timer_div timer btn div, null when called for event listener.
+ */
+function timer_action(event, timer_div) {
     /**
      * Incode html entitie to be able to compare.
      * 
@@ -251,9 +257,12 @@ function timer_action() {
         return incode;
     };
 
-    let btn = document.getElementById('timer_status');
+    let btn = timer_div;
+    if (event) {
+        btn = this;
+    }
     if (btn.innerHTML == incode_entitie("&#x23F5;")) {
-        // unpause
+        // start and unpause
         btn.innerHTML = "&#x23F8;";
     } else {
         // pasue
@@ -314,6 +323,11 @@ function start_card_reveal() {
             };
         };
     };
+    setTimeout(() => {
+        let timer_btn = document.getElementById('timer_status');
+        timer_action(null, timer_btn);
+        timer_btn.addEventListener('click', timer_action);
+    }, ((game_data.cards_count + 1) * game_data.start_flip));
 };
 
 /**
