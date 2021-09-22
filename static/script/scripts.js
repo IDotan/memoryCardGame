@@ -210,6 +210,7 @@ function closePopup() {
 
 function showPopup() {
     let popup = document.querySelector(".popup_container");
+    popup.classList.add( 'popup_animation' )
     popup.style.display = 'block';
 }
 
