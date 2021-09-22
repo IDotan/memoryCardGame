@@ -220,19 +220,20 @@ h1 {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-image: url(./static/img/wallpapers/Popup.jfif);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
 }
 
 .popup_container {
     display: none;
     position: fixed;
-    top: -100%;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+    top: 0;
+    left: 50%;
+    transform: translatex( -50%);
+    height: 1710px;
+    width: 1280px;
+    background-image: url(../img/popup/login.png);
+    background-position: center;
+    background-size:cover;
+    background-repeat: no-repeat;
 }
 
 .popup_animation {
@@ -253,7 +254,7 @@ h1 {
     flex-direction: column;
     align-items: center;
     margin: max(200px, 20%) auto;
-    font-size: min400px, 70%;
+    font-size: min(400px, 70%);
     width: min(400px, 70%);
     font-family: var(--ff-main);
 }
