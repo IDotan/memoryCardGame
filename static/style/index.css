@@ -225,8 +225,12 @@ h1 {
 }
 
 @keyframes popup_backround_animation {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .popup_container {
@@ -235,7 +239,7 @@ h1 {
     top: 0;
     left: 50%;
     transform: translatex(-50%);
-    width: fit-content;
+    width: max-content;
     height: 100%;
     background-image: url(../img/popup/login.png);
     background-size: contain;
@@ -249,11 +253,19 @@ h1 {
 }
 
 @keyframes start_popup {
-    0% {display: block;
-        top: -100%; }
-    50% { top: 0; }
-    70% { top: -4%; }
-    100% { top: 0; }
+    0% {
+        display: block;
+        top: -100%;
+    }
+    50% {
+        top: 0;
+    }
+    70% {
+        top: -4%;
+    }
+    100% {
+        top: 0;
+    }
 }
 
 .popup_content {

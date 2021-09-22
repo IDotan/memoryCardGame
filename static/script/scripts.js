@@ -208,7 +208,7 @@ window.addEventListener('keydown', function (key) {
 
 function closePopup() {
     let popup = document.querySelector(".popup_container");
-    generatePopupBackround (false);
+    generatePopupBackround(false);
     popup.style.display = 'none';
 }
 
@@ -216,12 +216,12 @@ function showPopup() {
     let popup = document.querySelector(".popup_container");
     popup.classList.add('popup_animation')
     popup.style.display = 'block';
-    generatePopupBackround (true);
+    generatePopupBackround(true);
 }
 
-function generatePopupBackround (state) {
+function generatePopupBackround(state) {
     let backroundAnimation = document.createElement('div');
-    if( state ){
+    if (state) {
         backroundAnimation.id = 'popup_backround_animation';
         landingScreen.append(backroundAnimation);
     } else
