@@ -244,6 +244,7 @@ function logIn() {
         console.log(user_data);
         user_data.name = usernameInput;
         user_data.mail = userMailINput;
+        closePopup()
         section_switch(1);
     }
 }

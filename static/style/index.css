@@ -235,7 +235,7 @@ h1 {
     top: 0;
     left: 50%;
     transform: translatex(-50%);
-    width: min(729px, 80%);
+    width: fit-content;
     height: 100%;
     background-image: url(../img/popup/login.png);
     background-size: contain;
@@ -249,36 +249,29 @@ h1 {
 }
 
 @keyframes start_popup {
-    0% {
-        display: block;
-        top: -100%;
-    }
-    50% {
-        top: 0;
-    }
-    70% {
-        top: -4%;
-    }
-    100% {
-        top: 0;
-    }
+    0% {display: block;
+        top: -100%; }
+    50% { top: 0; }
+    70% { top: -4%; }
+    100% { top: 0; }
 }
 
 .popup_content {
     position: relative;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    margin: min(500px, 43%) auto;
-    font-size: min(400px, 70%);
-    width: min(400px, 70%);
+    margin: auto 0;
+    padding: 10%;
+    margin-top: min(700px, 30%);
     font-family: var(--ff-main);
 }
 
 .close_popup {
     position: absolute;
-    top: -20%;
-    right: -10%;
+    top: 0;
+    right: 10%;
     cursor: pointer;
     font-size: 3.5rem;
     color: var(--clr-yellow);
