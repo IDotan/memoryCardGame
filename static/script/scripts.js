@@ -46,7 +46,7 @@ function section_switch(show) {
 };
 
 /******************** Landing screen ********************/
-
+let landingScreen = document.getElementById('landing_screen');
 /**
  * Switch landing page sections, and update the carousel when needed.
  */
@@ -194,7 +194,9 @@ function about_carousel_random() {
 };
 
 /******* popup *******/
+
 let openPopup = document.getElementById('start_btn');
+
 openPopup.addEventListener('click', showPopup)
 let closePopupBttn = document.getElementsByClassName('close_popup')[0];
 closePopupBttn.addEventListener('click', closePopup);
@@ -203,8 +205,10 @@ window.addEventListener('keydown', function (key) {
         closePopup();
     }
 })
+
 function closePopup() {
     let popup = document.querySelector(".popup_container");
+    generatePopupBackround (false);
     popup.style.display = 'none';
 }
 
@@ -212,10 +216,20 @@ function showPopup() {
     let popup = document.querySelector(".popup_container");
     popup.classList.add('popup_animation')
     popup.style.display = 'block';
+    generatePopupBackround (true);
 }
 
-let popupStart = document.getElementById('popup_start');
-popupStart.addEventListener('click', logIn)
+function generatePopupBackround (state) {
+    let backroundAnimation = document.createElement('div');
+    if( state ){
+        backroundAnimation.id = 'popup_backround_animation';
+        landingScreen.append(backroundAnimation);
+    } else
+        landingScreen.removeChild(document.getElementById('popup_backround_animation'))
+}
+
+let loginBtn = document.getElementById('login_btn')
+loginBtn.addEventListener('click', logIn)
 window.addEventListener('keydown', function (key) {
     if (key.keyCode == '13') {
         logIn();

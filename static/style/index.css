@@ -6,10 +6,9 @@
     --clr-white: #fff;
     --clr-black: #000000;
     --clr-yellow: #ffc131;
+    --clr-popup-backround: rgba(0, 0, 0, 0.7);
     --carousel-inactive-bg: rgba(0, 0, 0, 0.85);
     --carousel-active-bg: rgba(0, 0, 255, 0.85);
-    --popup-backround-size-x: 50rem;
-    --popup-backround-size-y: 40rem;
     --game-section-nav-clr: rgba(0, 0, 0, 0.5);
     --game-section-font-clr: coral;
     --card-width: 5em;
@@ -213,13 +212,21 @@ h1 {
 
 /*popup settings*/
 
-.popup_container::before {
-    position: absolute;
+#popup_backround_animation {
     content: '';
-    top: 0%;
+    position: fixed;
+    top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
+    background-color: var(--clr-popup-backround);
+    z-index: 1;
+    animation: popup_backround_animation 300ms;
+}
+
+@keyframes popup_backround_animation {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
 
 .popup_container {
@@ -227,13 +234,13 @@ h1 {
     position: fixed;
     top: 0;
     left: 50%;
-    transform: translatex( -50%);
-    height: 1710px;
-    width: 1280px;
+    transform: translatex(-50%);
+    width: min(729px, 80%);
+    height: 100%;
     background-image: url(../img/popup/login.png);
-    background-position: center;
-    background-size:cover;
+    background-size: contain;
     background-repeat: no-repeat;
+    z-index: 2;
 }
 
 .popup_animation {
@@ -262,7 +269,7 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: max(200px, 20%) auto;
+    margin: min(500px, 43%) auto;
     font-size: min(400px, 70%);
     width: min(400px, 70%);
     font-family: var(--ff-main);
@@ -298,7 +305,7 @@ h1 {
     outline: none;
 }
 
-#popup_start {
+#login_btn {
     margin-top: 2rem;
 }
 
