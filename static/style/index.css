@@ -3,17 +3,21 @@
     --fs-popup-input: 2rem;
     --fs-Profle-h2: 2.5rem;
     --fs-paragraph: 1.5rem;
-    --clr-candy-bttn: #FFC131;
-    --clr-light: #fff;
-    --border_color: #ffc131;
+    --clr-white: #fff;
+    --clr-black: #000000;
+    --clr-yellow: #ffc131;
+    --carousel-inactive-bg: rgba(0, 0, 0, 0.85);
+    --carousel-active-bg: rgba(0, 0, 255, 0.85);
     --popup-backround-size-x: 50rem;
     --popup-backround-size-y: 40rem;
-    --table-side-padding: 0.5em;
+    --game-section-nav-clr: rgba(0, 0, 0, 0.5);
+    --game-section-font-clr: coral;
     --card-width: 5em;
     --card-height: 6em;
     --card-gap: 0.5em;
     --card-back-bg: #009EEF;
     --card-img-bg: #28b528;
+    --table-side-padding: 0.5em;
 }
 
 .hide {
@@ -21,7 +25,7 @@
 }
 
 h1, h2, h3, p {
-    color: var(--clr-light);
+    color: var(--clr-white);
 }
 
 * {
@@ -45,7 +49,11 @@ header input:checked+div {
     background-color: gray;
 }
 
-body { 
+header div {
+    display: none;
+}
+
+body {
     position: relative;
 }
 
@@ -54,11 +62,10 @@ h1 {
 }
 
 #landing_screen {
-    position: fixed;
+    position: relative;
     background-image: url(../img/wallpapers/mobile-landing_screen.svg);
     background-repeat: no-repeat;
-    width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     background-size: cover;
     background-position: center;
     padding-top: 20%;
@@ -91,24 +98,26 @@ h1 {
 .btn_style {
     width: 8em;
     cursor: pointer;
-    background-color: #FFC131;
-    color: #000000;
+    background-color: var(--clr-yellow);
+    color: var(--clr-black);
     font-size: 2em;
     padding: 0.2em 0;
     border-radius: 1.5em;
-    border: 0.1em solid white;
+    border: 0.1em solid var(--clr-white);
     transition: text-shadow 500ms, transform 500ms;
 }
+
 .btn_style:focus {
     outline: none;
 }
+
 .btn_style:hover {
     transform: scale(1.2);
 }
 
 .btn_transparent {
-    color: #FFFFFF;
-    border-color: #FFC131;
+    color: var(--clr-white);
+    border-color: var(--clr-yellow);
     background-color: transparent;
 }
 
@@ -120,7 +129,6 @@ h1 {
 
 #developers_carousel_container {
     position: relative;
-    width: 100%;
     padding: 2em 0;
     margin: 0 auto;
 }
@@ -131,7 +139,7 @@ h1 {
     left: 0;
     transform: translateY(-50%);
     padding: 10% 0;
-    color: var(--clr-light);
+    color: var(--clr-white);
     font-size: 3em;
     cursor: pointer;
     z-index: 1;
@@ -175,7 +183,7 @@ h1 {
     padding: 1em;
     flex-direction: column;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.85);
+    background-color: var(--carousel-inactive-bg);
     border: 0.15em solid #808080;
     border-radius: 2.5rem;
     opacity: 0.5;
@@ -183,7 +191,7 @@ h1 {
 }
 
 .about.center {
-    background-color: rgba(0, 0, 255, 0.85);
+    background-color: var(--carousel-active-bg);
     opacity: 1;
 }
 
@@ -212,11 +220,10 @@ h1 {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-image: url(/static/img/wallpapers/game_ranking.png);
+    background-image: url(../img/wallpapers/game_ranking.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    z-index: -1;
 }
 
 .popup_container {
@@ -255,12 +262,12 @@ h1 {
     right: -10%;
     cursor: pointer;
     font-size: 3.5rem;
-    color: var(--clr-candy-bttn);
+    color: var(--clr-yellow);
 }
 
 .popup_content label {
     font-size: var(--fs-popup-input);
-    color: white;
+    color: var(--clr-white);
 }
 
 .popup_content input {
@@ -268,14 +275,14 @@ h1 {
     width: 100%;
     font-size: var(--fs-popup-input);
     border: none;
-    color: var(--clr-candy-bttn);
+    color: var(--clr-yellow);
     background-color: initial;
-    border-bottom: 2px solid var(--clr-candy-bttn);
+    border-bottom: 2px solid var(--clr-yellow);
 }
 
 .popup_content input:focus {
     border: none;
-    border-bottom: 3px solid var(--clr-candy-bttn);
+    border-bottom: 3px solid var(--clr-yellow);
     outline: none;
 }
 
@@ -315,7 +322,7 @@ h1 {
 
 .btn_style_difficulty {
     font: normal normal bold 3em/1em Poppins;
-    color: #FFFFFF;
+    color: var(--clr-white);
     background-color: transparent;
     border: none;
 }
@@ -337,7 +344,7 @@ h1 {
 .game_navbar {
     display: flex;
     justify-content: space-between;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: var(--game-section-nav-clr);
 }
 
 .nav_logo {
@@ -351,7 +358,7 @@ h1 {
     justify-content: space-between;
     align-items: center;
     gap: 1em;
-    color: coral;
+    color: var(--game-section-font-clr);
     text-align: center;
 }
 
@@ -368,6 +375,14 @@ h1 {
     font-size: 2em;
 }
 
+#game_timer {
+    display: inline-block;
+}
+
+#timer_status {
+    cursor: pointer;
+}
+
 .mistakes {
     letter-spacing: 0.2em;
 }
@@ -378,6 +393,13 @@ h1 {
 
 .mistakes_x.mark {
     opacity: 1;
+}
+
+#user_data {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 0.5em;
+    color: var(--clr-white);
 }
 
 .game_panle {
@@ -404,7 +426,7 @@ h1 {
     transform-style: preserve-3d;
     transition: transform 500ms, background-color 500ms;
     background-color: var(--card-back-bg);
-    border: 0.25em solid white;
+    border: 0.25em solid var(--clr-white);
     border-radius: 5%;
 }
 
@@ -458,22 +480,6 @@ h1 {
     letter-spacing: 0.1em;
 }
 
-.score_btn {
-    color: #FFFFFF;
-    border-color: #FFC131;
-    background-color: transparent;
-    border-radius: 46px;
-    font-size: 2em;
-}
-
-.restart_btn {
-    color: #FFFFFF;
-    border-color: #FFC131;
-    background-color: transparent;
-    border-radius: 46px;
-    font-size: 2em;
-}
-
 #board_bottom_btn_continer {
     margin: 0 auto;
     padding: 2em 0;
@@ -497,7 +503,7 @@ h1 {
 #end_screen h2 {
     text-align: center;
     padding-bottom: 1em;
-    color: #FFC131;
+    color: var(--clr-yellow);
     font: normal normal bold 2em/1em Poppins;
 }
 
@@ -507,7 +513,7 @@ h1 {
     margin: 0 auto;
     max-width: 85vw;
     overflow-x: auto;
-    color: #FFFFFF;
+    color: var(--clr-white);
 }
 
 #score_table {
@@ -542,11 +548,11 @@ h1 {
 }
 
 #score_table tr {
-    border-bottom: 0.1em dashed var(--border_color);
+    border-bottom: 0.1em dashed var(--clr-yellow);
 }
 
 #score_table tr:nth-of-type(1) {
-    border-bottom: 0.2em solid var(--border_color);
+    border-bottom: 0.2em solid var(--clr-yellow);
 }
 
 .sort_by.show::after {
@@ -558,7 +564,7 @@ h1 {
     height: 0;
     border-left: 0.325em solid transparent;
     border-right: 0.325em solid transparent;
-    border-top: 0.65em solid var(--border_color);
+    border-top: 0.65em solid var(--clr-yellow);
 }
 
 .sort_by.up::after {
@@ -580,7 +586,7 @@ h1 {
 #share {
     margin: 0.5em auto;
     width: max-content;
-    color: #FFFFFF;
+    color: var(--clr-white);
     background-color: transparent;
     font-size: 1.2em;
 }
@@ -640,6 +646,9 @@ h1 {
     .icn_moves {
         top: 21px;
         height: 78px;
+    }
+    #user_data {
+        font-size: 1.5em;
     }
     #card_container {
         flex-direction: column;

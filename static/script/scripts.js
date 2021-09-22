@@ -236,6 +236,31 @@ function logIn() {
 
 /******************** Card Game screen ********************/
 
+function timer_action() {
+    /**
+     * Incode html entitie to be able to compare.
+     * 
+     * @param {String} entitie html entitie string.
+     * @returns 
+     */
+    function incode_entitie(entitie) {
+        let temp = document.createElement('span');
+        temp.innerHTML = entitie;
+        let incode = temp.innerHTML;
+        temp.remove();
+        return incode;
+    };
+
+    let btn = document.getElementById('timer_status');
+    if (btn.innerHTML == incode_entitie("&#x23F5;")) {
+        // unpause
+        btn.innerHTML = "&#x23F8;";
+    } else {
+        // pasue
+        btn.innerHTML = "&#x23F5;";
+    }
+}
+
 /**
  * Reveal cards and flip back one by one, add click event at the end.
  */
@@ -328,6 +353,7 @@ function start_game(cards) {
     document.querySelectorAll('.card').forEach((div, index) => {
         div.classList.add(index);
     });
+    document.getElementById('player_name').innerHTML = user_data.name;
     board_page_section_switch();
 };
 
@@ -371,6 +397,7 @@ function reset_game() {
     document.getElementById('time').innerHTML = "00:00";
     let x_marks = document.querySelectorAll('.mistakes_x');
     x_marks.forEach((mark) => { mark.classList.remove('mark') });
+    document.getElementById('player_score').innerHTML = 0;
 };
 
 /******************** End screen ********************/

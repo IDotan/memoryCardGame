@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="static/style/index.css">
     <title>Document</title>
-    <link rel="stylesheet" href="./static/style/index.css">
+    <link rel="stylesheet" href="/static/style/index.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
         integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous" />
 
@@ -37,9 +37,9 @@
                     corporis maxime placeat nulla voluptatem distinctio.
                 </p>
                 <div class="about_btn_container">
-                    <button id="start_btn" class="btn_style">Start</button>
-                    <button class="btn_style btn_transparent" onclick="taggle_landingscreed_sections()">View
-                        players</button>
+                    <button id="start_btn" class="btn_style">Play</button>
+                    <button class="btn_style btn_transparent"
+                        onclick="taggle_landingscreed_sections()">Developers</button>
                 </div>
                 <img class="character_img" src="static/img/character.png" alt="character">
             </section>
@@ -119,7 +119,7 @@
                     <input type="text" class="input_form" id="email_form">
                     <label for="mail">E-Mail</label>
                     <input type="mail" class="input_form" id="mail_form">
-                    <button type="submit" id="popup_start" class="btn_style">Start</button>
+                    <button type="submit" id="popup_start" class="btn_style">Continue</button>
                 </div>
             </div>
         </section>
@@ -145,16 +145,16 @@
             </section>
 
             <section id="game_board" class="hide">
-                <div id="user_data">
-
-                </div>
                 <nav class="game_navbar">
                     <img class="nav_logo" src="static/img/logos/small-logo-mobile.png" alt="nav_logo">
 
                     <div class="game_info_container">
                         <div class="game_info">
                             <img class="nav_icon" src="static/img/icons/time.svg">
-                            <span id="time">00:00</span>
+                            <div id="game_timer">
+                                <span id="time">00:00</span>
+                                <span id="timer_status" onclick="timer_action()">&#x23F5;</span>
+                            </div>
                         </div>
                         <div class="game_info">
                             <img class="nav_icon" src="static/img/icons/moves.svg">
@@ -164,7 +164,13 @@
                     </div>
                 </nav>
 
+                <div id="user_data">
+                    <span>Player: <span id="player_name">name</span></span>
+                    <span>Score: <span id="player_score">0</span></span>
+                </div>
+
                 <section class="game_panle">
+
                     <template id="card_template">
                         <div class="card">
                             <img src="static/img/logos/logo-black.png" alt="card back image" class="card_back">
