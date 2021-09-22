@@ -220,7 +220,7 @@ h1 {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-image: url(../img/wallpapers/game_ranking.png);
+    background-image: url(./static/img/wallpapers/Popup.jfif);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -236,12 +236,14 @@ h1 {
 }
 
 .popup_animation {
-    animation: start_popup 500ms;
+    animation: start_popup 500ms ease-in-out;
     animation-fill-mode: forwards;
 }
 
 @keyframes start_popup {
     0% { display: block; top: -100%; }
+    50% { top: 0; }
+    70% { top: -4%; }
     100% { top: 0; }
 }
 
