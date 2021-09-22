@@ -214,7 +214,7 @@ h1 {
 /*popup settings*/
 
 .popup_container::before {
-    position: fixed;
+    position: absolute;
     content: '';
     top: 0%;
     left: 0;
@@ -227,11 +227,22 @@ h1 {
 }
 
 .popup_container {
+    display: none;
     position: fixed;
-    top: 0;
+    top: -100%;
     left: 0;
     width: 100vw;
     height: 100vh;
+}
+
+.popup_animation {
+    animation: start_popup 500ms;
+    animation-fill-mode: forwards;
+}
+
+@keyframes start_popup {
+    0% { display: block; top: -100%; }
+    100% { top: 0; }
 }
 
 .popup_content {
