@@ -242,10 +242,19 @@ h1 {
 }
 
 @keyframes start_popup {
-    0% { display: block; top: -100%; }
-    50% { top: 0; }
-    70% { top: -4%; }
-    100% { top: 0; }
+    0% {
+        display: block;
+        top: -100%;
+    }
+    50% {
+        top: 0;
+    }
+    70% {
+        top: -4%;
+    }
+    100% {
+        top: 0;
+    }
 }
 
 .popup_content {
