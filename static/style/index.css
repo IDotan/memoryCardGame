@@ -285,7 +285,7 @@ h1 {
     top: 0;
     right: 10%;
     cursor: pointer;
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     color: var(--clr-yellow);
 }
 
@@ -459,8 +459,12 @@ h1 {
     background-color: var(--card-img-bg);
 }
 
-.card:hover:not(.flip) {
+.card:hover {
     transform: scale(1.1);
+}
+
+.card.flip:hover {
+    transform: rotateY(180deg) scale(1.1);
 }
 
 .card_back, .card_img {
