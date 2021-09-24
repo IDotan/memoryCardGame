@@ -15,7 +15,7 @@
     --card-height: 6em;
     --card-gap: 0.5em;
     --card-back-bg: #009EEF;
-    --card-img-bg: #28b528;
+    --card-img-bg: #A4D72E;
     --table-side-padding: 0.5em;
 }
 
@@ -448,7 +448,7 @@ h1 {
     height: var(--card-height);
     position: relative;
     transform-style: preserve-3d;
-    transition: transform 500ms, background-color 500ms;
+    transition: transform 600ms, background-color 600ms;
     background-color: var(--card-back-bg);
     border: 0.25em solid var(--clr-white);
     border-radius: 5%;
