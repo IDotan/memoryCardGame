@@ -67,6 +67,13 @@ h1 {
     min-height: 100vh;
     background-size: cover;
     background-position: center;
+}
+
+.dev_img {
+    padding-top: 20%;
+}
+
+.about_project {
     padding-top: 20%;
 }
 
@@ -448,7 +455,7 @@ h1 {
     height: var(--card-height);
     position: relative;
     transform-style: preserve-3d;
-    transition: transform 600ms, background-color 600ms;
+    transition: transform 500ms, background-color 500ms;
     background-color: var(--card-back-bg);
     border: 0.25em solid var(--clr-white);
     border-radius: 5%;
@@ -644,6 +651,10 @@ h1 {
         height: 60vh;
         left: 5%;
         bottom: 0;
+    }
+    .dev_img {
+        padding-top: 0;
+        background-image: url(../img/wallpapers/dev.png) !important;
     }
     #developers_carousel_container {
         width: 40%;
