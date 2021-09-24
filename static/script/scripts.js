@@ -208,7 +208,7 @@ window.addEventListener('keydown', function (key) {
 
 function closePopup() {
     let popup = document.querySelector(".popup_container");
-    generatePopupBackround (false);
+    generatePopupBackround(false);
     popup.style.display = 'none';
 }
 
@@ -216,11 +216,11 @@ function showPopup() {
     let popup = document.querySelector(".popup_container");
     popup.classList.add('popup_animation')
     popup.style.display = 'block';
-    generatePopupBackround (true);
+    generatePopupBackround(true);
 }
 
-function generatePopupBackround (state) {
-    if( state ){
+function generatePopupBackround(state) {
+    if (state) {
         let backroundAnimation = document.createElement('div');
         backroundAnimation.id = 'popup_backround_animation';
         landingScreen.append(backroundAnimation);
@@ -343,10 +343,17 @@ function start_card_reveal() {
         timer_btn.addEventListener('click', timer_action);
     }, ((game_data.cards_count + 1) * game_data.start_flip));
 };
+//Comparison of two images /
+function comparisonFlipCard() {
+    let scoreNumber;
+   // let allCards = document.querySelectorAll(".card");/
+    for (let i = 0; i < 1; i++);
+    console.log(game_data.card_img_index)
 
-/**
- * Switch between the 2 board section pages.
- */
+}
+
+
+// Switch between the 2 board section pages/
 function board_page_section_switch() {
     document.getElementById('difficulty_picking').classList.toggle('hide');
     document.getElementById('game_board').classList.toggle('hide');
@@ -398,6 +405,7 @@ function card_flip(event, card = null) {
     let img_div = card.children[1];
     img_div.src == document.URL ? add_card_img(img_div, parseInt(card.classList[1])) : setTimeout(() => { img_div.src = ""; img_div.alt = ""; }, 100);
     card.classList.toggle('flip');
+    comparisonFlipCard();
 };
 
 
