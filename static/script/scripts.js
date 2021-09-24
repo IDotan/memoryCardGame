@@ -47,6 +47,7 @@ function section_switch(show) {
 
 /******************** Landing screen ********************/
 let landingScreen = document.getElementById('landing_screen');
+
 /**
  * Switch landing page sections, and update the carousel when needed.
  */
@@ -54,6 +55,7 @@ function taggle_landingscreed_sections() {
     document.querySelectorAll('.landing_screen_sections').forEach((section) => {
         section.classList.toggle('hide');
     });
+    document.getElementById('landing_screen').classList.toggle('dev_img');
     if (!document.getElementById('developers_carousel_container').classList.contains('hide')) {
         developers_data_set();
         developers_about_carousel();
@@ -208,7 +210,7 @@ window.addEventListener('keydown', function (key) {
 
 function closePopup() {
     let popup = document.querySelector(".popup_container");
-    generatePopupBackround (false);
+    generatePopupBackround(false);
     popup.style.display = 'none';
 }
 
@@ -216,11 +218,11 @@ function showPopup() {
     let popup = document.querySelector(".popup_container");
     popup.classList.add('popup_animation')
     popup.style.display = 'block';
-    generatePopupBackround (true);
+    generatePopupBackround(true);
 }
 
-function generatePopupBackround (state) {
-    if( state ){
+function generatePopupBackround(state) {
+    if (state) {
         let backroundAnimation = document.createElement('div');
         backroundAnimation.id = 'popup_backround_animation';
         landingScreen.append(backroundAnimation);

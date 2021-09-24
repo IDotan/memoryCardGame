@@ -67,6 +67,13 @@ h1 {
     min-height: 100vh;
     background-size: cover;
     background-position: center;
+}
+
+.dev_img {
+    padding-top: 20%;
+}
+
+.about_project {
     padding-top: 20%;
 }
 
@@ -644,6 +651,10 @@ h1 {
         height: 60vh;
         left: 5%;
         bottom: 0;
+    }
+    .dev_img {
+        padding-top: 0;
+        background-image: url(../img/wallpapers/dev.png) !important;
     }
     #developers_carousel_container {
         width: 40%;
