@@ -18,7 +18,7 @@ const game_data = {
     cards_count: 0,
     min_width: 1024,
     cards_in_column: 3,
-    start_flip: 1000,
+    start_flip: 600,
     start_time: 0,
     stored_time: 0,
     score: 0,
@@ -388,7 +388,7 @@ function start_game(cards) {
 };
 
 /**
- * Flip card to it's other side.
+ * Flip card to its other side.
  * 
  * @param {Object} event click event object. null when calling from other function
  * @param {HTMLElement} card card div when not called from event listener.
@@ -398,7 +398,7 @@ function card_flip(event, card = null) {
         card = this;
     };
     let img_div = card.children[1];
-    img_div.src == document.URL ? add_card_img(img_div, parseInt(card.classList[1])) : setTimeout(() => { img_div.src = ""; img_div.alt = ""; }, 500);
+    img_div.src == document.URL ? add_card_img(img_div, parseInt(card.classList[1])) : setTimeout(() => { img_div.src = ""; img_div.alt = ""; }, 100);
     card.classList.toggle('flip');
 };
 
