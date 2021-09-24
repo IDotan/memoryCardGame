@@ -46,7 +46,6 @@ function section_switch(show) {
 };
 
 /******************** Landing screen ********************/
-let landingScreen = document.getElementById('landing_screen');
 
 /**
  * Switch landing page sections, and update the carousel when needed.
@@ -190,6 +189,7 @@ function about_carousel_random() {
     document.querySelector('.about.center').classList.remove('center');
     let tab = Math.floor((Math.random() * developers_data.card_count) + 1);
     rotate_carousel(tab);
+    setTimeout(developers_data.clicks = -1, 500);
     // calculat the new center tab
     tab = (developers_data.card_count - 1) - (tab - 1);
     document.querySelectorAll('.about.tab')[tab].classList.add('center');
@@ -197,55 +197,62 @@ function about_carousel_random() {
 
 /******* popup *******/
 
-let openPopup = document.getElementById('start_btn');
+function popup_add_listeners() {
+    let openPopup = document.getElementById('start_btn');
+    openPopup.addEventListener('click', showPopup)
+    let closePopupBttn = document.getElementsByClassName('close_popup')[0];
+    closePopupBttn.addEventListener('click', closePopup);
+    let loginBtn = document.getElementById('login_btn')
+    loginBtn.addEventListener('click', logIn)
+}
 
-openPopup.addEventListener('click', showPopup)
-let closePopupBttn = document.getElementsByClassName('close_popup')[0];
-closePopupBttn.addEventListener('click', closePopup);
-window.addEventListener('keydown', function (key) {
-    if (key.keyCode == '27') {
+function popup_enter(event) {
+    if (event.keyCode == 13) {
+        logIn();
+    };
+};
+
+function popup_esc(event) {
+    if (event.keyCode == 27) {
         closePopup();
-    }
-})
+    };
+};
 
 function closePopup() {
     let popup = document.querySelector(".popup_container");
     generatePopupBackround(false);
     popup.style.display = 'none';
-}
+    [popup_enter, popup_esc].forEach((f) => { window.removeEventListener('keydown', f) });
+};
 
 function showPopup() {
     let popup = document.querySelector(".popup_container");
     popup.classList.add('popup_animation')
     popup.style.display = 'block';
     generatePopupBackround(true);
-}
+    [popup_enter, popup_esc].forEach((f) => { window.addEventListener('keydown', f) });
+};
 
 function generatePopupBackround(state) {
+    let landingScreen = document.getElementById('landing_screen');
     if (state) {
         let backroundAnimation = document.createElement('div');
         backroundAnimation.id = 'popup_backround_animation';
         landingScreen.append(backroundAnimation);
+        document.getElementById('start_btn').blur();
     } else landingScreen.removeChild(document.getElementById('popup_backround_animation'))
 }
 
-let loginBtn = document.getElementById('login_btn')
-loginBtn.addEventListener('click', logIn)
-window.addEventListener('keydown', function (key) {
-    if (key.keyCode == '13') {
-        logIn();
-    }
-});
+
 
 function logIn() {
-    let usernameInput = document.getElementById('email_form').value;
+    let usernameInput = document.getElementById('name_form').value;
     let userMailINput = document.getElementById('mail_form').value;
     let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (usernameInput != '' && userMailINput.match(regexEmail)) {
-        console.log(user_data);
         user_data.name = usernameInput;
         user_data.mail = userMailINput;
-        closePopup()
+        closePopup();
         section_switch(1);
     }
 }
@@ -564,6 +571,7 @@ function shared_link() {
         };
     };
 };
+
 /******* button panel *******/
 
 function try_again() {
@@ -608,4 +616,5 @@ window.onresize = () => {
 
 window.onload = () => {
     shared_link();
+    popup_add_listeners();
 };
