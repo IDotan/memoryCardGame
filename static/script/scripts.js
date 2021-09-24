@@ -24,7 +24,8 @@ const game_data = {
     score: 0,
     cards_folder: "/static/img/card_images/",
     card_img_index: [],
-    card_imgs: ["avocado.svg", "banana.svg", "chili.svg", "blueberry.svg", "onion.svg", "pineapple.svg", "raspberry.svg", "tomato.svg", "watermelon.svg"]
+    card_imgs: ["avocado.svg", "banana.svg", "chili.svg", "blueberry.svg", "onion.svg", "pineapple.svg", "raspberry.svg", "tomato.svg", "watermelon.svg"],
+    fliped_card: null
 }
 
 /******************** Nav bar ********************/
@@ -318,13 +319,13 @@ function start_card_reveal() {
      */
     function time_card(target, loop) {
         setTimeout(() => {
-            card_flip(null, target);
+            card_flip(target);
         }, (loop * game_data.start_flip));
         setTimeout(() => {
-            card_flip(null, target);
+            card_flip(target);
         }, ((loop * game_data.start_flip) + game_data.start_flip));
         setTimeout(() => {
-            target.addEventListener('click', card_flip);
+            target.addEventListener('click', comparisonFlipCard);
         }, ((game_data.cards_count + 1) * game_data.start_flip));
     };
 
@@ -352,17 +353,24 @@ function start_card_reveal() {
         timer_btn.addEventListener('click', timer_action);
     }, ((game_data.cards_count + 1) * game_data.start_flip));
 };
+
 //Comparison of two images /
 function comparisonFlipCard() {
-    let scoreNumber;
-    // let allCards = document.querySelectorAll(".card");/
-    for (let i = 0; i < 1; i++);
-    console.log(game_data.card_img_index)
+    card_flip(this);
+    if (game_data.fliped_card) {
+        if (game_data.card_img_index[this.classList[1]] == game_data.card_img_index[game_data.fliped_card.classList[1]]) {
+            console.log('true');
+        } else {
+            console.log('x');
+        };
+    } else {
+        game_data.fliped_card = this;
+    };
+};
 
-}
-
-
-// Switch between the 2 board section pages/
+/**
+ * Switch between the 2 board section pages
+ */
 function board_page_section_switch() {
     document.getElementById('difficulty_picking').classList.toggle('hide');
     document.getElementById('game_board').classList.toggle('hide');
@@ -404,17 +412,12 @@ function start_game(cards) {
 /**
  * Flip card to its other side.
  * 
- * @param {Object} event click event object. null when calling from other function
  * @param {HTMLElement} card card div when not called from event listener.
  */
-function card_flip(event, card = null) {
-    if (event) {
-        card = this;
-    };
+function card_flip(card) {
     let img_div = card.children[1];
     img_div.src == document.URL ? add_card_img(img_div, parseInt(card.classList[1])) : setTimeout(() => { img_div.src = ""; img_div.alt = ""; }, 100);
     card.classList.toggle('flip');
-    comparisonFlipCard();
 };
 
 
