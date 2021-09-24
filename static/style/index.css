@@ -6,10 +6,9 @@
     --clr-white: #fff;
     --clr-black: #000000;
     --clr-yellow: #ffc131;
+    --clr-popup-backround: rgba(0, 0, 0, 0.7);
     --carousel-inactive-bg: rgba(0, 0, 0, 0.85);
     --carousel-active-bg: rgba(0, 0, 255, 0.85);
-    --popup-backround-size-x: 50rem;
-    --popup-backround-size-y: 40rem;
     --game-section-nav-clr: rgba(0, 0, 0, 0.5);
     --game-section-font-clr: coral;
     --card-width: 5em;
@@ -213,26 +212,39 @@ h1 {
 
 /*popup settings*/
 
-.popup_container::before {
-    position: absolute;
+#popup_backround_animation {
     content: '';
-    top: 0%;
+    position: fixed;
+    top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-image: url(./static/img/wallpapers/Popup.jfif);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+    background-color: var(--clr-popup-backround);
+    z-index: 1;
+    animation: popup_backround_animation 300ms;
+}
+
+@keyframes popup_backround_animation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .popup_container {
     display: none;
     position: fixed;
-    top: -100%;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+    top: 0;
+    left: 50%;
+    transform: translatex(-50%);
+    width: max-content;
+    height: 100%;
+    background-image: url(../img/popup/login.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 2;
 }
 
 .popup_animation {
@@ -241,29 +253,39 @@ h1 {
 }
 
 @keyframes start_popup {
-    0% { display: block; top: -100%; }
-    50% { top: 0; }
-    70% { top: -4%; }
-    100% { top: 0; }
+    0% {
+        display: block;
+        top: -100%;
+    }
+    50% {
+        top: 0;
+    }
+    70% {
+        top: -4%;
+    }
+    100% {
+        top: 0;
+    }
 }
 
 .popup_content {
     position: relative;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    margin: max(200px, 20%) auto;
-    font-size: min400px, 70%;
-    width: min(400px, 70%);
+    margin: auto 0;
+    padding: 10%;
+    margin-top: min(700px, 30%);
     font-family: var(--ff-main);
 }
 
 .close_popup {
     position: absolute;
-    top: -20%;
-    right: -10%;
+    top: 0;
+    right: 10%;
     cursor: pointer;
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     color: var(--clr-yellow);
 }
 
@@ -288,7 +310,7 @@ h1 {
     outline: none;
 }
 
-#popup_start {
+#login_btn {
     margin-top: 2rem;
 }
 
@@ -437,8 +459,12 @@ h1 {
     background-color: var(--card-img-bg);
 }
 
-.card:hover:not(.flip) {
+.card:hover {
     transform: scale(1.1);
+}
+
+.card.flip:hover {
+    transform: rotateY(180deg) scale(1.1);
 }
 
 .card_back, .card_img {
