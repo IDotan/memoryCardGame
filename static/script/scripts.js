@@ -50,7 +50,7 @@ function section_switch(show) {
 /**
  * Switch landing page sections, and update the carousel when needed.
  */
-function taggle_landingscreed_sections() {
+function taggle_landingscreen_sections() {
     document.querySelectorAll('.landing_screen_sections').forEach((section) => {
         section.classList.toggle('hide');
     });
@@ -355,7 +355,7 @@ function start_card_reveal() {
 //Comparison of two images /
 function comparisonFlipCard() {
     let scoreNumber;
-   // let allCards = document.querySelectorAll(".card");/
+    // let allCards = document.querySelectorAll(".card");/
     for (let i = 0; i < 1; i++);
     console.log(game_data.card_img_index)
 
