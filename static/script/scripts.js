@@ -208,7 +208,7 @@ window.addEventListener('keydown', function (key) {
 
 function closePopup() {
     let popup = document.querySelector(".popup_container");
-    generatePopupBackround(false);
+    generatePopupBackround (false);
     popup.style.display = 'none';
 }
 
@@ -216,16 +216,15 @@ function showPopup() {
     let popup = document.querySelector(".popup_container");
     popup.classList.add('popup_animation')
     popup.style.display = 'block';
-    generatePopupBackround(true);
+    generatePopupBackround (true);
 }
 
-function generatePopupBackround(state) {
-    let backroundAnimation = document.createElement('div');
-    if (state) {
+function generatePopupBackround (state) {
+    if( state ){
+        let backroundAnimation = document.createElement('div');
         backroundAnimation.id = 'popup_backround_animation';
         landingScreen.append(backroundAnimation);
-    } else
-        landingScreen.removeChild(document.getElementById('popup_backround_animation'))
+    } else landingScreen.removeChild(document.getElementById('popup_backround_animation'))
 }
 
 let loginBtn = document.getElementById('login_btn')
@@ -492,7 +491,7 @@ function load_score_table(sort_function) {
     table_data.sort((a, b) => { return sort_function(a, b) });
     let str_data = "";
     table_data.forEach((data, index) => {
-        str_data += "<tr><td>" + (index + 1) + ".</td><td>" + data[0] + "</td><td>" + data[2] + "</td><td>" + data[3] / 1000 + "s</td><td>" + data[1] + "</td></tr>";
+        str_data += "<tr><td>" + (index + 1) + ".</td><td>" + data[0] + "</td><td>" + data[2] + "</td><td>" + Math.round(data[3] / 1000) + "s</td><td>" + data[1] + "</td></tr>";
     });
     document.getElementById('score_table').innerHTML = document.getElementById('score_table').innerHTML.split("</tr>", 1)[0] + "</tr>" + str_data;
 };
