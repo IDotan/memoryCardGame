@@ -198,41 +198,28 @@ function about_carousel_random() {
 
 /******* popup *******/
 
-function popup_add_listeners() {
-    let openPopup = document.getElementById('start_btn');
-    openPopup.addEventListener('click', showPopup)
-    let closePopupBttn = document.getElementsByClassName('close_popup')[0];
-    closePopupBttn.addEventListener('click', closePopup);
-    let loginBtn = document.getElementById('login_btn')
-    loginBtn.addEventListener('click', logIn)
-}
+let popup = document.getElementById("popup_container");
+let openPopup = document.getElementById('start_btn');
+let closePopupBttn = document.getElementById('close_popup');
+let loginBtn = document.getElementById('login_btn')
 
-function popup_enter(event) {
-    if (event.keyCode == 13) {
-        logIn();
-    };
-};
+openPopup.addEventListener('click', showPopup)
+closePopupBttn.addEventListener('click', closePopup);
+loginBtn.addEventListener('click', logIn)
+let popupEnter = (event) => { if (event.keyCode == 13) logIn(); }
+let popupEsc = (event) =>{ if (event.keyCode == 27) closePopup()}
 
-function popup_esc(event) {
-    if (event.keyCode == 27) {
-        closePopup();
-    };
-};
-
-function closePopup() {
-    let popup = document.querySelector(".popup_container");
+function closePopup () {
     generatePopupBackround(false);
     popup.style.display = 'none';
-    [popup_enter, popup_esc].forEach((f) => { window.removeEventListener('keydown', f) });
-};
+}
 
-function showPopup() {
-    let popup = document.querySelector(".popup_container");
+function showPopup () {
     popup.classList.add('popup_animation')
     popup.style.display = 'block';
     generatePopupBackround(true);
-    [popup_enter, popup_esc].forEach((f) => { window.addEventListener('keydown', f) });
-};
+    [popupEnter, popupEsc].forEach((f) => { window.addEventListener('keydown', f) });
+}
 
 function generatePopupBackround(state) {
     let landingScreen = document.getElementById('landing_screen');
@@ -240,19 +227,15 @@ function generatePopupBackround(state) {
         let backroundAnimation = document.createElement('div');
         backroundAnimation.id = 'popup_backround_animation';
         landingScreen.append(backroundAnimation);
-        document.getElementById('start_btn').blur();
     } else landingScreen.removeChild(document.getElementById('popup_backround_animation'))
 }
 
-
-
 function logIn() {
-    let usernameInput = document.getElementById('name_form').value;
-    let userMailINput = document.getElementById('mail_form').value;
-    let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if (usernameInput != '' && userMailINput.match(regexEmail)) {
-        user_data.name = usernameInput;
-        user_data.mail = userMailINput;
+    let userInput = document.getElementsByClassName('input_form');
+    let emailForm = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (userInput[0].value != '' && userInput[1].value.match(emailForm)) {
+        user_data.name = userInput[0].value;
+        user_data.mail = userInput[1].value;
         closePopup();
         section_switch(1);
     }
@@ -627,5 +610,4 @@ window.onresize = () => {
 
 window.onload = () => {
     shared_link();
-    popup_add_listeners();
 };
