@@ -206,12 +206,13 @@ let loginBtn = document.getElementById('login_btn')
 openPopup.addEventListener('click', showPopup)
 closePopupBttn.addEventListener('click', closePopup);
 loginBtn.addEventListener('click', logIn)
-let popupEnter = (event) => { if (event.keyCode == 13) logIn(); }
-let popupEsc = (event) =>{ if (event.keyCode == 27) closePopup()}
+let popupEnter = (event) => { if (event.keyCode == 13) logIn() }
+let popupEsc = (event) =>{ if (event.keyCode == 27) closePopup() }
 
 function closePopup () {
     generatePopupBackround(false);
     popup.style.display = 'none';
+    [popupEnter, popupEsc].forEach((f) => { window.removeEventListener('keydown', f) });
 }
 
 function showPopup () {
@@ -223,11 +224,11 @@ function showPopup () {
 
 function generatePopupBackround(state) {
     let landingScreen = document.getElementById('landing_screen');
-    if (state) {
+    if (state && !document.getElementById('popup_backround_animation')) {
         let backroundAnimation = document.createElement('div');
         backroundAnimation.id = 'popup_backround_animation';
         landingScreen.append(backroundAnimation);
-    } else landingScreen.removeChild(document.getElementById('popup_backround_animation'))
+    } else if (!state) landingScreen.removeChild(document.getElementById('popup_backround_animation'))
 }
 
 function logIn() {
