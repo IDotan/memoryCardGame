@@ -20,9 +20,9 @@
     <header>
         <input type="checkbox" id="nav_check">
         <div>
-            <button onclick="section_switch(0)">landing_screen</button>
-            <button onclick="section_switch(1)">board</button>
-            <button onclick="section_switch(2)">end_screen</button>
+            <button type="button" onclick="section_switch(0)">landing_screen</button>
+            <button type="button" onclick="section_switch(1)">board</button>
+            <button type="button" onclick="section_switch(2)">end_screen</button>
         </div>
     </header>
 
@@ -37,8 +37,8 @@
                     dificulty. It is just a game. Have Fun!
                 </p>
                 <div class="about_btn_container">
-                    <button id="start_btn" class="btn_style">Play</button>
-                    <button class="btn_style btn_transparent"
+                    <button type="button" id="start_btn" class="btn_style">Play</button>
+                    <button type="button" class="btn_style btn_transparent"
                         onclick="taggle_landingscreen_sections()">Developers</button>
                 </div>
                 <img class="character_img" src="static/img/character.png" alt="character">
@@ -108,7 +108,8 @@
                     &#10097;
                 </div>
                 <div class="carousel_back_container">
-                    <button class="btn_style btn_transparent" onclick="taggle_landingscreen_sections()">Back</button>
+                    <button type="button" class="btn_style btn_transparent"
+                        onclick="taggle_landingscreen_sections()">Back</button>
                 </div>
             </section>
             <div id="popup_container">
@@ -133,15 +134,15 @@
                 <div class="difficulty_btn_container">
                     <div>
                         <img class="difficulty_img" src="static/img/icons/easy.svg" alt="Easy">
-                        <button onclick="start_game(6)" class="btn_style_difficulty">Easy</button>
+                        <button type="button" onclick="start_game(6)" class="btn_style_difficulty">Easy</button>
                     </div>
                     <div>
                         <img class="difficulty_img" src="static/img/icons/medium.svg" alt="Medium">
-                        <button onclick="start_game(12)" class="btn_style_difficulty">Medium</button>
+                        <button type="button" onclick="start_game(12)" class="btn_style_difficulty">Medium</button>
                     </div>
                     <div>
                         <img class="difficulty_img" src="static/img/icons/hard.svg" alt="Hard">
-                        <button onclick="start_game(18)" class="btn_style_difficulty">Hard</button>
+                        <button type="button" onclick="start_game(18)" class="btn_style_difficulty">Hard</button>
                     </div>
                 </div>
             </section>
@@ -184,14 +185,15 @@
                     </div>
 
                     <div id="start_btn_container">
-                        <button onclick="start_card_reveal()" class="btn_style start_game_btn">Start</button>
+                        <button type="button" onclick="start_card_reveal()"
+                            class="btn_style start_game_btn">Start</button>
                     </div>
 
                 </section>
 
                 <div id="board_bottom_btn_continer">
-                    <button class="btn_style">Score board</button>
-                    <button class="btn_style" onclick="reset_game()">Restart</button>
+                    <button type="button" class="btn_style">Score board</button>
+                    <button type="button" class="btn_style" onclick="reset_game()">Restart</button>
                 </div>
 
             </section>
@@ -245,8 +247,8 @@
             </div>
 
             <div id="end_screen_btn_continer">
-                <button class="btn_style" onclick="try_again()">Try again</button>
-                <button class="btn_style">New player</button>
+                <button type="button" class="btn_style" onclick="try_again()">Try again</button>
+                <button type="button" class="btn_style">New player</button>
             </div>
 
             <div id="share">
