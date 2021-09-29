@@ -207,15 +207,15 @@ openPopup.addEventListener('click', showPopup)
 closePopupBttn.addEventListener('click', closePopup);
 loginBtn.addEventListener('click', logIn)
 let popupEnter = (event) => { if (event.keyCode == 13) logIn() }
-let popupEsc = (event) =>{ if (event.keyCode == 27) closePopup() }
+let popupEsc = (event) => { if (event.keyCode == 27) closePopup() }
 
-function closePopup () {
+function closePopup() {
     generatePopupBackround(false);
     popup.style.display = 'none';
     [popupEnter, popupEsc].forEach((f) => { window.removeEventListener('keydown', f) });
 }
 
-function showPopup () {
+function showPopup() {
     popup.classList.add('popup_animation')
     popup.style.display = 'block';
     generatePopupBackround(true);
@@ -482,22 +482,32 @@ function sort_time_descending(a, b) {
 
 
 /**
- * Load the sorted data in to the end screen table.
+ * Load and sorte data in to the end screen table.
  * 
  * @param {Function} sort_function the function to sort by.
  */
 function load_score_table(sort_function) {
     let table_data = [
-        ["Itai", "itai145@gmail.com", 8, 30000],
-        ["Danielle", "danielle07t@gmail.com", 10, 25000],
-        ["Artem", "sartem.meshkov@gmail.com", 5, 70000]];
+        ["Itai", "itai145@gmail.com", 6, 10000],
+        ["Danielle", "danielle07t@gmail.com", 8, 65000],
+        ["Artem", "sartem.meshkov@gmail.com", 10, 45000]];
     table_data.push([user_data.name, user_data.mail, user_data.score, user_data.time]);
     table_data.sort((a, b) => { return sort_function(a, b) });
-    let str_data = "";
-    table_data.forEach((data, index) => {
-        str_data += "<tr><td>" + (index + 1) + ".</td><td>" + data[0] + "</td><td>" + data[2] + "</td><td>" + Math.round(data[3] / 1000) + "s</td><td>" + data[1] + "</td></tr>";
-    });
-    document.getElementById('score_table').innerHTML = document.getElementById('score_table').innerHTML.split("</tr>", 1)[0] + "</tr>" + str_data;
+    //td index => table_data position.
+    const td_keys = { 1: 0, 2: 2, 3: 3, 4: 1 };
+    let table_rows = document.querySelectorAll('tr');
+    for (i = 1; i < table_rows.length; i++) {
+        table_rows[i].querySelectorAll('td').forEach((td, index) => {
+            if (index == 0) {
+                td.innerHTML = i + '.';
+            } else if (index == 3) {
+                let time = Math.floor(table_data[i - 1][td_keys[index]] / 1000);
+                time >= 60 ? td.innerHTML = (time / 60).toFixed(2) + ' min' : td.innerHTML = time + ' sec';
+            } else {
+                td.innerHTML = table_data[i - 1][td_keys[index]];
+            };
+        });
+    };
 };
 
 /**
