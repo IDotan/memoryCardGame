@@ -189,8 +189,8 @@ function about_carousel_random() {
     document.getElementById('developers_carousel').style.transform = "rotateY(0deg)";
     document.querySelector('.about.center').classList.remove('center');
     let tab = Math.floor((Math.random() * developers_data.card_count) + 1);
+    developers_data.clicks = -2;
     rotate_carousel(tab);
-    setTimeout(developers_data.clicks = -1, 500);
     // calculat the new center tab
     tab = (developers_data.card_count - 1) - (tab - 1);
     document.querySelectorAll('.about.tab')[tab].classList.add('center');
