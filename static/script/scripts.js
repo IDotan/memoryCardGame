@@ -384,11 +384,10 @@ function start_game(cards) {
     const card_temp = document.getElementById('card_template');
     let board = document.getElementById('card_container');
     for (let i = 0; i < cards; i++) {
-        board.appendChild(card_temp.content.cloneNode(true));
+        let card = card_temp.content.cloneNode(true).children[0];
+        card.classList.add(i);
+        board.appendChild(card);
     };
-    document.querySelectorAll('.card').forEach((div, index) => {
-        div.classList.add(index);
-    });
     document.getElementById('player_name').innerHTML = user_data.name;
     board_page_section_switch();
 };
