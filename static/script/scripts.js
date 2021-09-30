@@ -409,6 +409,7 @@ function card_flip(card) {
  * Add image to the given <img>.
  * 
  * @param {HTMLElement} card_img card <img> to set.
+ * @param {Number} card_index card index in game_data.card_img_index.
  */
 function add_card_img(card_img, card_index) {
     // todo
