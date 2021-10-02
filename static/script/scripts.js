@@ -403,7 +403,6 @@ function card_flip(card) {
     card.classList.toggle('flip');
 };
 
-
 /**
  * Add image to the given <img>.
  * 
@@ -479,7 +478,6 @@ function sort_time_ascending(a, b) {
 function sort_time_descending(a, b) {
     return b[3] - a[3];
 };
-
 
 /**
  * Load and sorte data in to the end screen table.
@@ -610,7 +608,7 @@ function share_via_mail() {
 function share_via_whatsapp() {
     let whatsapp_link = "https://wa.me/?text=" + encodeURIComponent(share_msg) + share_score();
     window.open(whatsapp_link, "_blank");
-}
+};
 
 /******************** On event ********************/
 
