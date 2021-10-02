@@ -52,10 +52,6 @@ header div {
     display: none;
 }
 
-body {
-    position: relative;
-}
-
 h1 {
     display: none;
 }
@@ -233,8 +229,12 @@ h1 {
 }
 
 @keyframes popup_backround_animation {
-    0% { opacity: 0 }
-    100% { opacity: 1 }
+    0% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1
+    }
 }
 
 #popup_container {
@@ -259,11 +259,17 @@ h1 {
 @keyframes start_popup {
     0% {
         display: block;
-        top: -100% 
+        top: -100%
     }
-    50% { top: 0 }
-    70% { top: -4% }
-    100% { top: 0 }
+    50% {
+        top: 0
+    }
+    70% {
+        top: -4%
+    }
+    100% {
+        top: 0
+    }
 }
 
 .popup_content {
