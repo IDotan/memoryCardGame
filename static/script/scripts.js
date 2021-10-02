@@ -24,7 +24,8 @@ const game_data = {
     score: 0,
     cards_folder: "/static/img/card_images/",
     card_img_index: [],
-    card_imgs: ["avocado.svg", "banana.svg", "chili.svg", "blueberry.svg", "onion.svg", "pineapple.svg", "raspberry.svg", "tomato.svg", "watermelon.svg"]
+    card_imgs: ["avocado.svg", "banana.svg", "chili.svg", "blueberry.svg", "onion.svg", "pineapple.svg", "raspberry.svg", "tomato.svg", "watermelon.svg"],
+    fliped_card: null
 }
 
 /******************** Nav bar ********************/
@@ -188,8 +189,8 @@ function about_carousel_random() {
     document.getElementById('developers_carousel').style.transform = "rotateY(0deg)";
     document.querySelector('.about.center').classList.remove('center');
     let tab = Math.floor((Math.random() * developers_data.card_count) + 1);
+    developers_data.clicks = -2;
     rotate_carousel(tab);
-    setTimeout(developers_data.clicks = -1, 500);
     // calculat the new center tab
     tab = (developers_data.card_count - 1) - (tab - 1);
     document.querySelectorAll('.about.tab')[tab].classList.add('center');
@@ -197,61 +198,45 @@ function about_carousel_random() {
 
 /******* popup *******/
 
-function popup_add_listeners() {
-    let openPopup = document.getElementById('start_btn');
-    openPopup.addEventListener('click', showPopup)
-    let closePopupBttn = document.getElementsByClassName('close_popup')[0];
-    closePopupBttn.addEventListener('click', closePopup);
-    let loginBtn = document.getElementById('login_btn')
-    loginBtn.addEventListener('click', logIn)
-}
+let popup = document.getElementById("popup_container");
+let openPopup = document.getElementById('start_btn');
+let closePopupBttn = document.getElementById('close_popup');
+let loginBtn = document.getElementById('login_btn')
 
-function popup_enter(event) {
-    if (event.keyCode == 13) {
-        logIn();
-    };
-};
-
-function popup_esc(event) {
-    if (event.keyCode == 27) {
-        closePopup();
-    };
-};
+openPopup.addEventListener('click', showPopup)
+closePopupBttn.addEventListener('click', closePopup);
+loginBtn.addEventListener('click', logIn)
+let popupEnter = (event) => { if (event.keyCode == 13) logIn() }
+let popupEsc = (event) => { if (event.keyCode == 27) closePopup() }
 
 function closePopup() {
-    let popup = document.querySelector(".popup_container");
     generatePopupBackround(false);
     popup.style.display = 'none';
-    [popup_enter, popup_esc].forEach((f) => { window.removeEventListener('keydown', f) });
-};
+    [popupEnter, popupEsc].forEach((f) => { window.removeEventListener('keydown', f) });
+}
 
 function showPopup() {
-    let popup = document.querySelector(".popup_container");
     popup.classList.add('popup_animation')
     popup.style.display = 'block';
     generatePopupBackround(true);
-    [popup_enter, popup_esc].forEach((f) => { window.addEventListener('keydown', f) });
-};
+    [popupEnter, popupEsc].forEach((f) => { window.addEventListener('keydown', f) });
+}
 
 function generatePopupBackround(state) {
     let landingScreen = document.getElementById('landing_screen');
-    if (state) {
+    if (state && !document.getElementById('popup_backround_animation')) {
         let backroundAnimation = document.createElement('div');
         backroundAnimation.id = 'popup_backround_animation';
         landingScreen.append(backroundAnimation);
-        document.getElementById('start_btn').blur();
-    } else landingScreen.removeChild(document.getElementById('popup_backround_animation'))
+    } else if (!state) landingScreen.removeChild(document.getElementById('popup_backround_animation'))
 }
 
-
-
 function logIn() {
-    let usernameInput = document.getElementById('name_form').value;
-    let userMailINput = document.getElementById('mail_form').value;
-    let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if (usernameInput != '' && userMailINput.match(regexEmail)) {
-        user_data.name = usernameInput;
-        user_data.mail = userMailINput;
+    let userInput = document.getElementsByClassName('input_form');
+    let emailForm = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (userInput[0].value != '' && userInput[1].value.match(emailForm)) {
+        user_data.name = userInput[0].value;
+        user_data.mail = userInput[1].value;
         closePopup();
         section_switch(1);
     }
@@ -318,13 +303,13 @@ function start_card_reveal() {
      */
     function time_card(target, loop) {
         setTimeout(() => {
-            card_flip(null, target);
+            card_flip(target);
         }, (loop * game_data.start_flip));
         setTimeout(() => {
-            card_flip(null, target);
+            card_flip(target);
         }, ((loop * game_data.start_flip) + game_data.start_flip));
         setTimeout(() => {
-            target.addEventListener('click', card_flip);
+            target.addEventListener('click', comparisonFlipCard);
         }, ((game_data.cards_count + 1) * game_data.start_flip));
     };
 
@@ -353,18 +338,27 @@ function start_card_reveal() {
     }, ((game_data.cards_count + 1) * game_data.start_flip));
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 71b52fa24b32da9d43113ee67f8cff2b16338065
 //Comparison of two images /
 function comparisonFlipCard() {
-    let scoreNumber;
-    // let allCards = document.querySelectorAll(".card");/
-    for (let i = 0; i < 1; i++);
-    console.log(game_data.card_img_index)
+    card_flip(this);
+    if (game_data.fliped_card) {
+        if (game_data.card_img_index[this.classList[1]] == game_data.card_img_index[game_data.fliped_card.classList[1]]) {
+            console.log('true');
+        } else {
+            console.log('x');
+        };
+    } else {
+        game_data.fliped_card = this;
+    };
+};
 
-}
-
-
-// Switch between the 2 board section pages/
+/**
+ * Switch between the 2 board section pages
+ */
 function board_page_section_switch() {
     document.getElementById('difficulty_picking').classList.toggle('hide');
     document.getElementById('game_board').classList.toggle('hide');
@@ -394,11 +388,10 @@ function start_game(cards) {
     const card_temp = document.getElementById('card_template');
     let board = document.getElementById('card_container');
     for (let i = 0; i < cards; i++) {
-        board.appendChild(card_temp.content.cloneNode(true));
+        let card = card_temp.content.cloneNode(true).children[0];
+        card.classList.add(i);
+        board.appendChild(card);
     };
-    document.querySelectorAll('.card').forEach((div, index) => {
-        div.classList.add(index);
-    });
     document.getElementById('player_name').innerHTML = user_data.name;
     board_page_section_switch();
 };
@@ -406,17 +399,12 @@ function start_game(cards) {
 /**
  * Flip card to its other side.
  * 
- * @param {Object} event click event object. null when calling from other function
  * @param {HTMLElement} card card div when not called from event listener.
  */
-function card_flip(event, card = null) {
-    if (event) {
-        card = this;
-    };
+function card_flip(card) {
     let img_div = card.children[1];
     img_div.src == document.URL ? add_card_img(img_div, parseInt(card.classList[1])) : setTimeout(() => { img_div.src = ""; img_div.alt = ""; }, 100);
     card.classList.toggle('flip');
-    comparisonFlipCard();
 };
 
 
@@ -424,6 +412,7 @@ function card_flip(event, card = null) {
  * Add image to the given <img>.
  * 
  * @param {HTMLElement} card_img card <img> to set.
+ * @param {Number} card_index card index in game_data.card_img_index.
  */
 function add_card_img(card_img, card_index) {
     // todo
@@ -497,22 +486,32 @@ function sort_time_descending(a, b) {
 
 
 /**
- * Load the sorted data in to the end screen table.
+ * Load and sorte data in to the end screen table.
  * 
  * @param {Function} sort_function the function to sort by.
  */
 function load_score_table(sort_function) {
     let table_data = [
-        ["Itai", "itai145@gmail.com", 8, 30000],
-        ["Danielle", "danielle07t@gmail.com", 10, 25000],
-        ["Artem", "sartem.meshkov@gmail.com", 5, 70000]];
+        ["Itai", "itai145@gmail.com", 6, 10000],
+        ["Danielle", "danielle07t@gmail.com", 8, 65000],
+        ["Artem", "sartem.meshkov@gmail.com", 10, 45000]];
     table_data.push([user_data.name, user_data.mail, user_data.score, user_data.time]);
     table_data.sort((a, b) => { return sort_function(a, b) });
-    let str_data = "";
-    table_data.forEach((data, index) => {
-        str_data += "<tr><td>" + (index + 1) + ".</td><td>" + data[0] + "</td><td>" + data[2] + "</td><td>" + Math.round(data[3] / 1000) + "s</td><td>" + data[1] + "</td></tr>";
-    });
-    document.getElementById('score_table').innerHTML = document.getElementById('score_table').innerHTML.split("</tr>", 1)[0] + "</tr>" + str_data;
+    //td index => table_data position.
+    const td_keys = { 1: 0, 2: 2, 3: 3, 4: 1 };
+    let table_rows = document.querySelectorAll('tr');
+    for (i = 1; i < table_rows.length; i++) {
+        table_rows[i].querySelectorAll('td').forEach((td, index) => {
+            if (index == 0) {
+                td.innerHTML = i + '.';
+            } else if (index == 3) {
+                let time = Math.floor(table_data[i - 1][td_keys[index]] / 1000);
+                time >= 60 ? td.innerHTML = (time / 60).toFixed(2) + ' min' : td.innerHTML = time + ' sec';
+            } else {
+                td.innerHTML = table_data[i - 1][td_keys[index]];
+            };
+        });
+    };
 };
 
 /**
@@ -626,5 +625,4 @@ window.onresize = () => {
 
 window.onload = () => {
     shared_link();
-    popup_add_listeners();
 };
