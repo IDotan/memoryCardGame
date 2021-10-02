@@ -338,10 +338,6 @@ function start_card_reveal() {
     }, ((game_data.cards_count + 1) * game_data.start_flip));
 };
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 71b52fa24b32da9d43113ee67f8cff2b16338065
 //Comparison of two images /
 function comparisonFlipCard() {
     card_flip(this);
