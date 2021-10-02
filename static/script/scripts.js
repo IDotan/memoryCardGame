@@ -352,6 +352,8 @@ function start_card_reveal() {
         timer_btn.addEventListener('click', timer_action);
     }, ((game_data.cards_count + 1) * game_data.start_flip));
 };
+
+
 //Comparison of two images /
 function comparisonFlipCard() {
     let scoreNumber;
