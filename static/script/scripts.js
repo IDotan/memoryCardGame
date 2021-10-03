@@ -342,7 +342,7 @@ function start_card_reveal() {
 function comparisonFlipCard() {
     card_flip(this);
     if (game_data.fliped_card) {
-        if (game_data.card_img_index[this.classList[1]] == game_data.card_img_index[game_data.fliped_card.classList[1]]) {
+        if (game_data.card_img_index[this.dataset.index] == game_data.card_img_index[game_data.fliped_card.dataset.index]) {
             console.log('true');
         } else {
             console.log('x');
@@ -385,7 +385,7 @@ function start_game(cards) {
     let board = document.getElementById('card_container');
     for (let i = 0; i < cards; i++) {
         let card = card_temp.content.cloneNode(true).children[0];
-        card.classList.add(i);
+        card.dataset.index = i;
         board.appendChild(card);
     };
     document.getElementById('player_name').innerHTML = user_data.name;
@@ -399,7 +399,7 @@ function start_game(cards) {
  */
 function card_flip(card) {
     let img_div = card.children[1];
-    img_div.src == document.URL ? add_card_img(img_div, parseInt(card.classList[1])) : setTimeout(() => { img_div.src = ""; img_div.alt = ""; }, 100);
+    img_div.src == document.URL ? add_card_img(img_div, parseInt(card.dataset.index)) : setTimeout(() => { img_div.src = ""; img_div.alt = ""; }, 100);
     card.classList.toggle('flip');
 };
 
