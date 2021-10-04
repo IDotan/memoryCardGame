@@ -99,7 +99,9 @@ function carousel_easter_egg(n) {
      */
     function create_easter_div() {
         let div = document.createElement("div");
-        div.setAttribute("class", "about tab");
+        div.id = "dev_easteregg";
+        div.className = "about tab";
+        div.dataset.new = true;
         let img = document.createElement("img");
         img.setAttribute("src", "static/img/carousel_images/mug.jpg");
         let h2 = document.createElement("h2");
@@ -129,10 +131,6 @@ function carousel_easter_egg(n) {
         document.getElementById('developers_carousel').append(create_easter_div());
         carousel_data_update();
         document.querySelector('.about.center').classList.remove('center');
-        setTimeout(() => {
-            let nodlist = document.querySelectorAll('.about.tab');
-            nodlist[nodlist.length - 1].classList.add('center');
-        }, 100)
     };
 };
 
@@ -172,12 +170,17 @@ function rotate_carousel(direction) {
     let carousel = document.getElementById('developers_carousel');
     let deg = carousel.style.transform.slice(8, -4);
     deg == "" ? deg = 0 : deg = parseInt(deg);
-    document.getElementById('developers_carousel').style.transform = "rotateY(" + (deg + (developers_data.card_deg * direction)) + "deg)";
+    carousel.style.transform = "rotateY(" + (deg + (developers_data.card_deg * direction)) + "deg)";
     if (Math.abs(direction) == 1) {
         let old_center = document.querySelector('.about.center');
         if (!old_center) {
-            return
-        }
+            let easteregg = document.getElementById('dev_easteregg');
+            if (easteregg && easteregg.dataset.new) {
+                easteregg.classList.add('center');
+                delete easteregg.dataset.new;
+            };
+            return;
+        };
         change_center(old_center, direction);
     };
 };
@@ -279,9 +282,9 @@ function timer_action(event, timer_div) {
 }
 
 /**
- * Reveal cards and flip back one by one, add click event at the end.
+ * Reveal cards and flip back one by one, add click events at the end.
  */
-function start_card_reveal() {
+function start_game() {
     /**
      * Initialize and randomize card image and cards pairs.
      */
@@ -375,11 +378,11 @@ function shuffle_array(arr) {
 };
 
 /**
- * Start the memory game and add the amount of cards given.
+ * Initialize the memory game and add the amount of cards given.
  * 
  * @param {Number} cards numbers of card for the game.
  */
-function start_game(cards) {
+function initialize_game(cards) {
     game_data.cards_count = cards;
     const card_temp = document.getElementById('card_template');
     let board = document.getElementById('card_container');
@@ -404,9 +407,9 @@ function card_flip(card) {
 };
 
 /**
- * Add image to the given <img>.
+ * Add image to the given img tag.
  * 
- * @param {HTMLElement} card_img card <img> to set.
+ * @param {HTMLElement} card_img card img tag to set.
  * @param {Number} card_index card index in game_data.card_img_index.
  */
 function add_card_img(card_img, card_index) {
@@ -426,6 +429,7 @@ function reset_game() {
     document.getElementById('card_container').innerHTML = "";
     document.getElementById('start_btn_container').classList.remove('hide');
     document.getElementById('time').innerHTML = "00:00";
+    document.getElementById('timer_status').innerHTML = "&#x23F5;";
     let x_marks = document.querySelectorAll('.mistakes_x');
     x_marks.forEach((mark) => { mark.classList.remove('mark') });
     document.getElementById('player_score').innerHTML = 0;

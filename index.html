@@ -133,15 +133,15 @@
                 <div class="difficulty_btn_container">
                     <div>
                         <img class="difficulty_img" src="static/img/icons/easy.svg" alt="Easy">
-                        <button type="button" onclick="start_game(6)" class="btn_style_difficulty">Easy</button>
+                        <button type="button" onclick="initialize_game(6)" class="btn_style_difficulty">Easy</button>
                     </div>
                     <div>
                         <img class="difficulty_img" src="static/img/icons/medium.svg" alt="Medium">
-                        <button type="button" onclick="start_game(12)" class="btn_style_difficulty">Medium</button>
+                        <button type="button" onclick="initialize_game(12)" class="btn_style_difficulty">Medium</button>
                     </div>
                     <div>
                         <img class="difficulty_img" src="static/img/icons/hard.svg" alt="Hard">
-                        <button type="button" onclick="start_game(18)" class="btn_style_difficulty">Hard</button>
+                        <button type="button" onclick="initialize_game(18)" class="btn_style_difficulty">Hard</button>
                     </div>
                 </div>
             </section>
@@ -184,8 +184,7 @@
                     </div>
 
                     <div id="start_btn_container">
-                        <button type="button" onclick="start_card_reveal()"
-                            class="btn_style start_game_btn">Start</button>
+                        <button type="button" onclick="start_game()" class="btn_style start_game_btn">Start</button>
                     </div>
 
                 </section>
