@@ -413,7 +413,6 @@ function card_flip(card) {
  * @param {Number} card_index card index in game_data.card_img_index.
  */
 function add_card_img(card_img, card_index) {
-    // todo
     let img = game_data.card_imgs[game_data.card_img_index[card_index]];
     let path = document.URL.split(".index")[0];
     path = path.slice(0, path.lastIndexOf("/"));
@@ -425,13 +424,12 @@ function add_card_img(card_img, card_index) {
  * Reset the game. go back to difficulty_picking and reset the board to statr position.
  */
 function reset_game() {
-    board_page_section_switch();
+    if (document.getElementById('difficulty_picking').classList.contains('hide')) { board_page_section_switch() };
     document.getElementById('card_container').innerHTML = "";
     document.getElementById('start_btn_container').classList.remove('hide');
     document.getElementById('time').innerHTML = "00:00";
     document.getElementById('timer_status').innerHTML = "&#x23F5;";
-    let x_marks = document.querySelectorAll('.mistakes_x');
-    x_marks.forEach((mark) => { mark.classList.remove('mark') });
+    document.querySelectorAll('.mistakes_x').forEach((mark) => { mark.classList.remove('mark') });
     document.getElementById('player_score').innerHTML = 0;
 };
 
@@ -497,16 +495,16 @@ function load_score_table(sort_function) {
     table_data.sort((a, b) => { return sort_function(a, b) });
     //td index => table_data position.
     const td_keys = { 1: 0, 2: 2, 3: 3, 4: 1 };
-    let table_rows = document.querySelectorAll('tr');
-    for (i = 1; i < table_rows.length; i++) {
+    let table_rows = document.querySelectorAll('.score_table_row');
+    for (i = 0; i < table_rows.length; i++) {
         table_rows[i].querySelectorAll('td').forEach((td, index) => {
             if (index == 0) {
-                td.innerHTML = i + '.';
+                td.innerHTML = (i + 1) + '.';
             } else if (index == 3) {
-                let time = Math.floor(table_data[i - 1][td_keys[index]] / 1000);
+                let time = Math.floor(table_data[i][td_keys[index]] / 1000);
                 time >= 60 ? td.innerHTML = (time / 60).toFixed(2) + ' min' : td.innerHTML = time + ' sec';
             } else {
-                td.innerHTML = table_data[i - 1][td_keys[index]];
+                td.innerHTML = table_data[i][td_keys[index]];
             };
         });
     };
@@ -523,7 +521,6 @@ function table_arrow_switch(show) {
         if (index == show) {
             arrow.classList.add("show");
             arrow.classList.remove("up");
-
         } else {
             arrow.classList.add("up");
             arrow.classList.remove("show");
