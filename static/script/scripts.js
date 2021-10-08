@@ -22,7 +22,7 @@ const game_data = {
     start_time: 0,
     stored_time: 0,
     score: 0,
-    cards_folder: "/static/img/card_images/",
+    cards_folder: "static/img/card_images/",
     card_img_index: [],
     card_imgs: ["avocado.svg", "banana.svg", "chili.svg", "blueberry.svg", "onion.svg", "pineapple.svg", "raspberry.svg", "tomato.svg", "watermelon.svg"],
     fliped_card: null
@@ -414,8 +414,7 @@ function card_flip(card) {
  */
 function add_card_img(card_img, card_index) {
     let img = game_data.card_imgs[game_data.card_img_index[card_index]];
-    let path = document.URL.split(".index")[0];
-    path = path.slice(0, path.lastIndexOf("/"));
+    let path = document.URL.split("index")[0];
     card_img.src = path + game_data.cards_folder + img;
     card_img.alt = img.split(".")[0];
 };
