@@ -342,19 +342,35 @@ function start_game() {
 };
 
 //Comparison of two images /
+let compare = []
+let picked = []
+let score = 0
 function comparisonFlipCard() {
     card_flip(this);
-    if (game_data.fliped_card) {
-        if (game_data.card_img_index[this.dataset.index] == game_data.card_img_index[game_data.fliped_card.dataset.index]) {
-            console.log('true');
-        } else {
-            console.log('x');
-        };
-    } else {
-        game_data.fliped_card = this;
-    };
+    picked = [...picked, this]
+    compare = [...compare, this.children[1].src]
+    if(compare.length == 2){
+        if(compare[0] == compare [1]){
+            console.log('yes');
+            picked.forEach(item => {
+                item.removeEventListener('click', comparisonFlipCard)
+            });
+            picked = [];
+            compare = [];
+            score ++;
+        }
+        else {
+            console.log('nope');
+            picked.forEach(item => {
+                setTimeout(() => {
+                    card_flip(item)
+                }, 1000);
+            });
+            compare = [];
+            picked = [];
+        }
+    }
 };
-
 /**
  * Switch between the 2 board section pages
  */
