@@ -349,22 +349,29 @@ function comparisonFlipCard() {
     card_flip(this);
     picked = [...picked, this]
     compare = [...compare, this.children[1].src]
-    if(compare.length == 2){
-        if(compare[0] == compare [1]){
+    if (compare.length == 2) {
+        console.log(picked[0].getAttribute('data-index'));
+        console.log(picked[1].getAttribute('data-index'));
+        if (picked[0].getAttribute('data-index') == picked[1].getAttribute('data-index')) {
+            picked = [];
+            compare = [];
+            return;
+        }
+        if (compare[0] == compare[1]) {
             console.log('yes');
             picked.forEach(item => {
                 item.removeEventListener('click', comparisonFlipCard)
             });
             picked = [];
             compare = [];
-            score ++;
+            score++;
         }
         else {
             console.log('nope');
             picked.forEach(item => {
                 setTimeout(() => {
                     card_flip(item)
-                }, 1000);
+                }, 500);
             });
             compare = [];
             picked = [];
