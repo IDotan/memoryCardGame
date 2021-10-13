@@ -66,10 +66,6 @@ h1 {
     background-position: center;
 }
 
-.dev_img {
-    padding-top: 20%;
-}
-
 .about_project {
     padding-top: 20%;
 }
@@ -81,7 +77,7 @@ h1 {
 #landing_screen P {
     margin: 0 auto;
     font-size: var(--fs-paragraph);
-    padding: 2em 0;
+    padding: 0 0 2em;
 }
 
 #landing_screen P>span {
@@ -92,6 +88,10 @@ h1 {
     max-width: 90vw;
     margin: 0 auto;
     text-align: center;
+}
+
+.about_project_text {
+    max-width: 40ch;
 }
 
 .about_btn_container {
@@ -207,10 +207,7 @@ h1 {
     padding-block: 1rem;
     text-align: center;
     font-size: var(--fs-Profle-h2);
-}
-
-.about .short_name {
-    padding-bottom: 1.5em;
+    min-height: 6ch;
 }
 
 .carousel_back_container {
@@ -640,9 +637,6 @@ h1 {
     .about_project {
         max-width: max-content;
     }
-    .about_project_text {
-        max-width: 40ch;
-    }
     .about_btn_container {
         flex-direction: row;
     }
@@ -662,9 +656,6 @@ h1 {
     }
     .about {
         padding: 3em;
-    }
-    .about .short_name {
-        padding-bottom: 1rem;
     }
     /* game board desktop*/
     #difficulty_picking {
