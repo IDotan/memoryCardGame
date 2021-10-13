@@ -249,10 +249,8 @@ function logIn() {
 
 /**
  * Start and pause the game timer.
- * 
- * @param {Event} event event object, null when called from other function.
  */
-function timer_action(event) {
+function timer_action() {
     /**
      * Incode html entitie to be able to compare.
      * 
@@ -446,6 +444,7 @@ function reset_game() {
     document.getElementById('start_btn_container').classList.remove('hide');
     document.getElementById('time').innerHTML = "00:00";
     document.getElementById('timer_status').innerHTML = "&#x23F5;";
+    // todo make sure start game timer timeout is cleard
     document.querySelectorAll('.mistakes_x').forEach((mark) => { mark.classList.remove('mark') });
     document.getElementById('player_score').innerHTML = 0;
 };
@@ -596,21 +595,22 @@ function shared_link() {
 /******* button panel *******/
 
 /**
- * Go back to difficulty screen.
+ * Set to start a new game, user select or difficulty pick depends on the clicked button.
+ * 
+ * @param {Object} event click event object. 
  */
-function try_again() {
+function play_again(event) {
     reset_game();
-    section_switch(1);
+    if (event.target.innerHTML == "Try again") {
+        section_switch(1);
+    } else {
+        if (!document.getElementById('developers_carousel_container').classList.contains('hide')) {
+            taggle_landingscreen_sections();
+        };
+        section_switch(0);
+        showPopup();
+    };
 };
-
-/**
- * Go back to the landing screen and open the popup.
- */
-function new_player() {
-    reset_game();
-    section_switch(0);
-    showPopup();
-}
 
 /******* share *******/
 
