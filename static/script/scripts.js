@@ -251,14 +251,13 @@ function logIn() {
  * Start and pause the game timer.
  * 
  * @param {Event} event event object, null when called from other function.
- * @param {HTMLElement} timer_div timer btn div, null when called for event listener.
  */
-function timer_action(event, timer_div) {
+function timer_action(event) {
     /**
      * Incode html entitie to be able to compare.
      * 
      * @param {String} entitie html entitie string.
-     * @returns 
+     * @returns {String} incoded entitie.
      */
     function incode_entitie(entitie) {
         let temp = document.createElement('span');
@@ -268,16 +267,12 @@ function timer_action(event, timer_div) {
         return incode;
     };
 
-    let btn = timer_div;
-    if (event) {
-        btn = this;
-    }
-    if (btn.innerHTML == incode_entitie("&#x23F5;")) {
+    if (this.innerHTML == incode_entitie("&#x23F5;")) {
         // start and unpause
-        btn.innerHTML = "&#x23F8;";
+        this.innerHTML = "&#x23F8;";
     } else {
         // pasue
-        btn.innerHTML = "&#x23F5;";
+        this.innerHTML = "&#x23F5;";
     }
 }
 
@@ -336,8 +331,8 @@ function start_game() {
     };
     setTimeout(() => {
         let timer_btn = document.getElementById('timer_status');
-        timer_action(null, timer_btn);
         timer_btn.addEventListener('click', timer_action);
+        timer_btn.click();
     }, ((game_data.cards_count + 1) * game_data.start_flip));
 };
 
@@ -600,11 +595,22 @@ function shared_link() {
 
 /******* button panel *******/
 
+/**
+ * Go back to difficulty screen.
+ */
 function try_again() {
     reset_game();
     section_switch(1);
 };
 
+/**
+ * Go back to the landing screen and open the popup.
+ */
+function new_player() {
+    reset_game();
+    section_switch(0);
+    showPopup();
+}
 
 /******* share *******/
 
