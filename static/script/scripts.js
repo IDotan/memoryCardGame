@@ -356,7 +356,6 @@ function start_game() {
 //Comparison of two images /
 let compare = []
 let picked = []
-let score = 0
 function comparisonFlipCard() {
     if (game_data.game_paused) { return };
     if (picked.length != 0 && picked[0].getAttribute('data-index') == this.getAttribute('data-index')) {
@@ -376,14 +375,16 @@ function comparisonFlipCard() {
             });
             picked = [];
             compare = [];
-            score++;
+            game_data.score++;
             game_data.cards_count -= 2;
         }
         else {
             console.log('nope');
+            game_data.game_paused = true;
             picked.forEach(item => {
                 setTimeout(() => {
-                    card_flip(item)
+                    card_flip(item);
+                    game_data.game_paused = false;
                 }, 500);
             });
             compare = [];
@@ -468,6 +469,7 @@ function reset_game() {
     document.getElementById('timer_status').innerHTML = '<i class="fas fa-play"></i>';
     document.querySelectorAll('.mistakes_x').forEach((mark) => { mark.classList.remove('mark') });
     document.getElementById('player_score').innerHTML = 0;
+    game_data.score = 0;
 };
 
 /******************** End screen ********************/
