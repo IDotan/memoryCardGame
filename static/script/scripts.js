@@ -25,7 +25,8 @@ const game_data = {
     cards_folder: "static/img/card_images/",
     card_img_index: [],
     card_imgs: ["avocado.svg", "banana.svg", "chili.svg", "blueberry.svg", "onion.svg", "pineapple.svg", "raspberry.svg", "tomato.svg", "watermelon.svg"],
-    fliped_card: null
+    fliped_card: null,
+    time_interval: null
 }
 
 /******************** Nav bar ********************/
@@ -211,31 +212,31 @@ loginBtn.addEventListener('click', logIn)
 let popupEnter = (event) => { if (event.keyCode == 13) logIn() }
 let popupEsc = (event) => { if (event.keyCode == 27) closePopup() }
 
-function closePopup () {
+function closePopup() {
     generatePopupBackround(false);
     popup.style.display = 'none';
     [popupEnter, popupEsc].forEach((f) => { window.removeEventListener('keydown', f) });
     errorMsg(false);
 }
 
-function showPopup () {
+function showPopup() {
     popup.classList.add('popup_animation')
     popup.style.display = 'block';
     generatePopupBackround(true);
     [popupEnter, popupEsc].forEach((f) => { window.addEventListener('keydown', f) });
 }
 
-function generatePopupBackround ( state ) {
+function generatePopupBackround(state) {
     let landingScreen = document.getElementById('landing_screen');
     if (state && !document.getElementById('popup_backround_animation')) {
         let backroundAnimation = document.createElement('div');
         backroundAnimation.id = 'popup_backround_animation';
         landingScreen.append(backroundAnimation);
-    } else if ( !state)
-    landingScreen.removeChild( document.getElementById('popup_backround_animation') )
+    } else if (!state)
+        landingScreen.removeChild(document.getElementById('popup_backround_animation'))
 }
 
-function logIn () {
+function logIn() {
     let userInput = document.getElementsByClassName('input_form');
     let mailcheck = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (userInput[0].value != '' && userInput[1].value.match(mailcheck)) {
@@ -249,19 +250,19 @@ function logIn () {
     }
 }
 
-function errorMsg ( state ) {
+function errorMsg(state) {
     let content = document.getElementById('popup_content')
     let passwordInput = document.getElementById('mail_form')
     let logerror = document.createElement('p');
-    
-    if( state ){
+
+    if (state) {
         logerror.id = 'error_msg'
         logerror.innerHTML = 'The E-Mail is incorrect'
-        content.append( logerror )
+        content.append(logerror)
         passwordInput.style.outline = '2px solid red'
-    } else if ( content.contains( document.getElementById('error_msg') )) {
+    } else if (content.contains(document.getElementById('error_msg'))) {
         passwordInput.style.outline = ''
-        content.removeChild( document.getElementById('error_msg') )
+        content.removeChild(document.getElementById('error_msg'))
     }
 }
 
@@ -270,6 +271,9 @@ function errorMsg ( state ) {
 /**
  * Start and pause the game timer.
  */
+
+
+
 function timer_action() {
     /**
      * Incode html entitie to be able to compare.
@@ -285,15 +289,22 @@ function timer_action() {
         return incode;
     };
 
-    if (this.innerHTML == incode_entitie("&#x23F5;")) {
-        // start and unpause
-        this.innerHTML = "&#x23F8;";
+    if (btn.innerHTML == incode_entitie("&#x23F5;")) {
+        //start and unpause
+        game_data.start_time = Date.now()
+        game_data.time_interval = setInterval(() => {
+            let time = new Date((Date.now() - game_date.start_time) + game_data.stored_time);
+            time = time.toTimeString();
+            document.getElementsById('time').innerHTML = time.split('', 1)[0].slice(3, time.length);
+        }, 1000);
+        btn.innerHTML = "&#x23F8;";
     } else {
-        // pasue
-        this.innerHTML = "&#x23F5;";
+        //pasue
+        clearInterval(game_data.time_interval);
+        game_data.stored_time += Date.now() - game_data.start_time;
+        btn.innerHTML = "&#x23F5;";
     }
 }
-
 /**
  * Reveal cards and flip back one by one, add click events at the end.
  */
