@@ -414,14 +414,8 @@ h1 {
   display: inline-block;
 }
 
-@font-face {
-  font-family: "seguiemj";
-  src: url(../seguiemj.ttf);
-}
-
 #timer_status {
   cursor: pointer;
-  font-family: "seguiemj";
 }
 
 .mistakes {

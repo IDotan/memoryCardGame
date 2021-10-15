@@ -450,7 +450,7 @@ function initialize_game(cards) {
  */
 function card_flip(card) {
     let img_div = card.children[1];
-    img_div.src == document.URL ? add_card_img(img_div, parseInt(card.dataset.index)) : setTimeout(() => { img_div.src = ""; img_div.alt = ""; },100);
+    img_div.src == document.URL ? add_card_img(img_div, parseInt(card.dataset.index)) : setTimeout(() => { img_div.src = ""; img_div.alt = ""; }, 100);
     card.classList.toggle('flip');
 };
 
