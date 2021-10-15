@@ -200,7 +200,6 @@ function about_carousel_random() {
 };
 
 /******* popup *******/
-
 let popup = document.getElementById("popup_container");
 let openPopup = document.getElementById('start_btn');
 let closePopupBttn = document.getElementById('close_popup');
@@ -212,36 +211,57 @@ loginBtn.addEventListener('click', logIn)
 let popupEnter = (event) => { if (event.keyCode == 13) logIn() }
 let popupEsc = (event) => { if (event.keyCode == 27) closePopup() }
 
-function closePopup() {
+function closePopup () {
     generatePopupBackround(false);
     popup.style.display = 'none';
     [popupEnter, popupEsc].forEach((f) => { window.removeEventListener('keydown', f) });
+    errorMsg(false);
 }
 
-function showPopup() {
+function showPopup () {
     popup.classList.add('popup_animation')
     popup.style.display = 'block';
     generatePopupBackround(true);
     [popupEnter, popupEsc].forEach((f) => { window.addEventListener('keydown', f) });
 }
 
-function generatePopupBackround(state) {
+function generatePopupBackround ( state ) {
     let landingScreen = document.getElementById('landing_screen');
     if (state && !document.getElementById('popup_backround_animation')) {
         let backroundAnimation = document.createElement('div');
         backroundAnimation.id = 'popup_backround_animation';
         landingScreen.append(backroundAnimation);
-    } else if (!state) landingScreen.removeChild(document.getElementById('popup_backround_animation'))
+    } else if ( !state)
+    landingScreen.removeChild( document.getElementById('popup_backround_animation') )
 }
 
-function logIn() {
+function logIn () {
     let userInput = document.getElementsByClassName('input_form');
-    let emailForm = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if (userInput[0].value != '' && userInput[1].value.match(emailForm)) {
+    let mailcheck = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (userInput[0].value != '' && userInput[1].value.match(mailcheck)) {
         user_data.name = userInput[0].value;
         user_data.mail = userInput[1].value;
         closePopup();
         section_switch(1);
+        errorMsg(false)
+    } else {
+        errorMsg(true);
+    }
+}
+
+function errorMsg ( state ) {
+    let content = document.getElementById('popup_content')
+    let passwordInput = document.getElementById('mail_form')
+    let logerror = document.createElement('p');
+    
+    if( state ){
+        logerror.id = 'error_msg'
+        logerror.innerHTML = 'The E-Mail is incorrect'
+        content.append( logerror )
+        passwordInput.style.outline = '2px solid red'
+    } else if ( content.contains( document.getElementById('error_msg') )) {
+        passwordInput.style.outline = ''
+        content.removeChild( document.getElementById('error_msg') )
     }
 }
 
