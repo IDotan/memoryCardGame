@@ -456,10 +456,11 @@ h1 {
 
 .victory::after, .lost::after {
   position: absolute;
+  left: 50%;
   width: max-content;
   font-size: 3em;
   font-weight: 900;
-  transform: rotate(-20deg);
+  transform: rotate(-20deg) translate(-50%, -50%);
   background-color: #000000b3;
 }
 
