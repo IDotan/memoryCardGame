@@ -415,6 +415,7 @@ h1 {
 }
 
 #timer_status {
+  font-size: 1.5em;
   cursor: pointer;
 }
 

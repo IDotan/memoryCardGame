@@ -22,12 +22,13 @@ const game_data = {
     start_timer_timeout: null,
     start_time: 0,
     stored_time: 0,
+    time_interval: null,
+    game_paused: true,
     score: 0,
     cards_folder: "static/img/card_images/",
     card_img_index: [],
     card_imgs: ["avocado.svg", "banana.svg", "chili.svg", "blueberry.svg", "onion.svg", "pineapple.svg", "raspberry.svg", "tomato.svg", "watermelon.svg"],
-    fliped_card: null,
-    time_interval: null
+    fliped_card: null
 }
 
 /******************** Nav bar ********************/
@@ -272,40 +273,26 @@ function errorMsg(state) {
 /**
  * Start and pause the game timer.
  */
-
-
-
 function timer_action() {
-    /**
-     * Incode html entitie to be able to compare.
-     * 
-     * @param {String} entitie html entitie string.
-     * @returns {String} incoded entitie.
-     */
-    function incode_entitie(entitie) {
-        let temp = document.createElement('span');
-        temp.innerHTML = entitie;
-        let incode = temp.innerHTML;
-        temp.remove();
-        return incode;
-    };
-
-    if (this.innerHTML == incode_entitie("&#x23F5;")) {
+    if (this.innerHTML == '<i class="fas fa-play"></i>') {
         //start and unpause
-        game_data.start_time = Date.now()
+        game_data.start_time = Date.now();
         game_data.time_interval = setInterval(() => {
             let time = new Date((Date.now() - game_data.start_time) + game_data.stored_time);
             time = time.toTimeString();
             document.getElementById('time').innerHTML = time.split(' ', 1)[0].slice(3, time.length);
         }, 1000);
-        this.innerHTML = "&#x23F8;";
+        game_data.game_paused = false;
+        this.innerHTML = '<i class="fas fa-pause"></i>';
     } else {
         //pasue
         clearInterval(game_data.time_interval);
         game_data.stored_time += Date.now() - game_data.start_time;
-        this.innerHTML = "&#x23F5;";
-    }
-}
+        game_data.game_paused = true;
+        this.innerHTML = '<i class="fas fa-play"></i>';
+    };
+};
+
 /**
  * Reveal cards and flip back one by one, add click events at the end.
  */
@@ -371,6 +358,7 @@ let compare = []
 let picked = []
 let score = 0
 function comparisonFlipCard() {
+    if (game_data.game_paused) { return };
     if (picked.length != 0 && picked[0].getAttribute('data-index') == this.getAttribute('data-index')) {
         return;
     };
