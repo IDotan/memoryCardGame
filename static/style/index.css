@@ -380,7 +380,6 @@ h1 {
   display: flex;
   justify-content: space-between;
   background-color: var(--game-section-nav-clr);
-  font-family: "Segoe UI Symbol";
 }
 
 .nav_logo {
@@ -417,6 +416,7 @@ h1 {
 
 #timer_status {
   cursor: pointer;
+  font-family: "Segoe UI Symbol";
 }
 
 .mistakes {
