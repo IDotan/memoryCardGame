@@ -351,35 +351,41 @@ function start_game() {
         timer_btn.addEventListener('click', timer_action);
         timer_btn.click();
     }, ((game_data.cards_count + 1) * game_data.start_flip));
+    mistakes = 0;
 };
 
 //Comparison of two images /
-let compare = []
-let picked = []
+let picked = [];
+let mistakes;
 function comparisonFlipCard() {
-    if (game_data.game_paused) { return };
+    function stopTimer() {
+        let btn = document.getElementById('timer_status')
+        btn.click()
+        btn.removeEventListener('click', timer_action);
+    }
+
+    if (game_data.game_paused || mistakes == 3) { return };
     if (picked.length != 0 && picked[0].getAttribute('data-index') == this.getAttribute('data-index')) {
         return;
     };
     card_flip(this);
     picked = [...picked, this]
-    compare = [...compare, this.children[1].src]
-    if (compare.length == 2) {
-        console.log(picked[0].getAttribute('data-index'));
-        console.log(picked[1].getAttribute('data-index'));
-
-        if (compare[0] == compare[1]) {
-            console.log('yes');
+    if (picked.length == 2) {
+        if (picked[0].children[1].alt == picked[1].children[1].alt) {
             picked.forEach(item => {
                 item.removeEventListener('click', comparisonFlipCard)
             });
-            picked = [];
-            compare = [];
             game_data.score++;
+            document.getElementById('player_score').innerHTML= game_data.score;
             game_data.cards_count -= 2;
+            if (game_data.cards_count == 0) {
+                document.getElementById('card_container').classList.add('victory')
+                stopTimer();
+            }
         }
         else {
-            console.log('nope');
+            document.getElementsByClassName('mistakes_x')[mistakes].classList.add('mark')
+            mistakes++
             game_data.game_paused = true;
             picked.forEach(item => {
                 setTimeout(() => {
@@ -387,11 +393,16 @@ function comparisonFlipCard() {
                     game_data.game_paused = false;
                 }, 500);
             });
-            compare = [];
-            picked = [];
+            if (mistakes == 3) {
+                document.getElementById('card_container').classList.add('lost')
+                stopTimer();
+            }
         }
+        picked = [];
     }
 };
+
+
 /**
  * Switch between the 2 board section pages
  */
@@ -462,6 +473,7 @@ function add_card_img(card_img, card_index) {
 function reset_game() {
     if (document.getElementById('difficulty_picking').classList.contains('hide')) { board_page_section_switch() };
     document.getElementById('card_container').innerHTML = "";
+    document.getElementById('card_container').className = "";
     document.getElementById('start_btn_container').classList.remove('hide');
     clearTimeout(game_data.start_timer_timeout);
     clearInterval(game_data.time_interval);
@@ -470,6 +482,7 @@ function reset_game() {
     document.querySelectorAll('.mistakes_x').forEach((mark) => { mark.classList.remove('mark') });
     document.getElementById('player_score').innerHTML = 0;
     game_data.score = 0;
+    game_data.stored_time = 0;
 };
 
 /******************** End screen ********************/

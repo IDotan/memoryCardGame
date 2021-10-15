@@ -453,7 +453,20 @@ h1 {
   flex-wrap: wrap;
   gap: var(--card-gap);
 }
-
+.victory::after,.lost::after{
+  position: absolute;
+  width: max-content;
+  font-size: 2em;
+  font-weight: 900;
+  color: rgb(201, 44, 44);
+  transform: rotate(-20deg);  
+}
+.victory::after{
+  content: "YOU WIN";
+}
+.lost::after{
+  content: "LOSER";
+}
 .card {
   margin: 0 auto;
   width: var(--card-width);
@@ -503,7 +516,7 @@ h1 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 70vw;
+  width: max-content;
 }
 
 .board_btn_container {
@@ -516,7 +529,6 @@ h1 {
 }
 
 .start_game_btn {
-  width: 100%;
   letter-spacing: 0.1em;
 }
 
@@ -692,9 +704,6 @@ h1 {
     height: calc((var(--card-height) + var(--card-gap)) * 3);
     width: 100%;
     font-size: 1.5em;
-  }
-  #start_btn_container {
-    width: 25vw;
   }
   #board_bottom_btn_continer {
     max-width: 50vw;
