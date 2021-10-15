@@ -8,7 +8,7 @@
   --clr-yellow: #ffc131;
   --clr-popup-backround: rgba(0, 0, 0, 0.7);
   --carousel-inactive-bg: rgba(0, 0, 0, 0.85);
-  --carousel-active-bg: rgba(0, 0, 255, 0.85);
+  --carousel-active-bg: rgba(126, 45, 147, 0.85);
   --game-section-nav-clr: rgba(0, 0, 0, 0.5);
   --game-section-font-clr: coral;
   --card-width: 5em;
@@ -192,7 +192,7 @@ h1 {
   flex-direction: column;
   align-items: center;
   background-color: var(--carousel-inactive-bg);
-  border: 0.15em solid #808080;
+  border: 0.15em solid var(--clr-yellow);
   border-radius: 2.5rem;
   opacity: 0.5;
   transition: background-color 1s, opacity 1s;
@@ -453,20 +453,26 @@ h1 {
   flex-wrap: wrap;
   gap: var(--card-gap);
 }
-.victory::after,.lost::after{
+
+.victory::after, .lost::after {
   position: absolute;
   width: max-content;
-  font-size: 2em;
+  font-size: 3em;
   font-weight: 900;
+  transform: rotate(-20deg);
+  background-color: #000000b3;
+}
+
+.victory::after {
+  content: "YOU WIN!";
+  color: rgb(44, 201, 57);
+}
+
+.lost::after {
+  content: "LOSER!";
   color: rgb(201, 44, 44);
-  transform: rotate(-20deg);  
 }
-.victory::after{
-  content: "YOU WIN";
-}
-.lost::after{
-  content: "LOSER";
-}
+
 .card {
   margin: 0 auto;
   width: var(--card-width);

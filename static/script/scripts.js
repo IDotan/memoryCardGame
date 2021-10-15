@@ -376,7 +376,7 @@ function comparisonFlipCard() {
                 item.removeEventListener('click', comparisonFlipCard)
             });
             game_data.score++;
-            document.getElementById('player_score').innerHTML= game_data.score;
+            document.getElementById('player_score').innerHTML = game_data.score;
             game_data.cards_count -= 2;
             if (game_data.cards_count == 0) {
                 document.getElementById('card_container').classList.add('victory')
@@ -465,6 +465,13 @@ function add_card_img(card_img, card_index) {
     let path = document.URL.split("index")[0];
     card_img.src = path + game_data.cards_folder + img;
     card_img.alt = img.split(".")[0];
+};
+
+function go_to_score_bord() {
+    user_data.score = game_data.score;
+    user_data.time = game_data.stored_time;
+    load_score_table(sort_score_descending);
+    section_switch(2);
 };
 
 /**
