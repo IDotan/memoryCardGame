@@ -462,9 +462,10 @@ function reset_game() {
     if (document.getElementById('difficulty_picking').classList.contains('hide')) { board_page_section_switch() };
     document.getElementById('card_container').innerHTML = "";
     document.getElementById('start_btn_container').classList.remove('hide');
-    document.getElementById('time').innerHTML = "00:00";
-    document.getElementById('timer_status').innerHTML = "&#x23F5;";
     clearTimeout(game_data.start_timer_timeout);
+    clearInterval(game_data.time_interval);
+    document.getElementById('time').innerHTML = "00:00";
+    document.getElementById('timer_status').innerHTML = '<i class="fas fa-play"></i>';
     document.querySelectorAll('.mistakes_x').forEach((mark) => { mark.classList.remove('mark') });
     document.getElementById('player_score').innerHTML = 0;
 };
