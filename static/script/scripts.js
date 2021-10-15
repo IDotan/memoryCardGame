@@ -19,14 +19,18 @@ const game_data = {
     min_width: 1024,
     cards_in_column: 3,
     start_flip: 600,
+    start_timer_timeout: null,
     start_time: 0,
     stored_time: 0,
     score: 0,
     cards_folder: "static/img/card_images/",
     card_img_index: [],
     card_imgs: ["avocado.svg", "banana.svg", "chili.svg", "blueberry.svg", "onion.svg", "pineapple.svg", "raspberry.svg", "tomato.svg", "watermelon.svg"],
+<<<<<<< HEAD
     fliped_card: null,
     time_interval: null
+=======
+>>>>>>> 3d8491dbb074e8ff7aa3c02bde0dbda314221d66
 }
 
 /******************** Nav bar ********************/
@@ -358,7 +362,7 @@ function start_game() {
             };
         };
     };
-    setTimeout(() => {
+    game_data.start_timer_timeout = setTimeout(() => {
         let timer_btn = document.getElementById('timer_status');
         timer_btn.addEventListener('click', timer_action);
         timer_btn.click();
@@ -370,17 +374,16 @@ let compare = []
 let picked = []
 let score = 0
 function comparisonFlipCard() {
+    if (picked.length != 0 && picked[0].getAttribute('data-index') == this.getAttribute('data-index')) {
+        return;
+    };
     card_flip(this);
     picked = [...picked, this]
     compare = [...compare, this.children[1].src]
     if (compare.length == 2) {
         console.log(picked[0].getAttribute('data-index'));
         console.log(picked[1].getAttribute('data-index'));
-        if (picked[0].getAttribute('data-index') == picked[1].getAttribute('data-index')) {
-            picked = [];
-            compare = [];
-            return;
-        }
+
         if (compare[0] == compare[1]) {
             console.log('yes');
             picked.forEach(item => {
@@ -389,6 +392,7 @@ function comparisonFlipCard() {
             picked = [];
             compare = [];
             score++;
+            game_data.cards_count -= 2;
         }
         else {
             console.log('nope');
@@ -475,7 +479,7 @@ function reset_game() {
     document.getElementById('start_btn_container').classList.remove('hide');
     document.getElementById('time').innerHTML = "00:00";
     document.getElementById('timer_status').innerHTML = "&#x23F5;";
-    // todo make sure start game timer timeout is cleard
+    clearTimeout(game_data.start_timer_timeout);
     document.querySelectorAll('.mistakes_x').forEach((mark) => { mark.classList.remove('mark') });
     document.getElementById('player_score').innerHTML = 0;
 };
