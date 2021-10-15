@@ -290,20 +290,20 @@ function timer_action() {
         return incode;
     };
 
-    if (btn.innerHTML == incode_entitie("&#x23F5;")) {
+    if (this.innerHTML == incode_entitie("&#x23F5;")) {
         //start and unpause
         game_data.start_time = Date.now()
         game_data.time_interval = setInterval(() => {
-            let time = new Date((Date.now() - game_date.start_time) + game_data.stored_time);
+            let time = new Date((Date.now() - game_data.start_time) + game_data.stored_time);
             time = time.toTimeString();
-            document.getElementsById('time').innerHTML = time.split('', 1)[0].slice(3, time.length);
+            document.getElementById('time').innerHTML = time.split(' ', 1)[0].slice(3, time.length);
         }, 1000);
-        btn.innerHTML = "&#x23F8;";
+        this.innerHTML = "&#x23F8;";
     } else {
         //pasue
         clearInterval(game_data.time_interval);
         game_data.stored_time += Date.now() - game_data.start_time;
-        btn.innerHTML = "&#x23F5;";
+        this.innerHTML = "&#x23F5;";
     }
 }
 /**
@@ -450,7 +450,7 @@ function initialize_game(cards) {
  */
 function card_flip(card) {
     let img_div = card.children[1];
-    img_div.src == document.URL ? add_card_img(img_div, parseInt(card.dataset.index)) : setTimeout(() => { img_div.src = ""; img_div.alt = ""; }, 100);
+    img_div.src == document.URL ? add_card_img(img_div, parseInt(card.dataset.index)) : setTimeout(() => { img_div.src = ""; img_div.alt = ""; },100);
     card.classList.toggle('flip');
 };
 
