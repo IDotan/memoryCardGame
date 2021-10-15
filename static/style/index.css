@@ -23,10 +23,7 @@
   display: none !important;
 }
 
-h1,
-h2,
-h3,
-p {
+h1, h2, h3, p {
   color: var(--clr-white);
 }
 
@@ -42,7 +39,7 @@ header input {
   z-index: 10;
 }
 
-header input:checked + div {
+header input:checked+div {
   display: block;
   position: absolute;
   width: 100%;
@@ -83,7 +80,7 @@ h1 {
   padding: 0 0 2em;
 }
 
-#landing_screen P > span {
+#landing_screen P>span {
   font-weight: 900;
 }
 
@@ -383,6 +380,7 @@ h1 {
   display: flex;
   justify-content: space-between;
   background-color: var(--game-section-nav-clr);
+  font-family: "Segoe UI Symbol";
 }
 
 .nav_logo {
@@ -481,8 +479,7 @@ h1 {
   transform: rotateY(180deg) scale(1.1);
 }
 
-.card_back,
-.card_img {
+.card_back, .card_img {
   position: absolute;
   width: 100%;
   backface-visibility: hidden;
@@ -571,28 +568,22 @@ h1 {
   position: relative;
 }
 
-#score_table th,
-#score_table td {
+#score_table th, #score_table td {
   height: 2.5em;
   text-align: center;
   padding: 0 var(--table-side-padding);
   max-width: 14em;
 }
 
-#score_table th:nth-of-type(1),
-#score_table td:nth-of-type(1) {
+#score_table th:nth-of-type(1), #score_table td:nth-of-type(1) {
   padding: 0;
 }
 
-#score_table th:nth-of-type(3),
-#score_table td:nth-of-type(3),
-#score_table th:nth-of-type(4),
-#score_table td:nth-of-type(4) {
+#score_table th:nth-of-type(3), #score_table td:nth-of-type(3), #score_table th:nth-of-type(4), #score_table td:nth-of-type(4) {
   min-width: 5em;
 }
 
-#score_table th:nth-of-type(3),
-#score_table th:nth-of-type(4) {
+#score_table th:nth-of-type(3), #score_table th:nth-of-type(4) {
   cursor: pointer;
 }
 
