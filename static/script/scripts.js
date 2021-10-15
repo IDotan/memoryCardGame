@@ -26,11 +26,8 @@ const game_data = {
     cards_folder: "static/img/card_images/",
     card_img_index: [],
     card_imgs: ["avocado.svg", "banana.svg", "chili.svg", "blueberry.svg", "onion.svg", "pineapple.svg", "raspberry.svg", "tomato.svg", "watermelon.svg"],
-<<<<<<< HEAD
     fliped_card: null,
     time_interval: null
-=======
->>>>>>> 3d8491dbb074e8ff7aa3c02bde0dbda314221d66
 }
 
 /******************** Nav bar ********************/
