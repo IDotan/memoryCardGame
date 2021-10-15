@@ -19,13 +19,13 @@ const game_data = {
     min_width: 1024,
     cards_in_column: 3,
     start_flip: 600,
+    start_timer_timeout: null,
     start_time: 0,
     stored_time: 0,
     score: 0,
     cards_folder: "static/img/card_images/",
     card_img_index: [],
     card_imgs: ["avocado.svg", "banana.svg", "chili.svg", "blueberry.svg", "onion.svg", "pineapple.svg", "raspberry.svg", "tomato.svg", "watermelon.svg"],
-    fliped_card: null
 }
 
 /******************** Nav bar ********************/
@@ -211,31 +211,31 @@ loginBtn.addEventListener('click', logIn)
 let popupEnter = (event) => { if (event.keyCode == 13) logIn() }
 let popupEsc = (event) => { if (event.keyCode == 27) closePopup() }
 
-function closePopup () {
+function closePopup() {
     generatePopupBackround(false);
     popup.style.display = 'none';
     [popupEnter, popupEsc].forEach((f) => { window.removeEventListener('keydown', f) });
     errorMsg(false);
 }
 
-function showPopup () {
+function showPopup() {
     popup.classList.add('popup_animation')
     popup.style.display = 'block';
     generatePopupBackround(true);
     [popupEnter, popupEsc].forEach((f) => { window.addEventListener('keydown', f) });
 }
 
-function generatePopupBackround ( state ) {
+function generatePopupBackround(state) {
     let landingScreen = document.getElementById('landing_screen');
     if (state && !document.getElementById('popup_backround_animation')) {
         let backroundAnimation = document.createElement('div');
         backroundAnimation.id = 'popup_backround_animation';
         landingScreen.append(backroundAnimation);
-    } else if ( !state)
-    landingScreen.removeChild( document.getElementById('popup_backround_animation') )
+    } else if (!state)
+        landingScreen.removeChild(document.getElementById('popup_backround_animation'))
 }
 
-function logIn () {
+function logIn() {
     let userInput = document.getElementsByClassName('input_form');
     let mailcheck = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (userInput[0].value != '' && userInput[1].value.match(mailcheck)) {
@@ -249,19 +249,19 @@ function logIn () {
     }
 }
 
-function errorMsg ( state ) {
+function errorMsg(state) {
     let content = document.getElementById('popup_content')
     let passwordInput = document.getElementById('mail_form')
     let logerror = document.createElement('p');
-    
-    if( state ){
+
+    if (state) {
         logerror.id = 'error_msg'
         logerror.innerHTML = 'The E-Mail is incorrect'
-        content.append( logerror )
+        content.append(logerror)
         passwordInput.style.outline = '2px solid red'
-    } else if ( content.contains( document.getElementById('error_msg') )) {
+    } else if (content.contains(document.getElementById('error_msg'))) {
         passwordInput.style.outline = ''
-        content.removeChild( document.getElementById('error_msg') )
+        content.removeChild(document.getElementById('error_msg'))
     }
 }
 
@@ -347,7 +347,7 @@ function start_game() {
             };
         };
     };
-    setTimeout(() => {
+    game_data.start_timer_timeout = setTimeout(() => {
         let timer_btn = document.getElementById('timer_status');
         timer_btn.addEventListener('click', timer_action);
         timer_btn.click();
@@ -359,17 +359,16 @@ let compare = []
 let picked = []
 let score = 0
 function comparisonFlipCard() {
+    if (picked.length != 0 && picked[0].getAttribute('data-index') == this.getAttribute('data-index')) {
+        return;
+    };
     card_flip(this);
     picked = [...picked, this]
     compare = [...compare, this.children[1].src]
     if (compare.length == 2) {
         console.log(picked[0].getAttribute('data-index'));
         console.log(picked[1].getAttribute('data-index'));
-        if (picked[0].getAttribute('data-index') == picked[1].getAttribute('data-index')) {
-            picked = [];
-            compare = [];
-            return;
-        }
+
         if (compare[0] == compare[1]) {
             console.log('yes');
             picked.forEach(item => {
@@ -378,6 +377,7 @@ function comparisonFlipCard() {
             picked = [];
             compare = [];
             score++;
+            game_data.cards_count -= 2;
         }
         else {
             console.log('nope');
@@ -464,7 +464,7 @@ function reset_game() {
     document.getElementById('start_btn_container').classList.remove('hide');
     document.getElementById('time').innerHTML = "00:00";
     document.getElementById('timer_status').innerHTML = "&#x23F5;";
-    // todo make sure start game timer timeout is cleard
+    clearTimeout(game_data.start_timer_timeout);
     document.querySelectorAll('.mistakes_x').forEach((mark) => { mark.classList.remove('mark') });
     document.getElementById('player_score').innerHTML = 0;
 };
