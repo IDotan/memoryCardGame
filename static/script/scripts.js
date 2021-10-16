@@ -387,7 +387,7 @@ function comparisonFlipCard() {
         }
         else {
             document.getElementsByClassName('mistakes_x')[mistakes].classList.add('mark')
-            // mistakes++
+            mistakes++
             game_data.game_paused = true;
             picked.forEach(item => {
                 setTimeout(() => {
