@@ -369,8 +369,8 @@ function comparisonFlipCard() {
         return;
     };
     card_flip(this);
+    this.classList.add('selected');
     picked = [...picked, this];
-    picked.forEach((card) => { card.classList.add('selected') });
     if (picked.length == 2) {
         if (picked[0].children[1].alt == picked[1].children[1].alt) {
             picked.forEach(item => {
@@ -387,7 +387,7 @@ function comparisonFlipCard() {
         }
         else {
             document.getElementsByClassName('mistakes_x')[mistakes].classList.add('mark')
-            mistakes++
+            mistakes++;
             game_data.game_paused = true;
             picked.forEach(item => {
                 setTimeout(() => {
