@@ -260,10 +260,8 @@ function errorMsg(state) {
     if (state) {
         logerror.id = 'error_msg'
         logerror.innerHTML = 'The E-Mail is incorrect'
-        content.append(logerror)
-        passwordInput.style.outline = '2px solid red'
+        content.insertBefore(logerror, loginBtn)
     } else if (content.contains(document.getElementById('error_msg'))) {
-        passwordInput.style.outline = ''
         content.removeChild(document.getElementById('error_msg'))
     }
 }
