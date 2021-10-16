@@ -369,37 +369,40 @@ function comparisonFlipCard() {
         return;
     };
     card_flip(this);
-    picked = [...picked, this]
+    picked = [...picked, this];
+    picked.forEach((card) => { card.classList.add('selected') });
     if (picked.length == 2) {
         if (picked[0].children[1].alt == picked[1].children[1].alt) {
             picked.forEach(item => {
-                item.removeEventListener('click', comparisonFlipCard)
+                item.removeEventListener('click', comparisonFlipCard);
             });
             game_data.score++;
             document.getElementById('player_score').innerHTML = game_data.score;
             game_data.cards_count -= 2;
+            picked.forEach((card) => { card.classList.remove('selected') });
             if (game_data.cards_count == 0) {
                 document.getElementById('card_container').classList.add('victory')
                 stopTimer();
-            }
+            };
         }
         else {
             document.getElementsByClassName('mistakes_x')[mistakes].classList.add('mark')
-            mistakes++
+            // mistakes++
             game_data.game_paused = true;
             picked.forEach(item => {
                 setTimeout(() => {
                     card_flip(item);
+                    item.classList.remove('selected');
                     game_data.game_paused = false;
-                }, 500);
+                }, 800);
             });
             if (mistakes == 3) {
                 document.getElementById('card_container').classList.add('lost')
                 stopTimer();
-            }
-        }
+            };
+        };
         picked = [];
-    }
+    };
 };
 
 
