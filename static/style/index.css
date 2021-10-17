@@ -23,10 +23,7 @@
   display: none !important;
 }
 
-h1,
-h2,
-h3,
-p {
+h1, h2, h3, p {
   color: var(--clr-white);
 }
 
@@ -42,7 +39,7 @@ header input {
   z-index: 10;
 }
 
-header input:checked + div {
+header input:checked+div {
   display: block;
   position: absolute;
   width: 100%;
@@ -77,13 +74,13 @@ h1 {
   width: 60%;
 }
 
-#landing_screen P {
+.about_project_text {
   margin: 0 auto;
   font-size: var(--fs-paragraph);
   padding: 0 0 2em;
 }
 
-#landing_screen P > span {
+.about_project_text>span {
   font-weight: 900;
 }
 
@@ -142,6 +139,7 @@ h1 {
   position: relative;
   padding: 2em 0;
   margin: 0 auto;
+  max-width: 40em;
 }
 
 .carousel_arrow {
@@ -201,16 +199,27 @@ h1 {
   transition: background-color 1s, opacity 1s;
 }
 
+.about_text {
+  font-size: var(--fs-paragraph);
+  min-height: 26ch;
+}
+
+.about_text>span {
+  font-weight: 700;
+}
+
 .about.center {
   background-color: var(--carousel-active-bg);
   opacity: 1;
 }
 
 .about h2 {
-  padding-block: 1rem;
+  min-height: 5ch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   font-size: var(--fs-Profle-h2);
-  min-height: 6ch;
 }
 
 .carousel_back_container {
@@ -458,8 +467,7 @@ h1 {
   gap: var(--card-gap);
 }
 
-.victory::after,
-.lost::after {
+.victory::after, .lost::after {
   position: absolute;
   left: 50%;
   width: max-content;
@@ -508,8 +516,7 @@ h1 {
   border-color: var(--clr-yellow);
 }
 
-.card_back,
-.card_img {
+.card_back, .card_img {
   position: absolute;
   width: 100%;
   backface-visibility: hidden;
@@ -597,28 +604,22 @@ h1 {
   position: relative;
 }
 
-#score_table th,
-#score_table td {
+#score_table th, #score_table td {
   height: 2.5em;
   text-align: center;
   padding: 0 var(--table-side-padding);
   max-width: 14em;
 }
 
-#score_table th:nth-of-type(1),
-#score_table td:nth-of-type(1) {
+#score_table th:nth-of-type(1), #score_table td:nth-of-type(1) {
   padding: 0;
 }
 
-#score_table th:nth-of-type(3),
-#score_table td:nth-of-type(3),
-#score_table th:nth-of-type(4),
-#score_table td:nth-of-type(4) {
+#score_table th:nth-of-type(3), #score_table td:nth-of-type(3), #score_table th:nth-of-type(4), #score_table td:nth-of-type(4) {
   min-width: 5em;
 }
 
-#score_table th:nth-of-type(3),
-#score_table th:nth-of-type(4) {
+#score_table th:nth-of-type(3), #score_table th:nth-of-type(4) {
   cursor: pointer;
 }
 
@@ -693,10 +694,13 @@ h1 {
     background-image: url(../img/wallpapers/dev.png) !important;
   }
   #developers_carousel_container {
-    width: 40%;
+    width: 45%;
   }
   .about {
     padding: 3em;
+  }
+  .about_text {
+    min-height: 18ch;
   }
   /* game board desktop*/
   #difficulty_picking {

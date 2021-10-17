@@ -362,7 +362,7 @@ function comparisonFlipCard() {
         btn.removeEventListener('click', timer_action);
     }
 
-    if (game_data.game_paused || mistakes == 3) { return };
+    if (game_data.game_paused) { return };
     if (picked.length != 0 && picked[0].getAttribute('data-index') == this.getAttribute('data-index')) {
         return;
     };
@@ -379,23 +379,24 @@ function comparisonFlipCard() {
             document.getElementById('player_score').innerHTML = game_data.score;
             game_data.cards_count -= 2;
             if (game_data.cards_count == 0) {
-                document.getElementById('card_container').classList.add('victory')
+                document.getElementById('card_container').classList.add('victory');
                 stopTimer();
             };
         } else {
-            document.getElementsByClassName('mistakes_x')[mistakes].classList.add('mark')
+            document.getElementsByClassName('mistakes_x')[mistakes].classList.add('mark');
             mistakes++;
-            game_data.game_paused = true;
-            picked.forEach(item => {
-                setTimeout(() => {
-                    card_flip(item);
-                    item.classList.remove('selected');
-                    game_data.game_paused = false;
-                }, 800);
-            });
             if (mistakes == 3) {
-                document.getElementById('card_container').classList.add('lost')
+                document.getElementById('card_container').classList.add('lost');
                 stopTimer();
+            } else {
+                game_data.game_paused = true;
+                picked.forEach(item => {
+                    setTimeout(() => {
+                        card_flip(item);
+                        item.classList.remove('selected');
+                    }, 800);
+                });
+                setTimeout(() => { game_data.game_paused = false; }, 1000);
             };
         };
         picked = [];
