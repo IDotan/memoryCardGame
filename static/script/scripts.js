@@ -309,7 +309,7 @@ function start_game() {
     };
 
     /**
-     * Show then the given card div and add event listener affter all card been shown.
+     * Show then  hide the given card div and add event listener affter all cards been shown.
      * 
      * @param {HTMLElement} target card div to take action on.
      * @param {Number} loop loop count to set the dilays by.
@@ -468,11 +468,17 @@ function add_card_img(card_img, card_index) {
     card_img.alt = img.split(".")[0];
 };
 
-function go_to_score_bord() {
+/**
+ * Load data to user_data and move to show the updated score board
+ */
+function go_to_score_board() {
+    if (!game_data.game_paused) { document.getElementById('timer_status').click(); };
     user_data.score = game_data.score;
     user_data.time = game_data.stored_time;
     load_score_table(sort_score_descending);
+    table_arrow_switch(0);
     section_switch(2);
+    reset_game();
 };
 
 /**
@@ -480,8 +486,9 @@ function go_to_score_bord() {
  */
 function reset_game() {
     if (document.getElementById('difficulty_picking').classList.contains('hide')) { board_page_section_switch() };
-    document.getElementById('card_container').innerHTML = "";
-    document.getElementById('card_container').className = "";
+    let card_container = document.getElementById('card_container');
+    card_container.innerHTML = "";
+    card_container.className = "";
     document.getElementById('start_btn_container').classList.remove('hide');
     clearTimeout(game_data.start_timer_timeout);
     clearInterval(game_data.time_interval);
@@ -644,7 +651,6 @@ function shared_link() {
  * @param {Object} event click event object. 
  */
 function play_again(event) {
-    reset_game();
     if (event.target.innerHTML == "Try again") {
         section_switch(1);
     } else {
