@@ -554,6 +554,29 @@ function sort_time_descending(a, b) {
  * @param {Function} sort_function the function to sort by.
  */
 function load_score_table(sort_function) {
+    /**
+     * Create tr element with the row data
+     * 
+     * @returns {HTMLElement} 'tr' element
+     */
+    function create_table_row() {
+        let tr = document.createElement('TR');
+        tr.className = 'score_table_row';
+        for (let j = 1; j < 6; j++) {
+            let td = document.createElement('TD');
+            if (j == 1) {
+                td.innerHTML = (i + 1) + '.';
+            } else if (j == 4) {
+                let time = Math.floor(table_data[i][td_keys[j]] / 1000);
+                time >= 60 ? td.innerHTML = (time / 60).toFixed(2) + ' min' : td.innerHTML = time + ' sec';
+            } else {
+                td.innerHTML = table_data[i][td_keys[j]];
+            };
+            tr.append(td);
+        };
+        return tr;
+    };
+
     let table_data = [
         ["Itai", "itai145@gmail.com", 6, 10000],
         ["Danielle", "danielle07t@gmail.com", 8, 65000],
@@ -561,19 +584,12 @@ function load_score_table(sort_function) {
     table_data.push([user_data.name, user_data.mail, user_data.score, user_data.time]);
     table_data.sort((a, b) => { return sort_function(a, b) });
     //td index => table_data position.
-    const td_keys = { 1: 0, 2: 2, 3: 3, 4: 1 };
+    const td_keys = { 2: 0, 3: 2, 4: 3, 5: 1 };
+    let table_body = document.querySelector('#score_table').children[0];
     let table_rows = document.querySelectorAll('.score_table_row');
-    for (i = 0; i < table_rows.length; i++) {
-        table_rows[i].querySelectorAll('td').forEach((td, index) => {
-            if (index == 0) {
-                td.innerHTML = (i + 1) + '.';
-            } else if (index == 3) {
-                let time = Math.floor(table_data[i][td_keys[index]] / 1000);
-                time >= 60 ? td.innerHTML = (time / 60).toFixed(2) + ' min' : td.innerHTML = time + ' sec';
-            } else {
-                td.innerHTML = table_data[i][td_keys[index]];
-            };
-        });
+    table_rows.forEach((row) => { row.remove() });
+    for (i = 0; i < table_data.length; i++) {
+        table_body.append(create_table_row());
     };
 };
 
