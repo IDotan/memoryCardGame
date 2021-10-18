@@ -586,8 +586,7 @@ function load_score_table(sort_function) {
     //td index => table_data position.
     const td_keys = { 2: 0, 3: 2, 4: 3, 5: 1 };
     let table_body = document.querySelector('#score_table').children[0];
-    let table_rows = document.querySelectorAll('.score_table_row');
-    table_rows.forEach((row) => { row.remove() });
+    document.querySelectorAll('.score_table_row').forEach((row) => { row.remove() });
     for (i = 0; i < table_data.length; i++) {
         table_body.append(create_table_row());
     };
