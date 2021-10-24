@@ -23,10 +23,7 @@
   display: none !important;
 }
 
-h1,
-h2,
-h3,
-p {
+h1, h2, h3, p {
   color: var(--clr-white);
 }
 
@@ -42,7 +39,7 @@ header input {
   z-index: 10;
 }
 
-header input:checked + div {
+header input:checked+div {
   display: block;
   position: absolute;
   width: 100%;
@@ -64,7 +61,7 @@ h1 {
   position: relative;
   background-image: url(../img/wallpapers/mobile-landing_screen.svg);
   background-repeat: no-repeat;
-  height: 100vh;
+  min-height: 100vh;
   background-size: cover;
   background-position: center;
 }
@@ -83,7 +80,7 @@ h1 {
   padding: 0 0 2em;
 }
 
-.about_project_text > span {
+.about_project_text>span {
   font-weight: 900;
 }
 
@@ -207,7 +204,7 @@ h1 {
   min-height: 26ch;
 }
 
-.about_text > span {
+.about_text>span {
   font-weight: 700;
 }
 
@@ -474,8 +471,7 @@ h1 {
   gap: var(--card-gap);
 }
 
-.victory::after,
-.lost::after {
+.victory::after, .lost::after {
   position: absolute;
   left: 50%;
   width: max-content;
@@ -524,8 +520,7 @@ h1 {
   border-color: var(--clr-yellow);
 }
 
-.card_back,
-.card_img {
+.card_back, .card_img {
   position: absolute;
   width: 100%;
   backface-visibility: hidden;
@@ -613,28 +608,22 @@ h1 {
   position: relative;
 }
 
-#score_table th,
-#score_table td {
+#score_table th, #score_table td {
   height: 2.5em;
   text-align: center;
   padding: 0 var(--table-side-padding);
   max-width: 14em;
 }
 
-#score_table th:nth-of-type(1),
-#score_table td:nth-of-type(1) {
+#score_table th:nth-of-type(1), #score_table td:nth-of-type(1) {
   padding: 0;
 }
 
-#score_table th:nth-of-type(3),
-#score_table td:nth-of-type(3),
-#score_table th:nth-of-type(4),
-#score_table td:nth-of-type(4) {
+#score_table th:nth-of-type(3), #score_table td:nth-of-type(3), #score_table th:nth-of-type(4), #score_table td:nth-of-type(4) {
   min-width: 5em;
 }
 
-#score_table th:nth-of-type(3),
-#score_table th:nth-of-type(4) {
+#score_table th:nth-of-type(3), #score_table th:nth-of-type(4) {
   cursor: pointer;
 }
 
