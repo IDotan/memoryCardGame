@@ -23,6 +23,10 @@
   display: none !important;
 }
 
+body {
+  min-width: 350px;
+}
+
 h1, h2, h3, p {
   color: var(--clr-white);
 }
@@ -201,7 +205,6 @@ h1 {
 
 .about_text {
   font-size: var(--fs-paragraph);
-  min-height: 26ch;
 }
 
 .about_text>span {
@@ -257,11 +260,8 @@ h1 {
   margin: 0 auto;
   left: 50%;
   transform: translatex(-50%);
-  max-width: 100vw;
-  width: 30rem;
-  height: 43.7rem;
   background-image: url(../img/popup/login.png);
-  background-size: cover;
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   z-index: 2;
@@ -294,16 +294,15 @@ h1 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 15rem auto 0 auto;
-  max-width: 90%;
-  width: 19rem;
+  margin-top: 4rem;
+  width: 32ch;
+  box-sizing: content-box;
+  padding: 4em;
   font-family: var(--ff-main);
 }
 
 #close_popup {
-  position: absolute;
-  top: 0;
-  right: 0;
+  align-self: end;
   cursor: pointer;
   font-size: 2.5rem;
   color: var(--clr-yellow);
@@ -472,11 +471,12 @@ h1 {
 
 .victory::after, .lost::after {
   position: absolute;
+  top: 50%;
   left: 50%;
   width: max-content;
   font-size: 3em;
   font-weight: 900;
-  transform: rotate(-20deg) translate(-50%, -50%);
+  transform: translate(-50%, -50%) rotate(-20deg);
   background-color: #000000b3;
 }
 
@@ -681,6 +681,7 @@ h1 {
   }
   .about_project {
     max-width: max-content;
+    padding-top: 30vh;
   }
   .about_btn_container {
     flex-direction: row;
@@ -701,9 +702,6 @@ h1 {
   }
   .about {
     padding: 3em;
-  }
-  .about_text {
-    min-height: 18ch;
   }
   /* game board desktop*/
   #difficulty_picking {
