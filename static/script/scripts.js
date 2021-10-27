@@ -260,10 +260,8 @@ function errorMsg(state) {
     if (state) {
         logerror.id = 'error_msg'
         logerror.innerHTML = 'The E-Mail is incorrect'
-        content.append(logerror)
-        passwordInput.style.outline = '2px solid red'
+        content.insertBefore(logerror, loginBtn)
     } else if (content.contains(document.getElementById('error_msg'))) {
-        passwordInput.style.outline = ''
         content.removeChild(document.getElementById('error_msg'))
     }
 }
@@ -311,7 +309,7 @@ function start_game() {
     };
 
     /**
-     * Show then the given card div and add event listener affter all card been shown.
+     * Show then  hide the given card div and add event listener affter all cards been shown.
      * 
      * @param {HTMLElement} target card div to take action on.
      * @param {Number} loop loop count to set the dilays by.
@@ -364,42 +362,45 @@ function comparisonFlipCard() {
         btn.removeEventListener('click', timer_action);
     }
 
-    if (game_data.game_paused || mistakes == 3) { return };
+    if (game_data.game_paused) { return };
     if (picked.length != 0 && picked[0].getAttribute('data-index') == this.getAttribute('data-index')) {
         return;
     };
     card_flip(this);
-    picked = [...picked, this]
+    this.classList.add('selected');
+    picked = [...picked, this];
     if (picked.length == 2) {
         if (picked[0].children[1].alt == picked[1].children[1].alt) {
             picked.forEach(item => {
-                item.removeEventListener('click', comparisonFlipCard)
+                item.removeEventListener('click', comparisonFlipCard);
+                item.classList.remove('selected');
             });
             game_data.score++;
             document.getElementById('player_score').innerHTML = game_data.score;
             game_data.cards_count -= 2;
             if (game_data.cards_count == 0) {
-                document.getElementById('card_container').classList.add('victory')
+                document.getElementById('card_container').classList.add('victory');
                 stopTimer();
-            }
-        }
-        else {
-            document.getElementsByClassName('mistakes_x')[mistakes].classList.add('mark')
-            mistakes++
-            game_data.game_paused = true;
-            picked.forEach(item => {
-                setTimeout(() => {
-                    card_flip(item);
-                    game_data.game_paused = false;
-                }, 500);
-            });
+            };
+        } else {
+            document.getElementsByClassName('mistakes_x')[mistakes].classList.add('mark');
+            mistakes++;
             if (mistakes == 3) {
-                document.getElementById('card_container').classList.add('lost')
+                document.getElementById('card_container').classList.add('lost');
                 stopTimer();
-            }
-        }
+            } else {
+                game_data.game_paused = true;
+                picked.forEach(item => {
+                    setTimeout(() => {
+                        card_flip(item);
+                        item.classList.remove('selected');
+                    }, 800);
+                });
+                setTimeout(() => { game_data.game_paused = false; }, 1000);
+            };
+        };
         picked = [];
-    }
+    };
 };
 
 
@@ -467,11 +468,17 @@ function add_card_img(card_img, card_index) {
     card_img.alt = img.split(".")[0];
 };
 
-function go_to_score_bord() {
+/**
+ * Load data to user_data and move to show the updated score board
+ */
+function go_to_score_board() {
+    if (!game_data.game_paused) { document.getElementById('timer_status').click(); };
     user_data.score = game_data.score;
     user_data.time = game_data.stored_time;
     load_score_table(sort_score_descending);
+    table_arrow_switch(0);
     section_switch(2);
+    reset_game();
 };
 
 /**
@@ -479,8 +486,9 @@ function go_to_score_bord() {
  */
 function reset_game() {
     if (document.getElementById('difficulty_picking').classList.contains('hide')) { board_page_section_switch() };
-    document.getElementById('card_container').innerHTML = "";
-    document.getElementById('card_container').className = "";
+    let card_container = document.getElementById('card_container');
+    card_container.innerHTML = "";
+    card_container.className = "";
     document.getElementById('start_btn_container').classList.remove('hide');
     clearTimeout(game_data.start_timer_timeout);
     clearInterval(game_data.time_interval);
@@ -546,6 +554,29 @@ function sort_time_descending(a, b) {
  * @param {Function} sort_function the function to sort by.
  */
 function load_score_table(sort_function) {
+    /**
+     * Create tr element with the row data
+     * 
+     * @returns {HTMLElement} 'tr' element
+     */
+    function create_table_row() {
+        let tr = document.createElement('TR');
+        tr.className = 'score_table_row';
+        for (let j = 1; j < 6; j++) {
+            let td = document.createElement('TD');
+            if (j == 1) {
+                td.innerHTML = (i + 1) + '.';
+            } else if (j == 4) {
+                let time = Math.floor(table_data[i][td_keys[j]] / 1000);
+                time >= 60 ? td.innerHTML = (time / 60).toFixed(2) + ' min' : td.innerHTML = time + ' sec';
+            } else {
+                td.innerHTML = table_data[i][td_keys[j]];
+            };
+            tr.append(td);
+        };
+        return tr;
+    };
+
     let table_data = [
         ["Itai", "itai145@gmail.com", 6, 10000],
         ["Danielle", "danielle07t@gmail.com", 8, 65000],
@@ -553,19 +584,11 @@ function load_score_table(sort_function) {
     table_data.push([user_data.name, user_data.mail, user_data.score, user_data.time]);
     table_data.sort((a, b) => { return sort_function(a, b) });
     //td index => table_data position.
-    const td_keys = { 1: 0, 2: 2, 3: 3, 4: 1 };
-    let table_rows = document.querySelectorAll('.score_table_row');
-    for (i = 0; i < table_rows.length; i++) {
-        table_rows[i].querySelectorAll('td').forEach((td, index) => {
-            if (index == 0) {
-                td.innerHTML = (i + 1) + '.';
-            } else if (index == 3) {
-                let time = Math.floor(table_data[i][td_keys[index]] / 1000);
-                time >= 60 ? td.innerHTML = (time / 60).toFixed(2) + ' min' : td.innerHTML = time + ' sec';
-            } else {
-                td.innerHTML = table_data[i][td_keys[index]];
-            };
-        });
+    const td_keys = { 2: 0, 3: 2, 4: 3, 5: 1 };
+    let table_body = document.querySelector('#score_table').children[0];
+    document.querySelectorAll('.score_table_row').forEach((row) => { row.remove() });
+    for (i = 0; i < table_data.length; i++) {
+        table_body.append(create_table_row());
     };
 };
 
@@ -643,7 +666,6 @@ function shared_link() {
  * @param {Object} event click event object. 
  */
 function play_again(event) {
-    reset_game();
     if (event.target.innerHTML == "Try again") {
         section_switch(1);
     } else {

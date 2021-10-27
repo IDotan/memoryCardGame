@@ -23,6 +23,10 @@
   display: none !important;
 }
 
+body {
+  min-width: 350px;
+}
+
 h1, h2, h3, p {
   color: var(--clr-white);
 }
@@ -67,20 +71,20 @@ h1 {
 }
 
 .about_project {
-  padding-top: 20%;
+  padding-top: 22vh;
 }
 
 .memory_game_logo {
   width: 60%;
 }
 
-#landing_screen P {
+.about_project_text {
   margin: 0 auto;
   font-size: var(--fs-paragraph);
   padding: 0 0 2em;
 }
 
-#landing_screen P>span {
+.about_project_text>span {
   font-weight: 900;
 }
 
@@ -139,6 +143,7 @@ h1 {
   position: relative;
   padding: 2em 0;
   margin: 0 auto;
+  max-width: 40em;
 }
 
 .carousel_arrow {
@@ -198,16 +203,26 @@ h1 {
   transition: background-color 1s, opacity 1s;
 }
 
+.about_text {
+  font-size: var(--fs-paragraph);
+}
+
+.about_text>span {
+  font-weight: 700;
+}
+
 .about.center {
   background-color: var(--carousel-active-bg);
   opacity: 1;
 }
 
 .about h2 {
-  padding-block: 1rem;
+  min-height: 5ch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   font-size: var(--fs-Profle-h2);
-  min-height: 6ch;
 }
 
 .carousel_back_container {
@@ -242,13 +257,12 @@ h1 {
 #popup_container {
   display: none;
   position: fixed;
-  top: 0;
+  margin: 0 auto;
   left: 50%;
   transform: translatex(-50%);
-  width: max-content;
-  height: 100%;
   background-image: url(../img/popup/login.png);
   background-size: contain;
+  background-position: center;
   background-repeat: no-repeat;
   z-index: 2;
 }
@@ -280,16 +294,15 @@ h1 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: auto 0;
-  padding: 10%;
-  margin-top: min(700px, 30%);
+  margin-top: 4rem;
+  width: 32ch;
+  box-sizing: content-box;
+  padding: 4em;
   font-family: var(--ff-main);
 }
 
 #close_popup {
-  position: absolute;
-  top: 0;
-  right: 10%;
+  align-self: end;
   cursor: pointer;
   font-size: 2.5rem;
   color: var(--clr-yellow);
@@ -317,12 +330,14 @@ h1 {
 }
 
 #login_btn {
-  margin-top: 2rem;
+  margin-top: 3rem;
+  width: 5em;
 }
 
 #error_msg {
+  position: absolute;
+  top: 60%;
   color: red;
-  margin-top: auto;
 }
 
 /*game_window*/
@@ -456,11 +471,12 @@ h1 {
 
 .victory::after, .lost::after {
   position: absolute;
+  top: 50%;
   left: 50%;
   width: max-content;
   font-size: 3em;
   font-weight: 900;
-  transform: rotate(-20deg) translate(-50%, -50%);
+  transform: translate(-50%, -50%) rotate(-20deg);
   background-color: #000000b3;
 }
 
@@ -497,6 +513,10 @@ h1 {
 
 .card.flip:hover {
   transform: rotateY(180deg) scale(1.1);
+}
+
+.card.selected {
+  border-color: var(--clr-yellow);
 }
 
 .card_back, .card_img {
@@ -661,6 +681,7 @@ h1 {
   }
   .about_project {
     max-width: max-content;
+    padding-top: 30vh;
   }
   .about_btn_container {
     flex-direction: row;
@@ -677,7 +698,7 @@ h1 {
     background-image: url(../img/wallpapers/dev.png) !important;
   }
   #developers_carousel_container {
-    width: 40%;
+    width: 45%;
   }
   .about {
     padding: 3em;
